@@ -4,20 +4,42 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 261 library cards (38
 
 ## Gallery (GitHub Pages)
 
-`index.html` is a single static page that displays all cards in one grid with:
+`index.html` is a single static page that displays all cards in one grid.
 
+**Filters & search**
 - search by name, text, discipline, type, clan
 - Crypt / Library kind toggles (segmented)
-- clan filter (also matches library cards with clan requirements)
-- library type filter (auto-disables Crypt when set)
+- searchable combobox for clan, library type, and sort — with typeahead
+- sort: name A→Z / Z→A, copies, capacity (crypt), rarity (library)
 - Common / Uncommon / Rare rarity toggles
 - active-filter chips above the grid (one click to remove)
-- modal lightbox with image, tags, KRCG card text, DRAFT: clause when present
-- modal navigation: arrows, keyboard (← →), touch swipe, prev/next preload
-- styled discipline badges (`[aus]`, `[PRE]`, ...) rendered as colored pills
-- deep-link to a single card via URL hash (`#CardName`)
 - filter state persisted in the URL query string (shareable views)
+- Reset button appears only when filters are active
+
+**Card detail (modal)**
+- image with click / double-tap to zoom
+- tags, KRCG card text, DRAFT: clause when present
+- navigation: arrows, keyboard (← →), touch swipe left/right, prev/next preload
+- swipe down or tap outside to close
+- Web Share button (Web Share API with clipboard fallback and toast)
+- deep-link to a single card via URL hash (`#CardName`)
+- browser back button closes the modal (`pushState` / `popstate`)
+- focus trap (Tab stays inside the dialog)
+- styled discipline badges (`[aus]`, `[PRE]`, ...) rendered as colored pills
+
+**Mobile & accessibility**
+- bottom-sheet filter drawer on phones (tap "Filters" to open) with backdrop
+- 44×44px minimum touch targets, iOS-safe font-size on inputs (no zoom)
+- `env(safe-area-inset-*)` respected for notch / home-indicator devices
+- `@media (hover: hover)` guards prevent sticky hover on touch devices
+- card-name overlay always visible on touch, hover-revealed on desktop
+- landscape-mobile modal layout keeps image + text side-by-side
 - sticky topbar, dark theme, fully responsive (desktop / tablet / mobile / small phones)
+- `prefers-reduced-motion` respected
+
+**Installable (PWA)**
+- `manifest.webmanifest` allows install to home screen / desktop
+- `sw.js` service worker: network-first for HTML & `cards.json`, cache-first for images — works offline after first visit
 
 Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 
@@ -44,6 +66,8 @@ python -m http.server 8765
 ```
 /
 ├── index.html, .nojekyll, dev.ps1
+├── manifest.webmanifest                # PWA manifest (installable)
+├── sw.js                               # service worker (offline cache)
 ├── assets/                             # favicon.ico, apple-touch-icon.png, vtes.svg
 ├── data/
 │   ├── cards.json                      # gallery data (consumed by index.html)

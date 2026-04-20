@@ -1,0 +1,25 @@
+{
+  "name": "VTES Draft Cube",
+  "short_name": "VTES Draft",
+  "description": "Browse the VTES Draft Cube crypt and library with search, filters and card detail.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#121214",
+  "theme_color": "#121214",
+  "icons": [
+    {
+      "src": "assets/vtes.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
