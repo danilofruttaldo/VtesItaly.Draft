@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121214">
+<meta name="description" content="VTES Draft Cube interactive gallery: browse the crypt and library cards with search, filters and card detail.">
+<link rel="icon" type="image/svg+xml" href="assets/vtes.svg">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>VTES Draft Cube</title>
+<style>
+  :root {
+    --bg: #121214;
+    --panel: #1c1c20;
+    --panel-2: #26262c;
+    --border: #2a2a30;
+    --text: #e8e8ec;
+    --muted: #9ca0a8;
+    --accent: #c52555;
+    --accent-hover: #d13a68;
+    --focus: #4fa3ff;
+    --shadow: 0 6px 24px rgba(0,0,0,0.45);
+    --radius: 8px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-text-size-adjust: 100%;
+    line-height: 1.4;
+  }
+
+  /* Skip link for keyboard users */
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 8px;
+    padding: 0.5rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius);
+    z-index: 200;
+  }
+  .skip:focus { left: 8px; }
+
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: var(--radius);
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--bg);
+    transition: box-shadow 0.18s ease;
+  }
+  .topbar.scrolled { box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
+
+  header {
+    padding: 0.85rem 1.25rem 0.6rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .sub { color: var(--muted); font-weight: 400; font-size: 0.85rem; }
+
+  .controls {
+    padding: 0.5rem 1.25rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .controls-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    align-items: center;
+  }
+
+  input[type=search] {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.55rem 0.85rem;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    flex: 1 1 240px;
+    min-width: 0;
+    max-width: 480px;
+    min-height: 40px;
+  }
+  input[type=search]::-webkit-search-cancel-button { cursor: pointer; }
+
+  select {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.6rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    min-height: 36px;
+    cursor: pointer;
+  }
+
+  input[type=search]:focus, select:focus,
+  .chip:focus, .modal-nav:focus, .modal-close:focus {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+  input[type=search]:focus, select:focus { border-color: var(--accent); }
+
+  .chip {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0 0.85rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    height: 36px;
+    line-height: 36px;
+    user-select: none;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+  }
+  .chip:hover:not([aria-pressed="true"]) { background: var(--panel-2); border-color: var(--panel-2); }
+  .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip[aria-pressed="true"]:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+
+  /* Segmented chip groups (no gap, shared border) */
+  .chip-group {
+    display: inline-flex;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--panel);
+  }
+  .chip-group .chip {
+    border-radius: 0;
+    border: none;
+    border-right: 1px solid var(--border);
+    background: transparent;
+    padding: 0 0.85rem;
+  }
+  .chip-group .chip:last-child { border-right: none; }
+  .chip-group .chip[aria-pressed="true"] {
+    background: var(--accent);
+    color: #fff;
+  }
+  .chip-group .chip:focus-visible { outline-offset: -2px; }
+
+  .chip-reset {
+    color: var(--muted);
+    background: transparent;
+    border-color: transparent;
+  }
+  .chip-reset:hover { color: var(--text); background: var(--panel); border-color: var(--border); }
+
+  .count {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-left: auto;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Active filter chips (recap) */
+  .active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 0.55rem 1.25rem 0;
+    align-items: center;
+  }
+  .active-filters:empty { display: none; }
+  .active-filters .label { color: var(--muted); font-size: 0.8rem; margin-right: 0.25rem; }
+  .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--panel-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.25rem 0.4rem 0.25rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  .filter-chip:hover { background: var(--panel); border-color: var(--accent); }
+  .filter-chip .x {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    font-size: 0.75rem;
+    line-height: 1;
+  }
+  .filter-chip:hover .x { background: var(--accent); color: #fff; }
+
+  /* Discipline / token badges */
+  .disc {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.78em;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0 1px;
+    vertical-align: 1px;
+    background: #4a4a55;
+    color: #fff;
+    text-transform: lowercase;
+    letter-spacing: 0.02em;
+  }
+  .disc.sup { text-transform: uppercase; }
+  /* Discipline color palette */
+  .disc-ani { background: #6b8e23; }
+  .disc-aus { background: #6a5acd; }
+  .disc-cel { background: #d4a017; color: #111; }
+  .disc-chi { background: #8b008b; }
+  .disc-dom { background: #1e3a8a; }
+  .disc-for { background: #654321; }
+  .disc-obf { background: #4b5563; }
+  .disc-obt { background: #1f2937; }
+  .disc-pot { background: #b03030; }
+  .disc-pre { background: #c2185b; }
+  .disc-pro { background: #2d5016; }
+  .disc-ser { background: #2e7d32; }
+  .disc-tha { background: #5d2d6b; }
+  .disc-thn { background: #3a2a1f; }
+  .disc-vic { background: #ad1457; }
+  .disc-nec { background: #2a1a3a; }
+  .disc-qui { background: #4e342e; }
+  .disc-tem { background: #455a64; }
+  .disc-mel { background: #d84315; }
+  .disc-dem { background: #4a148c; }
+  .disc-dai { background: #b71c1c; }
+  .disc-mul { background: #00695c; }
+  .disc-obe { background: #f57c00; color: #111; }
+  .disc-val { background: #fafafa; color: #111; }
+  .disc-vis { background: #5d4037; }
+  .disc-san { background: #6d4c41; }
+  .disc-spi { background: #1565c0; }
+  .disc-mal { background: #311b92; }
+  .disc-abo { background: #33691e; }
+  /* card-type / clan tokens default */
+  .disc-combat { background: #b03030; }
+  .disc-action { background: #1565c0; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.75rem;
+    padding: 1rem 1.25rem 2rem;
+  }
+  .card {
+    position: relative;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    cursor: zoom-in;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    appearance: none;
+    transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow); }
+  .card:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+  .card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 0.716;
+    object-fit: cover;
+    background: #000;
+  }
+  .card .badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(0,0,0,0.78);
+    color: #fff;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    z-index: 100;
+    padding: 1.5rem;
+    overflow: auto;
+    cursor: zoom-out;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+  }
+  .modal.open { display: flex; opacity: 1; }
+  .modal-nav {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid var(--border);
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 110;
+    user-select: none;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  .modal-nav:hover { background: var(--accent); border-color: var(--accent); }
+  .modal-nav.prev { left: 1rem; }
+  .modal-nav.next { right: 1rem; }
+  .modal-counter {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.3rem 0.85rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    z-index: 110;
+    pointer-events: none;
+  }
+  .modal-close {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid var(--border);
+    color: #fff;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 110;
+    line-height: 1;
+  }
+  .modal-close:hover { background: var(--accent); border-color: var(--accent); }
+  .modal-inner {
+    margin: auto;
+    display: flex;
+    gap: 1.5rem;
+    max-width: 1100px;
+    width: 100%;
+    align-items: flex-start;
+    cursor: default;
+  }
+  .modal img {
+    max-width: 360px;
+    max-height: 85vh;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.85);
+    flex-shrink: 0;
+    background: #000;
+  }
+  .modal-info {
+    flex: 1;
+    min-width: 0;
+    color: var(--text);
+    padding-top: 0.5rem;
+  }
+  .modal-info h2 { margin: 0 0 0.4rem; font-size: 1.35rem; line-height: 1.25; }
+  .modal-info .tags {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    line-height: 1.9;
+  }
+  .modal-info .tag {
+    display: inline-block;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 2px 9px;
+    border-radius: 999px;
+    margin-right: 4px;
+    color: var(--text);
+    font-size: 0.78rem;
+  }
+  .modal-info .text {
+    white-space: pre-wrap;
+    line-height: 1.55;
+    font-size: 0.95rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.95rem 1.05rem;
+  }
+
+  .empty, .loading {
+    padding: 3rem 1.25rem;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  .loading::before {
+    content: "";
+    display: inline-block;
+    width: 1.1em;
+    height: 1.1em;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    margin-right: 0.5em;
+    vertical-align: -0.18em;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    input[type=search] { max-width: 100%; }
+  }
+
+  /* Tablet portrait / large phones */
+  @media (max-width: 640px) {
+    header { padding: 0.65rem 0.75rem 0.35rem; }
+    h1 { font-size: 1rem; }
+    .sub { font-size: 0.75rem; }
+
+    .controls { padding: 0.4rem 0.75rem 0.65rem; gap: 0.45rem; }
+    .controls-row { gap: 0.4rem; }
+    input[type=search] {
+      flex: 1 1 100%;
+      max-width: none;
+      font-size: 16px; /* iOS no-zoom */
+      padding: 0.55rem 0.75rem;
+    }
+    select {
+      flex: 1 1 calc(50% - 0.2rem);
+      min-width: 0;
+      font-size: 0.9rem;
+    }
+    .chip { font-size: 0.82rem; padding: 0 0.7rem; }
+    .chip-group { flex: 1 1 auto; }
+    .chip-group .chip { flex: 1 1 0; text-align: center; }
+    .count { flex-basis: 100%; text-align: right; margin: 0; font-size: 0.78rem; }
+    .chip-reset {
+      order: -1; /* push Reset before count visually grouped with search? actually keep simple */
+    }
+
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(min(105px, 30vw), 1fr));
+      gap: 0.4rem;
+      padding: 0.6rem 0.75rem 1.5rem;
+    }
+    .card .badge { font-size: 0.7rem; padding: 1px 5px; top: 4px; right: 4px; }
+    /* disable hover-lift on touch — looks weird on tap */
+    .card:hover { transform: none; box-shadow: none; }
+    .card:active { transform: scale(0.97); }
+
+    .modal { padding: 0.5rem; }
+    .modal-inner { flex-direction: column; gap: 0.75rem; padding-top: 2.5rem; }
+    .modal img { max-width: 100%; max-height: 60vh; margin: 0 auto; }
+    .modal-info { padding-top: 0; }
+    .modal-info h2 { font-size: 1.1rem; }
+    .modal-info .tags { line-height: 1.7; margin-bottom: 0.7rem; }
+    .modal-info .text { font-size: 0.9rem; padding: 0.7rem 0.8rem; line-height: 1.5; }
+    .modal-nav {
+      top: auto;
+      bottom: 0.85rem;
+      transform: none;
+      width: 44px;
+      height: 44px;
+      font-size: 1.4rem;
+    }
+    .modal-nav.prev { left: 1rem; }
+    .modal-nav.next { right: 1rem; }
+    .modal-counter { top: 0.5rem; font-size: 0.75rem; padding: 0.25rem 0.7rem; }
+    .modal-close { top: 0.5rem; right: 0.5rem; width: 36px; height: 36px; font-size: 1.2rem; }
+  }
+
+  /* Small phones */
+  @media (max-width: 380px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+    .chip { font-size: 0.78rem; padding: 0 0.55rem; }
+    .modal-info h2 { font-size: 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+  <a href="#grid" class="skip">Skip to cards</a>
+
+  <div class="topbar" id="topbar">
+    <header>
+      <h1>VTES Draft Cube</h1>
+      <span class="sub" id="summary"></span>
+    </header>
+
+    <div class="controls" role="search">
+      <div class="controls-row">
+        <input type="search" id="q" placeholder="Search by name, text, discipline, type..." autocomplete="off" aria-label="Search cards">
+        <button class="chip chip-reset" id="reset" type="button">Reset</button>
+        <span class="count" id="count" aria-live="polite"></span>
+      </div>
+      <div class="controls-row">
+        <div class="chip-group" role="group" aria-label="Card kind">
+          <button class="chip" data-kind="crypt" aria-pressed="true">Crypt</button>
+          <button class="chip" data-kind="library" aria-pressed="true">Library</button>
+        </div>
+        <select id="clan" aria-label="Filter by clan"><option value="">All clans</option></select>
+        <select id="type" aria-label="Filter by library type"><option value="">All types</option></select>
+        <div class="chip-group" role="group" aria-label="Library rarity">
+          <button class="chip" data-rarity="Common" aria-pressed="true">Common</button>
+          <button class="chip" data-rarity="Uncommon" aria-pressed="true">Uncommon</button>
+          <button class="chip" data-rarity="Rare" aria-pressed="true">Rare</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="active-filters" id="active-filters" aria-label="Active filters"></div>
+    <div class="grid" id="grid" role="list"></div>
+    <div class="empty" id="empty" hidden>No cards found.</div>
+    <div class="loading" id="loading">Loading cards...</div>
+  </main>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" hidden>
+    <button class="modal-close" id="modal-close" type="button" aria-label="Close">×</button>
+    <span class="modal-counter" id="modal-counter" aria-hidden="true"></span>
+    <button class="modal-nav prev" id="modal-prev" type="button" aria-label="Previous card">‹</button>
+    <div class="modal-inner">
+      <img id="modal-img" alt="" width="360" height="503">
+      <div class="modal-info">
+        <h2 id="modal-name"></h2>
+        <div class="tags" id="modal-tags"></div>
+        <div class="text" id="modal-text"></div>
+      </div>
+    </div>
+    <button class="modal-nav next" id="modal-next" type="button" aria-label="Next card">›</button>
+  </div>
+
+<script>
+"use strict";
+
+const state = {
+  data: { crypt: [], library: [] },
+  q: "",
+  kinds: new Set(["crypt", "library"]),
+  clan: "",
+  type: "",
+  rarities: new Set(["Common", "Uncommon", "Rare"]),
+  filtered: [],
+  modalIndex: -1,
+  lastFocus: null,
+};
+
+const $ = (id) => document.getElementById(id);
+
+function norm(s) {
+  return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+
+const DISC_KNOWN = new Set([
+  "abo","ani","aus","cel","chi","dai","dem","dom","for","mal","mel","mul","nec","obe",
+  "obf","obt","pot","pre","pro","qui","san","ser","spi","tem","tha","thn","val","vic","vis"
+]);
+
+function renderDisc(token) {
+  const lower = token.toLowerCase();
+  const known = DISC_KNOWN.has(lower);
+  const sup = token === token.toUpperCase() && token.length === 3;
+  const cls = `disc disc-${lower}${sup ? " sup" : ""}`;
+  const label = sup ? token.toUpperCase() : lower;
+  return `<span class="${cls}">${escapeHtml(label)}</span>`;
+}
+
+/* Replace [aus], [PRE], [combat], etc. in plain text with styled badges */
+function renderTextWithIcons(text) {
+  if (!text) return "";
+  return escapeHtml(text).replace(/\[([A-Za-z]{2,8})\]/g, (_m, tok) => renderDisc(tok));
+}
+
+function debounce(fn, ms) {
+  let t;
+  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+}
+
+function matchSearch(c, q) {
+  if (!q) return true;
+  const hay = norm(
+    c.name + " " + (c.text || "") + " " + (c.type || "") + " " +
+    (c.clan || "") + " " + (c.clans || []).join(" ") + " " +
+    (c.disciplines || []).join(" ")
+  );
+  return hay.includes(q);
+}
+
+function computeFiltered() {
+  const q = norm(state.q);
+  const items = [];
+  if (state.kinds.has("crypt")) {
+    for (const c of state.data.crypt) {
+      if (!matchSearch(c, q)) continue;
+      if (state.clan && c.clan !== state.clan) continue;
+      items.push(c);
+    }
+  }
+  if (state.kinds.has("library")) {
+    for (const c of state.data.library) {
+      if (!matchSearch(c, q)) continue;
+      if (!state.rarities.has(c.rarity)) continue;
+      if (state.type && !(c.type || "").split(/,\s*/).includes(state.type)) continue;
+      if (state.clan && !(c.clans || []).includes(state.clan)) continue;
+      items.push(c);
+    }
+  }
+  return items;
+}
+
+function render() {
+  state.filtered = computeFiltered();
+  const grid = $("grid");
+  const frag = document.createDocumentFragment();
+  state.filtered.forEach((c, idx) => {
+    const el = document.createElement("button");
+    el.type = "button";
+    el.className = "card";
+    el.setAttribute("role", "listitem");
+    el.setAttribute("aria-label", `${c.name}, ${c.count} copies`);
+    el.innerHTML = `
+      <img loading="lazy" decoding="async" width="160" height="223" src="${encodeURI(c.img)}" alt="${escapeHtml(c.name)}">
+      <span class="badge" aria-hidden="true">×${c.count}</span>
+    `;
+    el.addEventListener("click", () => openModal(idx));
+    frag.appendChild(el);
+  });
+  grid.replaceChildren(frag);
+
+  const totalCount = state.filtered.reduce((s, c) => s + c.count, 0);
+  $("count").textContent = `${state.filtered.length} unique · ${totalCount} copies`;
+  $("empty").hidden = state.filtered.length !== 0;
+  renderActiveFilters();
+  syncUrl();
+}
+
+function renderActiveFilters() {
+  const host = $("active-filters");
+  const chips = [];
+  const mk = (label, onRemove) =>
+    `<button class="filter-chip" data-rm="${onRemove}" type="button" aria-label="Remove filter ${escapeHtml(label)}">${escapeHtml(label)}<span class="x" aria-hidden="true">×</span></button>`;
+  if (state.q) chips.push(mk(`"${state.q}"`, "q"));
+  if (state.clan) chips.push(mk(`Clan: ${state.clan}`, "clan"));
+  if (state.type) chips.push(mk(`Type: ${state.type}`, "type"));
+  if (!state.kinds.has("crypt")) chips.push(mk("Crypt off", "kind:crypt"));
+  if (!state.kinds.has("library")) chips.push(mk("Library off", "kind:library"));
+  for (const r of ["Common", "Uncommon", "Rare"]) {
+    if (!state.rarities.has(r)) chips.push(mk(`${r} off`, "rarity:" + r));
+  }
+  host.innerHTML = chips.length ? `<span class="label">Active:</span>${chips.join("")}` : "";
+}
+
+$("active-filters").addEventListener("click", e => {
+  const btn = e.target.closest("[data-rm]");
+  if (!btn) return;
+  const rm = btn.dataset.rm;
+  if (rm === "q") { state.q = ""; $("q").value = ""; }
+  else if (rm === "clan") { state.clan = ""; $("clan").value = ""; }
+  else if (rm === "type") { state.type = ""; $("type").value = ""; }
+  else if (rm.startsWith("kind:")) {
+    const k = rm.slice(5);
+    state.kinds.add(k);
+    document.querySelector(`[data-kind="${k}"]`).setAttribute("aria-pressed", "true");
+  } else if (rm.startsWith("rarity:")) {
+    const r = rm.slice(7);
+    state.rarities.add(r);
+    document.querySelector(`[data-rarity="${r}"]`).setAttribute("aria-pressed", "true");
+  }
+  render();
+});
+
+/* --- URL persistence of filter state --- */
+let urlSyncTimer;
+function syncUrl() {
+  clearTimeout(urlSyncTimer);
+  urlSyncTimer = setTimeout(() => {
+    if (state.modalIndex >= 0) return; // don't clobber #card hash while modal open
+    const p = new URLSearchParams();
+    if (state.q) p.set("q", state.q);
+    if (state.clan) p.set("clan", state.clan);
+    if (state.type) p.set("type", state.type);
+    if (state.kinds.size !== 2) p.set("kinds", [...state.kinds].join(","));
+    if (state.rarities.size !== 3) p.set("rarities", [...state.rarities].join(","));
+    const qs = p.toString();
+    const url = qs ? `${location.pathname}?${qs}` : location.pathname;
+    history.replaceState(null, "", url + location.hash);
+  }, 200);
+}
+
+function loadStateFromUrl() {
+  const p = new URLSearchParams(location.search);
+  if (p.has("q")) { state.q = p.get("q"); $("q").value = state.q; }
+  if (p.has("clan")) state.clan = p.get("clan");
+  if (p.has("type")) state.type = p.get("type");
+  if (p.has("kinds")) {
+    state.kinds = new Set(p.get("kinds").split(",").filter(Boolean));
+    document.querySelectorAll("[data-kind]").forEach(b =>
+      b.setAttribute("aria-pressed", String(state.kinds.has(b.dataset.kind))));
+  }
+  if (p.has("rarities")) {
+    state.rarities = new Set(p.get("rarities").split(",").filter(Boolean));
+    document.querySelectorAll("[data-rarity]").forEach(b =>
+      b.setAttribute("aria-pressed", String(state.rarities.has(b.dataset.rarity))));
+  }
+  if (p.has("type")) { $("type").value = state.type; applyTypeConstraint(); }
+}
+
+/* --- preload neighbor images in modal --- */
+function preloadNeighbors(idx) {
+  const n = state.filtered.length;
+  if (n < 2) return;
+  for (const i of [(idx + 1) % n, (idx - 1 + n) % n]) {
+    const im = new Image();
+    im.src = encodeURI(state.filtered[i].img);
+  }
+}
+
+function discList(arr, sep = " ") {
+  return arr.map(d => renderDisc(d)).join(sep);
+}
+
+function buildTags(c) {
+  const tags = [];
+  if (c.kind === "crypt") {
+    if (c.clan) tags.push(`<span class="tag">${escapeHtml(c.clan)}</span>`);
+    if (c.capacity != null) tags.push(`<span class="tag">cap ${c.capacity}</span>`);
+    if (c.group) tags.push(`<span class="tag">group ${c.group}</span>`);
+    if (c.title) tags.push(`<span class="tag">${escapeHtml(c.title)}</span>`);
+    if (c.disciplines && c.disciplines.length)
+      tags.push(`<span class="tag">${discList(c.disciplines)}</span>`);
+  } else {
+    if (c.type) tags.push(`<span class="tag">${escapeHtml(c.type)}</span>`);
+    if (c.rarity) tags.push(`<span class="tag">${escapeHtml(c.rarity)}</span>`);
+    if (c.cost) tags.push(`<span class="tag">${escapeHtml(c.cost)}</span>`);
+    if (c.disciplines && c.disciplines.length)
+      tags.push(`<span class="tag">${discList(c.disciplines, " ")}</span>`);
+    if (c.clans && c.clans.length)
+      tags.push(`<span class="tag">${c.clans.map(escapeHtml).join(" · ")}</span>`);
+  }
+  tags.push(`<span class="tag">×${c.count} in cube</span>`);
+  return tags.join(" ");
+}
+
+function openModal(idx) {
+  if (idx < 0 || idx >= state.filtered.length) return;
+  if (state.modalIndex === -1) state.lastFocus = document.activeElement;
+  state.modalIndex = idx;
+  const c = state.filtered[idx];
+  c.kind = c.kind || (state.data.crypt.includes(c) ? "crypt" : "library");
+  $("modal-img").src = encodeURI(c.img);
+  $("modal-img").alt = c.name;
+  $("modal-name").textContent = c.name;
+  $("modal-tags").innerHTML = buildTags(c);
+  const textEl = $("modal-text");
+  let body = c.text || "(text unavailable)";
+  if (c.draft && c.draft_text) body += "\n\n" + c.draft_text;
+  textEl.innerHTML = renderTextWithIcons(body);
+  $("modal-counter").textContent = `${idx + 1} / ${state.filtered.length}`;
+  preloadNeighbors(idx);
+
+  const modal = $("modal");
+  modal.hidden = false;
+  requestAnimationFrame(() => modal.classList.add("open"));
+  $("modal-close").focus();
+  history.replaceState(null, "", "#" + encodeURIComponent(c.name));
+}
+
+function stepModal(delta) {
+  if (state.modalIndex < 0 || !state.filtered.length) return;
+  const n = state.filtered.length;
+  openModal((state.modalIndex + delta + n) % n);
+}
+
+function closeModal() {
+  if (state.modalIndex < 0) return;
+  state.modalIndex = -1;
+  const modal = $("modal");
+  modal.classList.remove("open");
+  setTimeout(() => { modal.hidden = true; }, 180);
+  if (state.lastFocus && state.lastFocus.focus) state.lastFocus.focus();
+  history.replaceState(null, "", location.pathname + location.search);
+}
+
+// --- event wiring ---
+
+const debouncedRender = debounce(render, 120);
+
+$("q").addEventListener("input", e => { state.q = e.target.value; debouncedRender(); });
+$("clan").addEventListener("change", e => { state.clan = e.target.value; render(); });
+$("type").addEventListener("change", e => {
+  state.type = e.target.value;
+  applyTypeConstraint();
+  render();
+});
+
+/* Library type filter applies only to library cards: turn Crypt off automatically. */
+function applyTypeConstraint() {
+  if (!state.type) return;
+  state.kinds.delete("crypt");
+  state.kinds.add("library");
+  document.querySelector('[data-kind="crypt"]').setAttribute("aria-pressed", "false");
+  document.querySelector('[data-kind="library"]').setAttribute("aria-pressed", "true");
+}
+
+document.querySelectorAll("[data-kind]").forEach(b => b.addEventListener("click", () => {
+  const k = b.dataset.kind;
+  const turningOn = !state.kinds.has(k);
+  if (turningOn) state.kinds.add(k); else state.kinds.delete(k);
+  b.setAttribute("aria-pressed", String(turningOn));
+  // Turning Crypt on clears the (library-only) type filter
+  if (k === "crypt" && turningOn && state.type) {
+    state.type = "";
+    $("type").value = "";
+  }
+  render();
+}));
+
+document.querySelectorAll("[data-rarity]").forEach(b => b.addEventListener("click", () => {
+  const r = b.dataset.rarity;
+  if (state.rarities.has(r)) state.rarities.delete(r); else state.rarities.add(r);
+  b.setAttribute("aria-pressed", String(state.rarities.has(r)));
+  render();
+}));
+
+$("reset").addEventListener("click", () => {
+  state.q = "";
+  state.clan = "";
+  state.type = "";
+  state.kinds = new Set(["crypt", "library"]);
+  state.rarities = new Set(["Common", "Uncommon", "Rare"]);
+  $("q").value = "";
+  $("clan").value = "";
+  $("type").value = "";
+  document.querySelectorAll("[data-kind], [data-rarity]").forEach(b => b.setAttribute("aria-pressed", "true"));
+  render();
+});
+
+$("modal").addEventListener("click", e => {
+  if (e.target.closest(".modal-info") || e.target.closest(".modal-nav") ||
+      e.target.closest(".modal-close") || e.target.closest("img")) return;
+  closeModal();
+});
+$("modal-close").addEventListener("click", closeModal);
+$("modal-prev").addEventListener("click", e => { e.stopPropagation(); stepModal(-1); });
+$("modal-next").addEventListener("click", e => { e.stopPropagation(); stepModal(1); });
+
+document.addEventListener("keydown", e => {
+  if (state.modalIndex < 0) return;
+  if (e.key === "Escape") closeModal();
+  else if (e.key === "ArrowLeft") stepModal(-1);
+  else if (e.key === "ArrowRight") stepModal(1);
+});
+
+/* Touch swipe in modal: horizontal swipe = prev/next */
+let touchStartX = 0, touchStartY = 0, touchTime = 0;
+$("modal").addEventListener("touchstart", e => {
+  if (state.modalIndex < 0) return;
+  const t = e.changedTouches[0];
+  touchStartX = t.clientX;
+  touchStartY = t.clientY;
+  touchTime = Date.now();
+}, { passive: true });
+$("modal").addEventListener("touchend", e => {
+  if (state.modalIndex < 0) return;
+  const t = e.changedTouches[0];
+  const dx = t.clientX - touchStartX;
+  const dy = t.clientY - touchStartY;
+  const dt = Date.now() - touchTime;
+  if (dt < 600 && Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+    stepModal(dx < 0 ? 1 : -1);
+  }
+}, { passive: true });
+
+// sticky topbar shadow on scroll
+const topbar = $("topbar");
+const onScroll = () => topbar.classList.toggle("scrolled", window.scrollY > 0);
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+// --- data load ---
+
+fetch("data/cards.json")
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(data => {
+    // tag each card with its kind once, so openModal/buildTags don't need lookups
+    data.crypt.forEach(c => c.kind = "crypt");
+    data.library.forEach(c => c.kind = "library");
+    state.data = data;
+
+    const clans = [...new Set(data.crypt.map(c => c.clan).filter(Boolean))].sort();
+    const clanSel = $("clan");
+    for (const c of clans) {
+      const o = document.createElement("option");
+      o.value = c; o.textContent = c;
+      clanSel.appendChild(o);
+    }
+    const types = [...new Set(data.library.flatMap(c => (c.type || "").split(/,\s*/).filter(Boolean)))].sort();
+    const typeSel = $("type");
+    for (const t of types) {
+      const o = document.createElement("option");
+      o.value = t; o.textContent = t;
+      typeSel.appendChild(o);
+    }
+
+    const cryptCopies = data.crypt.reduce((s, c) => s + c.count, 0);
+    const libCopies = data.library.reduce((s, c) => s + c.count, 0);
+    $("summary").textContent =
+      `· ${data.crypt.length} crypt (${cryptCopies}) · ${data.library.length} library (${libCopies})`;
+
+    $("loading").hidden = true;
+    loadStateFromUrl();
+    render();
+
+    // Deep link: open card from URL hash
+    const hash = decodeURIComponent(location.hash.replace(/^#/, ""));
+    if (hash) {
+      const idx = state.filtered.findIndex(c => c.name === hash);
+      if (idx >= 0) openModal(idx);
+    }
+  })
+  .catch(e => {
+    $("loading").hidden = true;
+    $("grid").innerHTML =
+      `<div class="empty">Failed to load data/cards.json: ${escapeHtml(e.message)}</div>`;
+  });
+</script>
+</body>
+</html>

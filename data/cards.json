@@ -1,0 +1,5556 @@
+{
+  "crypt": [
+    {
+      "name": "Abraham DuSable",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/abrahamdusableg6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "AUS",
+        "DOM",
+        "FOR",
+        "THA"
+      ],
+      "title": null,
+      "text": "Camarilla: During an action, Abraham can discard a card requiring Blood Sorcery [tha] to get +1 intercept or +1 stealth."
+    },
+    {
+      "name": "Adelino Da Silva",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/adelinodasilvag6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "pot",
+        "pre",
+        "tha"
+      ],
+      "title": null,
+      "text": "Camarilla: Rescuing an older vampire from torpor costs Adelino -2 blood."
+    },
+    {
+      "name": "Adisa",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/adisag6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "obf"
+      ],
+      "title": null,
+      "text": "Camarilla: Adisa can enter combat with an ally or younger vampire as a Ⓓ action. If she successfully hunts, she does not unlock as normal during her next unlock phase."
+    },
+    {
+      "name": "Alexa Draper",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/alexadraperg6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "for",
+        "pot",
+        "DOM",
+        "PRE"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Melbourne: During the polling step of any referendum, Alexa can discard a card requiring Dominate [dom] to get +1 vote."
+    },
+    {
+      "name": "Alexander Silverson",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/alexandersilversong6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "pre",
+        "AUS",
+        "DOM",
+        "OBF"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Birmingham: Vampires must burn 1 blood to cast votes and ballots against referendums called by Alexander."
+    },
+    {
+      "name": "Alice Chen",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/alicecheng6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "obf",
+        "FOR",
+        "PRE"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Nairobi."
+    },
+    {
+      "name": "Aline Gädeke",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/alinegadekeg6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "POT",
+        "PRE"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Mannheim: Once each turn, Aline can burn 1 blood to unlock after another Anarch you control performs a successful action."
+    },
+    {
+      "name": "Aluc Romas de Leon",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/alucromasdeleong6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "obf",
+        "pro",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Amelia Locke",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/amelialockeg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "dom",
+        "FOR",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Andi Liu",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/andiliug6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "obf",
+        "pre",
+        "DOM"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Taipei."
+    },
+    {
+      "name": "Arjun Shah",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/arjunshahg6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "THA"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Ashley",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/ashleyg6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "obf"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Asmin Kobane",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/asminkobaneg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "obf",
+        "tha",
+        "CEL"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Atiena",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/atienag6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "pot",
+        "pre",
+        "CEL"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Mombasa."
+    },
+    {
+      "name": "Aunt Linda",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/auntlindag6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "POT"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Ayelech",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/ayelechg6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "AUS",
+        "DOM",
+        "THA"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Addis Ababa."
+    },
+    {
+      "name": "Ayse Dhanial",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/aysedhanialg6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "dom",
+        "tha"
+      ],
+      "title": null,
+      "text": "Camarilla: If Ayse is ready, you can use a discard phase action to add 1 blood to her."
+    },
+    {
+      "name": "Baixinho",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/baixinhog6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "obf"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Belinde",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/belindeg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "aus",
+        "pot",
+        "OBF"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Copenhagen."
+    },
+    {
+      "name": "Bijou",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/bijoug6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "tha"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Bolesław Gutowski",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/boleslawgutowskig6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "aus",
+        "cel",
+        "dom",
+        "obf",
+        "pre"
+      ],
+      "title": null,
+      "text": "Anarch: During an action he performs, Bolesław can burn 1 blood to reveal the top card of your crypt, then shuffle your crypt. If it is a copy of Bolesław, he gets +1 stealth; otherwise, he gets +1 strength."
+    },
+    {
+      "name": "Brandon Grime",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/brandongrimeg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "pot",
+        "pre",
+        "tha",
+        "CEL"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Bret Stryker",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/bretstrykerg6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "CEL",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla: Bret gets -1 intercept against titled vampires."
+    },
+    {
+      "name": "Casey Snyder",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/caseysnyderg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "cel",
+        "for",
+        "PRO"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Columbus."
+    },
+    {
+      "name": "Catalina Vega",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/catalinavegag6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "for",
+        "AUS",
+        "CEL",
+        "PRE"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Buenos Aires: +1 bleed."
+    },
+    {
+      "name": "Cedrick Calhoun",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/cedrickcalhoung6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "pot",
+        "ANI",
+        "DOM",
+        "OBF"
+      ],
+      "title": null,
+      "text": "Camarilla: If the referendum of a political action called by Cedrick is canceled or fails, he goes to torpor after resolution."
+    },
+    {
+      "name": "Chelsea Blake",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/chelseablakeg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "for",
+        "pre",
+        "DOM"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Chrysanthemum",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/chrysanthemumg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "AUS",
+        "THA"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen."
+    },
+    {
+      "name": "Chun Hei",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/chunheig6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "CEL",
+        "POT",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla: Once each combat, Chun Hei can burn 1 blood to get 1 additional strike that does not count against the limit. +1 strength."
+    },
+    {
+      "name": "Colette",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/coletteg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "AUS",
+        "OBF"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Crystal Lynn",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/crystallynng6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "OBF",
+        "PRE",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Dario Ziggler",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/dariozigglerg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "pro",
+        "tha",
+        "FOR"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Doctor Morocco",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/doctormoroccog6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "obf",
+        "pre",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Donny Kowalczyk",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/donnykowalczykg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "dom",
+        "obf",
+        "AUS"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Pittsburgh."
+    },
+    {
+      "name": "Dowager, The",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/dowagertheg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "pot",
+        "ANI",
+        "OBF"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen: The Dowager gets +1 intercept during directed actions."
+    },
+    {
+      "name": "Dr. Stephen Norton",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/drstephennortong6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "OBF"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Elen Kamjian",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/elenkamjiang6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "CEL",
+        "POT"
+      ],
+      "title": null,
+      "text": "Anarch: If you control a locked minion, Elen must bleed with +1 bleed as a Ⓓ action unless she must hunt."
+    },
+    {
+      "name": "Elisha Tucker",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/elishatuckerg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "obf",
+        "pro",
+        "PRE"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Pittsburgh."
+    },
+    {
+      "name": "Evan Klein",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/evankleing6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "dom",
+        "pre",
+        "OBF"
+      ],
+      "title": null,
+      "text": "Camarilla: As a minion announces an action directed at Evan, flip a coin; if it is tails, the action fails."
+    },
+    {
+      "name": "Farah Sarroub",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/farahsarroubg6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "obf",
+        "CEL",
+        "THA"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Detroit."
+    },
+    {
+      "name": "Faruq Abd al-Qadir",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/faruqabdalqadirg6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "obf",
+        "POT",
+        "PRE",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch: Minions with any of your corruption counters in combat with Faruq cannot strike: combat ends. +1 strength."
+    },
+    {
+      "name": "Fiorenza Savona",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/fiorenzasavonag6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "for",
+        "DOM",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla: If you burn the Edge for a vote, you get +1 vote. If you burn a political action card for a vote, you get +1 vote."
+    },
+    {
+      "name": "Flávio Gonçalves",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/flaviogoncalvesg6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "for",
+        "CEL",
+        "PRE"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of São Paulo: Once each combat, Flávio can strike: dodge."
+    },
+    {
+      "name": "Gelasia Fotiou",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/gelasiafotioug6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "pre",
+        "AUS",
+        "DOM"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Gilbert Duane",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/gilbertduaneg6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "AUS",
+        "DOM",
+        "OBF"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Miami: During your influence phase, Gilbert can burn 1 blood to reveal and remove the top card of your crypt from the game. If it is a Malkavian, a non-titled vampire you control becomes Anarch."
+    },
+    {
+      "name": "Greg Mazouni",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/gregmazounig6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "obf",
+        "tha"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Gwenllian Arwyn",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/gwenllianarwyng6.webp",
+      "capacity": 9,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "dom",
+        "for",
+        "CEL",
+        "POT",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla: During an action she performs, Gwenllian can burn 1 blood to give a blocking vampire -1 intercept. +1 strength."
+    },
+    {
+      "name": "Hanna Nokelainen",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/hannanokelaineng6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "for",
+        "pro"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Hesha Ruhadze",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/hesharuhadzeg6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "aus",
+        "obf",
+        "PRE",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch: Hesha gets +1 bleed for each unique equipment attached to him."
+    },
+    {
+      "name": "Horace Radcliffe",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/horaceradcliffeg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "ANI",
+        "POT"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Horst von Brühl",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/horstvonbruhlg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "dom",
+        "pre",
+        "FOR"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Mannheim."
+    },
+    {
+      "name": "Indira",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/indirag6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Inês Tristão",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/inestristaog6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "dom",
+        "pre",
+        "THA"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Rio de Janeiro."
+    },
+    {
+      "name": "Jason \"Son\" Newberry",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/jasonsonnewberryg6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "pre",
+        "AUS",
+        "DOM",
+        "OBF"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen: Jason gets +2 votes when casting votes against blood hunt referendums. +1 bleed."
+    },
+    {
+      "name": "Jenny Silver",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/jennysilverg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "PRE",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Joaquín de Cádiz",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/joaquindecadizg6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "for",
+        "pro"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Kalinda",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/kalindag6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "tha",
+        "CEL",
+        "OBF"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen: During your turn, you can burn the Edge to unlock Kalinda."
+    },
+    {
+      "name": "Kamile Paukstys",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/kamilepaukstysg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "for",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch: +1 bleed."
+    },
+    {
+      "name": "Karl Schrekt",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/karlschrektg6.webp",
+      "capacity": 10,
+      "group": "6",
+      "disciplines": [
+        "AUS",
+        "DOM",
+        "FOR",
+        "PRE",
+        "THA"
+      ],
+      "title": "2 votes",
+      "text": "Camarilla. 2 votes (titled): Karl can play cards requiring a justicar as if he were a justicar. +1 intercept."
+    },
+    {
+      "name": "Kasim Bayar",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/kasimbayarg6.webp",
+      "capacity": 9,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "pot",
+        "CEL",
+        "OBF",
+        "THA"
+      ],
+      "title": "Justicar",
+      "text": "Camarilla Assamite Justicar: Once each combat, Kasim can discard a political action card [POLITICAL ACTION] before range is determined to get +2 strength that combat. +1 bleed."
+    },
+    {
+      "name": "Kassandra Tassaki",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/kassandratassakig6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "CEL",
+        "THA"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Thessaloniki."
+    },
+    {
+      "name": "Kathy Glens",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/kathyglensg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "cel",
+        "tha",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Khadija Al-Kindi",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/khadijaalkindig6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "CEL",
+        "OBF",
+        "THA"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen."
+    },
+    {
+      "name": "Kuyén",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/kuyeng6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "ANI",
+        "PRO"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Santiago: Animals (allies and retainers) cost Kuyén -1 blood or pool."
+    },
+    {
+      "name": "Lady Scarlett Churchill",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/ladyscarlettchurchillg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "for",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla: You and Lady Scarlett can play cards requiring a Toreador as if she were a Toreador."
+    },
+    {
+      "name": "Larissa Moreira",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/larissamoreirag6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "pot",
+        "ANI",
+        "OBF"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen: During a bleed action, Larissa can discard a card requiring Animalism [ani] to get +1 bleed."
+    },
+    {
+      "name": "Laura Goldman",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/lauragoldmang5.webp",
+      "capacity": 3,
+      "group": "5",
+      "disciplines": [
+        "cel",
+        "pre"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Lauren",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/laureng6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "dom",
+        "tha"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Lenny Burkhead",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/lennyburkheadg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "pot",
+        "pre",
+        "ANI"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen: +1 bleed."
+    },
+    {
+      "name": "Leumeah",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/leumeahg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "for",
+        "pot",
+        "PRE"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Canberra."
+    },
+    {
+      "name": "Lloyd Brooks",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/lloydbrooksg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "pot",
+        "DOM",
+        "THA"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen."
+    },
+    {
+      "name": "Madison",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/madisong6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "DOM",
+        "FOR",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Maila",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/mailag6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "AUS",
+        "PRE"
+      ],
+      "title": "Primogen",
+      "text": "Camarilla primogen: If Maila is ready during your turn, you can discard a political action card [POLITICAL ACTION] to give a minion you control +1 stealth for the current action."
+    },
+    {
+      "name": "Marcel",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/marcelg6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "pre",
+        "pro"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Martina Srnankova",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/martinasrnankovag6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "FOR",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch: Martina gets +1 intercept during bleed actions."
+    },
+    {
+      "name": "Mason Ha",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/masonhag6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "cel",
+        "dom",
+        "THA"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Massimiliano",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/massimilianog6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "pro",
+        "ANI",
+        "FOR"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Belo Horizonte: +1 strength."
+    },
+    {
+      "name": "Massimo Falconi",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/massimofalconig6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "cel",
+        "pre"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Mateo García",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/mateogarciag6.webp",
+      "capacity": 2,
+      "group": "6",
+      "disciplines": [
+        "pre"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Meaghan",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/meaghang6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "obf"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Melech",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/melechg6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "pro",
+        "OBF"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Mickey Wheeler",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/mickeywheelerg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "cel",
+        "for",
+        "pro"
+      ],
+      "title": null,
+      "text": "Anarch: Mickey gets +1 strength in combat with an older vampire."
+    },
+    {
+      "name": "Milton Fox",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/miltonfoxg6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "pre",
+        "pro"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Min-seo",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/minseog6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "cel"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Mithras",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/mithrasg6.webp",
+      "capacity": 11,
+      "group": "6",
+      "disciplines": [
+        "DOM",
+        "FOR",
+        "POT",
+        "PRE",
+        "THA"
+      ],
+      "title": null,
+      "text": "Independent: Younger vampires must burn 1 blood to attempt to block Mithras or to cast votes or ballots against a referendum called by him. +2 bleed. +1 strength. +2 votes."
+    },
+    {
+      "name": "Mkhokheli",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/mkhokhelig6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "cel",
+        "for",
+        "PRE"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Cape Town."
+    },
+    {
+      "name": "Naomi Stewart",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/naomistewartg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "FOR",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Nassir",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/nassirg6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "THA"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Nathan Turner",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/nathanturnerg6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Nathaniel Bordruff",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/nathanielbordruffg6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "DOM",
+        "OBF",
+        "POT"
+      ],
+      "title": null,
+      "text": "Camarilla: Nathaniel can enter combat with a locked vampire as a Ⓓ action."
+    },
+    {
+      "name": "Nayarana",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/nayaranag6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "THA"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Nik Sikko",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/niksikkog6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "pre"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Nonu Dis",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/nonudisg6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "for",
+        "OBF",
+        "PRE",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Anarch: If Nonu Dis is ready during your master phase, you can add 1 blood to a ready Follower of Set you control after playing a master card. +1 bleed."
+    },
+    {
+      "name": "Octane",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/octaneg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "CEL",
+        "POT",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Oluwafunmilayo",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/oluwafunmilayog6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "AUS",
+        "CEL",
+        "OBF",
+        "THA"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Lagos: Oluwafunmilayo gets +1 intercept during political actions."
+    },
+    {
+      "name": "Oshri Dahan",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/oshridahang6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "for",
+        "pre"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Oskar Anasov",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/oskaranasovg6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "pot",
+        "ANI",
+        "OBF"
+      ],
+      "title": null,
+      "text": "Camarilla: During an action, Oskar can burn 1 blood to give a vampire you control +1 intercept. +1 stealth."
+    },
+    {
+      "name": "Patrik Söderberg",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/patriksoderbergg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "for",
+        "tha",
+        "AUS"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Queen Anne",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/queenanneg6.webp",
+      "capacity": 10,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "obf",
+        "DOM",
+        "FOR",
+        "PRE"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of London: During the polling step of a referendum called by Anne, she can burn 1 blood to force a younger Camarilla vampire to abstain. After she diablerizes a vampire, she can unlock. +1 bleed."
+    },
+    {
+      "name": "Rayne",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/rayneg6.webp",
+      "capacity": 2,
+      "group": "6",
+      "disciplines": [
+        "pot"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Regina Blake",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/reginablakeg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "AUS",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla: Each time you play a location card, you can use up to 1 of Regina's blood to pay some or all of its blood or pool cost."
+    },
+    {
+      "name": "Richard de Worde",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/richarddewordeg6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "tha",
+        "ANI",
+        "OBF",
+        "POT"
+      ],
+      "title": null,
+      "text": "Camarilla: After Richard successfully bleeds, he can look at the target Methuselah's hand, then he can burn 1 blood to discard 1 card from it."
+    },
+    {
+      "name": "Rosalina Cortez",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/rosalinacortezg6.webp",
+      "capacity": 3,
+      "group": "6",
+      "disciplines": [
+        "THA"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Rose Abawi",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/roseabawig6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "obf",
+        "pre"
+      ],
+      "title": null,
+      "text": "Camarilla: Rose gets +1 bleed while you control /Mithras/."
+    },
+    {
+      "name": "Rowena",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/rowenag6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "pot",
+        "FOR",
+        "PRO"
+      ],
+      "title": null,
+      "text": "Camarilla: Rowena can prevent 1 non-aggravated damage each round. She can strike: combat ends in combat with a werewolf."
+    },
+    {
+      "name": "Ruslan Fedorenko",
+      "clan": "Gangrel",
+      "count": 2,
+      "img": "images/crypt/ruslanfedorenkog6.webp",
+      "capacity": 2,
+      "group": "6",
+      "disciplines": [
+        "pro"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Ryan",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/ryang6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "obf",
+        "pot"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Sergio Bueno",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/sergiobuenog6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "pot",
+        "OBF",
+        "PRE",
+        "PRO"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Santo Domingo: Minions with 1 or more of your corruption counters must burn 1 blood or life to attempt to block Sergio."
+    },
+    {
+      "name": "Siarhei Levchenko",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/siarheilevchenkog6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "pot",
+        "CEL",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Anarch."
+    },
+    {
+      "name": "Sri Sansa",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/srisansag6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "tha",
+        "DOM"
+      ],
+      "title": null,
+      "text": "Camarilla: During your unlock phase, you can move 1 blood or life between Sri and a mortal or mage ally you control, not to exceed their starting life."
+    },
+    {
+      "name": "Sully",
+      "clan": "Malkavian",
+      "count": 2,
+      "img": "images/crypt/sullyg6.webp",
+      "capacity": 4,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "dom",
+        "obf"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Sybren van Oosten",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/sybrenvanoosteng6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "dom",
+        "tha",
+        "FOR",
+        "PRE"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Rotterdam: You can unlock Sybren after a referendum called by him passes."
+    },
+    {
+      "name": "Tamoszius",
+      "clan": "Toreador",
+      "count": 2,
+      "img": "images/crypt/tamosziusg6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "CEL",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Theo Bell",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/theobellg6.webp",
+      "capacity": 8,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "dom",
+        "CEL",
+        "POT",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Anarch: Theo can enter combat with a minion as a Ⓓ action. +1 strength."
+    },
+    {
+      "name": "Trevon Parker",
+      "clan": "Tremere",
+      "count": 2,
+      "img": "images/crypt/trevonparkerg6.webp",
+      "capacity": 6,
+      "group": "6",
+      "disciplines": [
+        "AUS",
+        "DOM",
+        "THA"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    },
+    {
+      "name": "Valerius",
+      "clan": "Ventrue",
+      "count": 2,
+      "img": "images/crypt/valeriusg6.webp",
+      "capacity": 9,
+      "group": "6",
+      "disciplines": [
+        "aus",
+        "cel",
+        "pot",
+        "DOM",
+        "FOR",
+        "PRE"
+      ],
+      "title": null,
+      "text": "Camarilla: If Valerius is Camarilla and not a prince, he can steal the title held by a prince as a Ⓓ action. +1 bleed."
+    },
+    {
+      "name": "Valeriya Zinovieva",
+      "clan": "Brujah",
+      "count": 2,
+      "img": "images/crypt/valeriyazinovievag6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "pre",
+        "pro",
+        "POT"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Moscow: +1 strength."
+    },
+    {
+      "name": "Vivian VI",
+      "clan": "Ministry",
+      "count": 2,
+      "img": "images/crypt/vivianvig6.webp",
+      "capacity": 7,
+      "group": "6",
+      "disciplines": [
+        "obf",
+        "tha",
+        "PRE",
+        "PRO"
+      ],
+      "title": "Baron",
+      "text": "Anarch Baron of Johannesburg."
+    },
+    {
+      "name": "Warmaksan",
+      "clan": "Banu Haqim",
+      "count": 2,
+      "img": "images/crypt/warmaksang6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "cel",
+        "obf",
+        "THA"
+      ],
+      "title": "Prince",
+      "text": "Camarilla Prince of Algiers."
+    },
+    {
+      "name": "Wauneka",
+      "clan": "Nosferatu",
+      "count": 2,
+      "img": "images/crypt/waunekag6.webp",
+      "capacity": 5,
+      "group": "6",
+      "disciplines": [
+        "ani",
+        "aus",
+        "obf",
+        "POT"
+      ],
+      "title": null,
+      "text": "Camarilla."
+    }
+  ],
+  "library": [
+    {
+      "name": ".44 Magnum",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/44magnum.webp",
+      "type": "Equipment",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Weapon: gun.\nStrike: 2R damage, with 1 optional maneuver each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "47th Street Royals",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/47thstreetroyals.webp",
+      "type": "Ally",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Brujah"
+      ],
+      "text": "Unique mortal with 2 life. 1 strength, 0 bleed.\nYou can burn 47th Street Royals to reduce a bleed against you by 3.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Aaron's Feeding Razor",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/aaronsfeedingrazor.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nThe bearer gets +1 hunt.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Abactor",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/abactor.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "+1 stealth action.\nHunt at +4 hunt. After successful resolution, a referendum is called to call a blood hunt on this vampire (independent of the action, just as if they had committed diablerie).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Academic Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/academichuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Tremere"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Aid From Bats",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/aidfrombats.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "[ani] Strike: 1R damage, with 1 optional maneuver.\n[ANI] As above, with 1 optional press.",
+      "draft": true,
+      "draft_text": "DRAFT: Do not replace until after combat. Maneuver."
+    },
+    {
+      "name": "Alamut",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/alamut.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [
+        "Banu Haqim"
+      ],
+      "text": "Unique location.\nAfter an Assamite you control successfully bleeds a Methuselah, put the pool lost by that Methuselah on this card. During the polling step of a political action, you can burn X counters from this card to give a vampire you control +X votes.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Amaranth",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/amaranth.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable by a vampire who can commit diablerie. Only usable when the opposing vampire should go to torpor. Diablerize the opposing vampire instead. Not usable by a vampire being burned or going to torpor.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Anarch Free Press, The",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/anarchfreepressthe.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique. Requires a ready Anarch.\nPut this card in play. You can lock this card to give an Anarch you control +1 intercept. You can lock this card after an Anarch successfully hunts to add 1 blood to that Anarch.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Anarch Manifesto, An",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/anarchmanifestoan.webp",
+      "type": "Equipment",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Equipment.\nThe anarch with this equipment gets +1 stealth on actions that require an anarch. Titled non-Anarch vampires get +1 strength in combat with this minion. A minion may have only one Anarch Manifesto.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Anarch Railroad",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/anarchrailroad.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\nYou can lock this card to give an Anarch +1 stealth.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Anarch Revolt",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/anarchrevolt.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Put this card in play. A Methuselah not controlling a ready Anarch burns 1 pool during their unlock phase. Vampires can call a referendum to burn this card as a +1 stealth political action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Anarch Troublemaker",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/anarchtroublemaker.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nPut this card in play. During your unlock phase, you can give your prey control of the Anarch Troublemaker and either lock up to two vampires they control or burn an equipment on one of their minions.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Anarchist Uprising",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/anarchistuprising.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Successful referendum means each Methuselah burns 1 pool for each minion they control.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Ancient Influence",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/ancientinfluence.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only one Ancient Influence can be played or called in a game.\nSuccessful referendum means each Methuselah can choose a ready vampire they control. Each Methuselah gains pool equal to their chosen vampire's capacity, then burns 5 pool.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Ancilla Empowerment",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/ancillaempowerment.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Successful referendum means each Methuselah burns 1 pool for each minion they control.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Anima Gathering",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/animagathering.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[aus] Put this card on this acting vampire and choose another minion you control. Burn this card if this minion unlocks. During your unlock phase, you may choose not to unlock this minion as normal. The chosen minion gets +2 intercept.\n[AUS] As above, and the chosen minion also gets +1 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Anonymous Freight",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/anonymousfreight.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "+3 stealth equip action. Requires a vampire.\nEquip this vampire with a non-location equipment card from your hand (requirements and cost apply as normal).",
+      "draft": true,
+      "draft_text": "DRAFT: As above; but ignore the requirements of the equipment."
+    },
+    {
+      "name": "Apportation",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/apportation.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "[tha] Press, only usable to continue combat.\n[THA] Maneuver.",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] Strike: dodge."
+    },
+    {
+      "name": "Aranthebes, the Immortal",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/aranthebestheimmortal.webp",
+      "type": "Action",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "+1 stealth action. Unique.\nPut this card in play. You can lock Aranthebes to give a minion controlled by your predator -1 stealth. While Aranthebes is unlocked, vampires with capacity 4 or less get -1 bleed against you. Vampires with capacity 5 or more can shuffle Aranthebes into your library as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Arcane Library",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/arcanelibrary.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Tremere"
+      ],
+      "text": "Unique location.\nYou can lock this card during your influence phase to add 1 blood to a Tremere in your uncontrolled region.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Archon Investigation",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/archoninvestigation.webp",
+      "type": "Master",
+      "cost": "3 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Out-of-turn. Only usable if a minion is bleeding you and the bleed amount is 4 or more, after blocks are declined.\nBurn the acting minion. (The action is not successful.)",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Armor of Vitality",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/armorofvitality.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "[for] Prevent 3 damage.\n[FOR] As above, and if any of the damage was from the opposing minion's melee weapon, that weapon is destroyed.",
+      "draft": true,
+      "draft_text": "DRAFT: [pro] Prevent 3 non-aggravated damage."
+    },
+    {
+      "name": "Arms Dealer",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/armsdealer.webp",
+      "type": "Ally",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Brujah"
+      ],
+      "text": "Mortal with 1 life. 1 strength, 0 bleed.\nArms Dealer may take a +1 stealth action to allow you to search your library for a weapon and move it to your hand. Shuffle and discard afterward.",
+      "draft": true,
+      "draft_text": "DRAFT: [brujah] As above, but the Arms Dealer can also search your ash heap."
+    },
+    {
+      "name": "Arson",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/arson.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Do not replace until after the action.\nⒹ Burn a location.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Art Museum",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/artmuseum.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Toreador"
+      ],
+      "text": "Unique location.\nYou can lock this location during your influence phase to add 1 blood to a Toreador in your uncontrolled region.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Assault Rifle",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/assaultrifle.webp",
+      "type": "Equipment",
+      "cost": "5 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Weapon: gun.\nStrike: 4R damage, with 1 optional maneuver each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Asylum Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/asylumhuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Malkavian"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Aura Reading",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/aurareading.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "Only usable before range is chosen.\n[aus] The opposing minion's controller plays with an open hand for the remainder of combat.\n[AUS] You get +2 hand size for the remainder of this combat. A vampire can play only one Aura Reading at superior each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Awe",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/awe.webp",
+      "type": "Action Modifier",
+      "cost": "X blood",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "Only usable during the polling step of a political action.\n[pre] This vampire gets +X+1 votes.\n[PRE] This vampire gets +2X+1 votes.",
+      "draft": true,
+      "draft_text": "DRAFT: [pot] This vampire gets +X votes."
+    },
+    {
+      "name": "Bait and Switch",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/baitandswitch.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Requires a baron. Only usable if a minion is bleeding you, after blocks are declined.\nLock this reacting vampire. Change the target of the bleed to another Methuselah other than the acting minion's controller (that Methuselah can attempt to block).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Banishment",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/banishment.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Choose a ready younger vampire. Successful referendum means the chosen vampire is moved to the uncontrolled region (breaking any temporary control effects); any cards and counters on the chosen vampire stay with them but are out of play as long as the chosen vampire remains uncontrolled.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Blithe Acceptance",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/blitheacceptance.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] Put this card on the acting vampire. This vampire gets +1 stealth. Burn this card if this vampire enters combat. A vampire may have only 1 Blithe Acceptance.\n[OBF] As above, but this vampire can burn 1 blood when he enters combat instead of burning this card.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Blood Doll",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/blooddoll.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Put this card on a vampire you control. During their master phase, this vampire's controller can move 1 blood from this vampire to their pool or from their pool to this vampire.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Blood Fury",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/bloodfury.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "Only usable at close range.\n[tha] Strike: hand strike at +1 damage. Damage from this strike cannot be prevented by cards requiring Fortitude [for]. The opposing vampire's strikes with weapons inflict no damage this round.\n[THA] As above, but at +2 damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Blood Tears of Kephran",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/bloodtearsofkephran.webp",
+      "type": "Equipment",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique equipment.\nThe vampire with this equipment may burn this card to prevent 2 points of damage in combat or to gain 2 blood (ignore excess blood).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Body Flare",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/bodyflare.webp",
+      "type": "Combat",
+      "cost": "2 blood",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "[pro] Strike: 2 aggravated damage.\n[PRO] Strike: 2R aggravated damage.",
+      "draft": true,
+      "draft_text": "DRAFT: Only usable in combat with an ally or a younger vampire. Strike: 2 aggravated damage."
+    },
+    {
+      "name": "Bonding",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/bonding.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "Only usable during a bleed action.\n[dom] +1 bleed (limited).\n[DOM] +1 stealth and +1 bleed (limited).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Bowl of Convergence",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/bowlofconvergence.webp",
+      "type": "Equipment",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nThe bearer with Auspex [aus] gets +1 intercept. The bearer with superior Auspex [AUS] can burn 1 blood during an action to get an additional +1 intercept.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Bribes",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/bribes.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable during a referendum before votes and ballots are cast.\nGain 1 pool. Any other Methuselah who casts one or more votes or ballots in favor of and does not cast votes or ballots against the referendum gains 1 pool when the results of the referendum are tallied.",
+      "draft": true,
+      "draft_text": "DRAFT: [pre] As above and this vampire gets +1 vote."
+    },
+    {
+      "name": "Brujah Debate",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/brujahdebate.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [
+        "Brujah"
+      ],
+      "text": "Put this card in play. During each Methuselah's master phase, that Methuselah locks one of the oldest Brujah they control (if any). Brujah get +1 strength and 1 optional maneuver each combat. Non-Ventrue minions can burn this card as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Bum's Rush",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/bumsrush.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Do not replace until after this action.\nⒹ Enter combat with a minion. This acting minion gets 1 optional maneuver during that combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Burning Wrath",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/burningwrath.webp",
+      "type": "Combat",
+      "cost": "3 blood",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "[pot] Strike: hand strike at +1 damage, aggravated.\n[POT] Strike: hand strike at +2 damage, aggravated.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] As [pot] above."
+    },
+    {
+      "name": "Burst of Sunlight",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/burstofsunlight.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "[tha] Strike: 1R aggravated damage. This striking vampire also takes 1 aggravated damage.\n[THA] Strike: 2R aggravated damage. This striking vampire also takes 2 aggravated damage.",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] Strike: combat ends."
+    },
+    {
+      "name": "Carlton Van Wyk",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/carltonvanwyk.webp",
+      "type": "Ally",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique mortal with 2 life. 0 strength, 0 bleed.\nCarlton can strike: 1R damage. Once each combat, he can strike: dodge. Carlton gets +1 intercept against vampires. During your discard phase, you can burn Carlton to burn a vampire who has committed diablerie since your last turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Carrion Crows",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/carrioncrows.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "Only usable before range is determined. A vampire can play only one Carrion Crows each combat.\n[ani] This combat, the opposing minion takes 1R environmental damage each round during normal strike resolution.\n[ANI] As above, but for 2R environmental damage.",
+      "draft": true,
+      "draft_text": "DRAFT: [pre] As [ani] above; but only for this round."
+    },
+    {
+      "name": "Catatonic Fear",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/catatonicfear.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "[pre] Strike: combat ends.\n[PRE] As above, and after combat ends, if the range is close, this vampire inflicts 1 unpreventable damage on the opposing minion.",
+      "draft": true,
+      "draft_text": "DRAFT: [obf] Strike: combat ends."
+    },
+    {
+      "name": "Cats' Guidance",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/catsguidance.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "[ani] Only usable by a locked vampire who has blocked, after block resolution. Unlock this vampire.\n[ANI] +1 intercept.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Change of Target",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/changeoftarget.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable if this minion is blocked, before block resolution.\nUnlock this minion. The action ends (unsuccessfully). This minion cannot perform the same action again this turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Chantry",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/chantry.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Tremere"
+      ],
+      "text": "Unique location.\nYou can lock this card and burn 1 pool or 1 blood from a ready Tremere you control during your master phase to move a Tremere from torpor to their controller's ready region.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Charming Lobby",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/charminglobby.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "+1 stealth political action.\n[pre] This vampire calls a referendum listed on a political action card in your hand (play that card) or allowed by an effect in play. If the referendum passes, then the next referendum called by any vampire thereafter passes automatically.\n[PRE] As above, and this vampire gains 2 votes in that first referendum.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Childling Muse",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/childlingmuse.webp",
+      "type": "Retainer",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [
+        "Malkavian"
+      ],
+      "text": "Changeling with 1 life.\nThis Malkavian gets +1 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Claws of the Dead",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/clawsofthedead.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "[pro] Damage from this vampire's hand strikes is aggravated this round.\n[PRO] Maneuver.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] Maneuver."
+    },
+    {
+      "name": "Cloak the Gathering",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/cloakthegathering.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] +1 stealth.\n[OBF] Only usable by a ready vampire other than the acting minion. The acting minion gets +1 stealth.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Club Illusion",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/clubillusion.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\nAn Anarch can burn 1 blood once as they announce a bleed action to get +1 bleed during that action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Command of the Beast",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/commandofthebeast.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "Only usable during a bleed action.\n[dom] +1 bleed (limited).\n[DOM] +1 bleed that does not count against the limit.",
+      "draft": true,
+      "draft_text": "DRAFT: [pre] +1 bleed (limited)."
+    },
+    {
+      "name": "Concealed Weapon",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/concealedweapon.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable before range is determined.\nThis minion equips with a non-unique weapon card from your hand (requirements and cost apply as normal). The weapon cannot cost 3 or more pool or inflict (with a regular strike) aggravated damage or 4 or more damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Conditioning",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/conditioning.webp",
+      "type": "Action Modifier",
+      "cost": "1 blood",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "Only usable during a bleed action.\n[dom] +2 bleed (limited).\n[DOM] +3 bleed (limited).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Consanguineous Boon",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/consanguineousboon.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Boon.\nChoose a clan. Successful referendum means each Methuselah gains 1 pool for each vampire of the chosen clan they control.",
+      "draft": true,
+      "draft_text": "DRAFT: As above, but choose two clans."
+    },
+    {
+      "name": "Cooler",
+      "rarity": "Common",
+      "count": 2,
+      "img": "images/library-common/cooler.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Equipment.\nPut 4 blood counters on this card. During your unlock phase, if the vampire with this equipment is ready, you may move 1 blood from this card to this vampire. Burn this card when it has no counters.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Creeping Sabotage",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/creepingsabotage.webp",
+      "type": "Action",
+      "cost": "X blood",
+      "disciplines": [],
+      "clans": [
+        "Nosferatu"
+      ],
+      "text": "+1 stealth action.\nX is the number of copies of this card you control. Put this card in play. During your unlock phase, your prey burns 1 pool. Minions can burn this card as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Crimson Sentinel, The",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/crimsonsentinelthe.webp",
+      "type": "Equipment",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique melee weapon.\nStrength+1 damage as a strike. If this weapon successfully inflicts damage on an opponent in combat, add a soul counter to it at the end of that round. This weapon does one additional point of damage each strike for each soul counter on this card. Remove all soul counters from this card if another minion gains control of it.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Crocodile's Tongue",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/crocodilestongue.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "Only usable if an ally or younger vampire attempts to block.\n[aus] That attempt fails and the blocking minion's controller cannot attempt to block this action again. The blocking minion can burn 1 blood or life to cancel this card as it is played.\n[AUS] As above, but canceling this card requires 1 additional blood or life.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Cryptic Mission",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/crypticmission.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[tha] Ⓓ Burn 1 blood on a vampire, or do 1 unpreventable damage to any ally or retainer.\n[THA] As above, and the acting vampire gains 1 blood from the blood bank.",
+      "draft": true,
+      "draft_text": "DRAFT: [pot] D Inflict 1 damage on a minion and enter combat with them."
+    },
+    {
+      "name": "Cryptic Rider",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/crypticrider.webp",
+      "type": "Action Modifier",
+      "cost": "1 blood",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable on a successful referendum.\nThe next referendum a vampire you control calls this turn passes automatically.",
+      "draft": true,
+      "draft_text": "DRAFT: The next referendum vampire you control calls before the end ofyour next turn passes automatically."
+    },
+    {
+      "name": "Daring The Dawn",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/daringthedawn.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "[for] Vampires cannot block this action. This vampire takes 2 unpreventable environmental aggravated damage after action resolution.\n[FOR] As above, but this vampire takes 1 unpreventable environmental aggravated damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Day Operation",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/dayoperation.webp",
+      "type": "Action Modifier",
+      "cost": "1 blood",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "[for] Only usable as the action is announced. Vampires cannot block this action. The acting vampire goes to torpor after resolving the action.\n[FOR] As above, but usable if a minion is attempting to block.",
+      "draft": true,
+      "draft_text": "DRAFT: [tha] +1 stealth."
+    },
+    {
+      "name": "Decapitate",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/decapitate.webp",
+      "type": "Combat",
+      "cost": "2 blood",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "[pot] Strike: hand strike or use a melee weapon strike. This strike is at +2 damage.\n[POT] Only usable when the opposing vampire is going into torpor; not usable by a vampire being burned or going into torpor. Burn the opposing vampire instead of sending that vampire to torpor.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] As [pot] above."
+    },
+    {
+      "name": "Deep Ecology",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/deepecology.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "ani",
+        "for",
+        "pro"
+      ],
+      "clans": [],
+      "text": "Requires an Anarch.\n[ani] Only usable during an action directed at you (or a card you control). +2 intercept.\n[for] Reduce a bleed against you by 2.\n[pro] Only usable by a locked vampire. This vampire burns 1 blood to unlock.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Deep Song",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/deepsong.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "[ani] Ⓓ Bleed with +1 bleed.\n[ANI] Frenzy. Ⓓ Enter combat with and lock a vampire. The target vampire is considered the acting minion during that combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Deer Rifle",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/deerrifle.webp",
+      "type": "Equipment",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Weapon: gun.\n1R damage each strike, with two optional maneuvers each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Delaying Tactics",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/delayingtactics.webp",
+      "type": "Reaction",
+      "cost": "1 blood",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable during the polling step of a political action.\nCancel the referendum. Unlock the acting vampire. If a political action card [POLITICAL ACTION] was played to call this referendum, return it to its owner's hand (discard down afterward). Minions controlled by the acting Methuselah cannot perform the same political action again this turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Disarm",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/disarm.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "Only usable at close range at the end of a round during which this vampire successfully inflicted more damage than the opposing vampire. Not usable by a vampire being burned or going to torpor.\n[pot] Put this card on the opposing vampire and send them to torpor. The attached vampire gets -1 strength. They can burn 3 blood to burn this card. A vampire can have only one Disarm.\n[POT] As above, but the attached vampire gets -2 strength.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Distraction",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/distraction.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[cel] Draw 5 cards. Discard down to your hand size afterward.\n[CEL] Ⓓ Lock a minion controlled by your predator or prey.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Diversion",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/diversion.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "cel",
+        "for",
+        "tha"
+      ],
+      "clans": [],
+      "text": "Requires an Anarch.\n[cel] Additional strike (limited).\n[for] Prevent 2 damage.\n[tha] Strike, ranged: steal 1 blood or life (becoming blood), with 1 optional maneuver.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Dodge",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/dodge.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Do not replace until after combat.\nStrike: dodge.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Dog Pack",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/dogpack.webp",
+      "type": "Retainer",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Gangrel"
+      ],
+      "text": "Animal with 1 life.\nMinions in combat with the employer cannot strike: combat ends.",
+      "draft": true,
+      "draft_text": "DRAFT: [gangrel] As above, and they cannot strike: dodge."
+    },
+    {
+      "name": "Dominate Kine",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/dominatekine.webp",
+      "type": "Action",
+      "cost": "2 blood",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "[dom] +1 stealth action. Ⓓ Bleed with +1 bleed.\n[DOM] Ⓓ Steal a location.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Dreams of the Sphinx",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/dreamsofthesphinx.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nPut this card in play. Add 1 counter to this card each time you lock it. You can lock this card to get +2 hand size until the end of the turn. You can lock this card during your unlock phase to gain 1 pool if you have the Edge. You can lock this card to add 1 blood to a vampire in your uncontrolled region. Burn this card if it has 3 counters.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Dual Form",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/dualform.webp",
+      "type": "Action",
+      "cost": "2 blood",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[pro] Unlock this vampire. During this minion phase, you may unlock this vampire again.\n[PRO] This acting vampire's capacity is reduced by 1 until the end of the game. Put this card in play, locked. It becomes a non-unique vampire with the same clan, sect, capacity and Disciplines as the acting vampire. You may move up to 2 blood from the acting vampire to this vampire. If either minion leaves the ready region, the other is burned.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Dummy Corporation",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/dummycorporation.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\nYou can burn this card if a minion is bleeding you to reduce the bleed amount by 2.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Dust Up",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/dustup.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "ani",
+        "cel",
+        "pot"
+      ],
+      "clans": [],
+      "text": "Requires an Anarch.\n[ani] Strike: hand strike at +1 damage. This strike cannot be dodged.\n[cel] Strike: dodge, with 1 additional strike (limited).\n[pot] Strike: hand strike at +2 damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Earth Meld",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/earthmeld.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "[pro] Strike: combat ends.\n[PRO] As above, and unlock this vampire before combat ends.",
+      "draft": true,
+      "draft_text": "DRAFT: [tha] Strike: dodge, with 1 optional press, only usable to continue the combat."
+    },
+    {
+      "name": "Elder Impersonation",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/elderimpersonation.webp",
+      "type": "Action Modifier",
+      "cost": "1 blood",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] +1 stealth.\n[OBF] Only usable if a minion attempts to block. That attempt fails and the blocking minion cannot attempt to block this action again.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Elder Library",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/elderlibrary.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\n+1 hand size.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Embrace, The",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/embracethe.webp",
+      "type": "Action",
+      "cost": "2 blood",
+      "disciplines": [],
+      "clans": [],
+      "text": "+1 stealth action. Requires a non-sterile vampire.\nPut this card in play. It becomes a 1-capacity non-unique vampire of the same clan and sect as the acting vampire, and must hunt this turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Enhanced Senses",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/enhancedsenses.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "[aus] +1 intercept.\n[AUS] +2 intercept.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] +1 intercept."
+    },
+    {
+      "name": "Entrancement",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/entrancement.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "[pre] Ⓓ Bleed with +1 bleed.\n[PRE] +1 stealth action. Ⓓ Steal an ally controlled by another Methuselah.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Faceless Night",
+      "rarity": "Common",
+      "count": 2,
+      "img": "images/library-common/facelessnight.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] +1 stealth.\n[OBF] As above, and minions who attempt to block this action and fail become locked before action resolution.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Fake Out",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/fakeout.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Do not replace until after combat.\nManeuver.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Fame",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/fame.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nPut this card on a ready vampire. After this vampire goes to torpor, their controller burns 3 pool. During each Methuselah's unlock phase, if this vampire is in torpor, that Methuselah burns 1 pool.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Far Mastery",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/farmastery.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[dom] Ⓓ Steal a retainer controlled by another vampire.\n[DOM] Ⓓ Steal an ally controlled by another Methuselah.",
+      "draft": true,
+      "draft_text": "DRAFT: Search your library and/or ash heap for an ally or retainer card, reveal it and move it to your hand."
+    },
+    {
+      "name": "Ferraille",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/ferraille.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Ministry"
+      ],
+      "text": "Unique.\nPut this card in play. Once each turn, you can burn 1 pool to get +3 votes during the polling step of any referendum.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Flak Jacket",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/flakjacket.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Equipment.\nThe minion with this equipment may prevent 1 damage each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Flamethrower",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/flamethrower.webp",
+      "type": "Equipment",
+      "cost": "4 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Weapon.\nStrike: 2R aggravated damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Fleetness",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/fleetness.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[cel] Ⓓ Bleed.\n[CEL] Ⓓ Enter combat with a locked minion. This acting vampire gets 1 optional maneuver during that combat.",
+      "draft": true,
+      "draft_text": "DRAFT: [for] As [cel] above."
+    },
+    {
+      "name": "Flesh of Marble",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/fleshofmarble.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "Only usable before range is determined.\n[pro] This combat, if a damage is successfully inflicted on this vampire in a given round, any additional damage inflicted on this vampire in the same round is automatically prevented. Aggravated damage cannot be prevented this way.\n[PRO] As above, but aggravated damage is prevented this way as well.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Flurry of Action",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/flurryofaction.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "[cel] Ⓓ Bleed. If the bleed is successful, draw two cards (discard afterward).\n[CEL] Ⓓ Bleed. If the bleed is successful, this vampire unlocks.",
+      "draft": true,
+      "draft_text": "DRAFT: +1 stealth action. Discard Up to three cards."
+    },
+    {
+      "name": "Force of Personality",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/forceofpersonality.webp",
+      "type": "Action Modifier, Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "[pre] [COMBAT] Strike: combat ends.\n[PRE] [ACTION MODIFIER] Only usable as the action is announced. Vampires must burn 1 blood to attempt to block this action. Non-zombie allies cannot block this action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Force of Will",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/forceofwill.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "Only usable by a locked vampire.\n[for] Ⓓ Bleed with +1 bleed. After resolution, this vampire takes 2 unpreventable aggravated damage even if the action is blocked.\n[FOR] As above, but with +2 bleed, and the acting vampire takes only 1 unpreventable aggravated damage.",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] +1 stealth action: This vampire unlocks."
+    },
+    {
+      "name": "Forced Vigilance",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/forcedvigilance.webp",
+      "type": "Reaction",
+      "cost": "1 blood",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "[for] Only usable by a locked vampire who has blocked, after block resolution. Unlock this vampire.\n[FOR] Only usable by a locked vampire during an action directed at you (or a card you control). Unlock this vampire.",
+      "draft": true,
+      "draft_text": "DRAFT: Reduce a bleed against you by 2."
+    },
+    {
+      "name": "Forgotten Labyrinth",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/forgottenlabyrinth.webp",
+      "type": "Action Modifier",
+      "cost": "1 blood",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "Not usable during a bleed action.\n[obf] +2 stealth.\n[OBF] +3 stealth.",
+      "draft": true,
+      "draft_text": "DRAFT: +1 stealth."
+    },
+    {
+      "name": "Form of Mist",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/formofmist.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "[pro] Strike: dodge.\n[PRO] Strike: combat ends. After combat ends, if this vampire was blocked, they can burn 1 blood to continue the action with +1 stealth as if unblocked, even if stealth is not yet needed. A vampire can play only one Form of Mist at superior each action.",
+      "draft": true,
+      "draft_text": "DRAFT: [cel] Strike: dodge."
+    },
+    {
+      "name": "Form of the Bat",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/formofthebat.webp",
+      "type": "Action Modifier, Reaction",
+      "cost": "",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "[pro] [ACTION MODIFIER] Only usable if a minion attempts to block. The blocking minion gets -1 intercept. If this action is blocked, this vampire gets 1 optional maneuver and cannot use equipment during the resulting combat.\n[PRO] [REACTION] +1 intercept. If this vampire blocks, they get 1 optional maneuver and cannot use equipment during the resulting combat.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] This vampire gains 1 maneuver during the combat this action."
+    },
+    {
+      "name": "Fourth Tradition: The Accounting",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/fourthtraditiontheaccounting.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [],
+      "clans": [],
+      "text": "+1 stealth action. Requires a prince or justicar.\nAdd 3 blood to a younger vampire in your uncontrolled region.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Fragment of the Book of Nod",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/fragmentofthebookofnod.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique Nod fragment.\nPut this card in play. You can lock this card to draw 2 cards (discard down afterward). Vampires can steal this card as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Freak Drive",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/freakdrive.webp",
+      "type": "Action Modifier",
+      "cost": "1 blood",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "Only usable after action resolution.\n[for] Only usable if the action was successful. Unlock this vampire.\n[FOR] Only usable if the action was blocked. Unlock this vampire.",
+      "draft": true,
+      "draft_text": "DRAFT: [pro] As [for] above."
+    },
+    {
+      "name": "Gangrel Revel",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/gangrelrevel.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [
+        "Gangrel"
+      ],
+      "text": "Unique.\nPut this card in play. Gangrel you control get +1 strength. Non-Ravnos minions can burn this card as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Gather",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/gather.webp",
+      "type": "Action",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [
+        "Gangrel"
+      ],
+      "text": "+1 stealth action. Unique.\nPut this card in play, locked, and choose a younger Gangrel in your uncontrolled region. During the influence phase, you may lock this card to move that Gangrel from your uncontrolled region to your ready region, with any counters he or she has, unless that Gangrel would contest a vampire in play. Any vampire can burn this card as a Ⓓ action that costs 1 pool.",
+      "draft": true,
+      "draft_text": "DRAFT: [gangrel] As above, but you can choose Gangrel the same age or older."
+    },
+    {
+      "name": "Giant's Blood",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/giantsblood.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only one Giant's Blood can be played in a game.\nChoose a vampire. The chosen vampire gains enough blood to reach full capacity.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Govern the Unaligned",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/governtheunaligned.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "[dom] Ⓓ Bleed with +2 bleed.\n[DOM] +1 stealth action. Add 3 blood to a younger vampire in your uncontrolled region.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Grooming the Protégé",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/groomingtheprotege.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Move up to 3 blood from a ready vampire you control to a younger vampire of the same clan in your uncontrolled region.",
+      "draft": true,
+      "draft_text": "DRAFT: As above, but the vampire can be of another clan."
+    },
+    {
+      "name": "Guard Dogs",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/guarddogs.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "Only usable by a locked vampire during a bleed action directed at you.\n[ani] Unlock this vampire.\n[ANI] As above, with 1 optional maneuver during the resulting combat if this vampire blocks.",
+      "draft": true,
+      "draft_text": "DRAFT: This vampire wakes."
+    },
+    {
+      "name": "Guardian Angel",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/guardianangel.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Put this card on a ready vampire you control. This vampire gets +1 intercept during bleed actions directed at you. This vampire can prevent 1 damage each combat. If this vampire is in torpor, burn this card.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Harass",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/harass.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Ⓓ Enter combat with a vampire who has 3 or fewer blood or with a locked minion. This acting minion gets 1 optional press, only usable to continue combat, during that combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Haven Uncovered",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/havenuncovered.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Put this card on a ready vampire. Minions can enter combat with this vampire as a +1 stealth Ⓓ action. This vampire can burn this card as a +1 stealth Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Hawg",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/hawg.webp",
+      "type": "Equipment",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Vehicle.\nThe minion with this vehicle gets an optional press each combat. A minion may have only 1 vehicle.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Heart of Nizchetus",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/heartofnizchetus.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nIf the bearer is ready during your unlock phase, you can draw up to 3 cards without discarding and then move the same number of cards from your hand to the bottom of your library.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Heart of the City",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/heartofthecity.webp",
+      "type": "Action",
+      "cost": "2 blood",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[pre] Put this card on this vampire. This vampire gets +1 bleed. A vampire can have only one Heart of the City.\n[PRE] As above, but this vampire gets +2 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Helicopter",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/helicopter.webp",
+      "type": "Equipment",
+      "cost": "3 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Vehicle.\nWhen a minion equips with the Helicopter, lock it. After resolving a successful action, this minion may lock the Helicopter to unlock. A minion may have only one vehicle.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Heroic Might",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/heroicmight.webp",
+      "type": "Action",
+      "cost": "3 blood",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "+3 stealth action.\n[pot] Put this card on this vampire. This vampire gets +1 strength. This vampire can strike: burn equipment. Burn this card if this vampire is in torpor. A vampire can have only one Heroic Might.\n[POT] As above, with an additional +1 strength, and this vampire can strike: 2R damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Hidden Strength",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/hiddenstrength.webp",
+      "type": "Combat",
+      "cost": "X blood",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "[for] Prevent X+1 damage.\n[FOR] As above, with 1 optional press.",
+      "draft": true,
+      "draft_text": "DRAFT: [THA] X is 0. As [FOR] above."
+    },
+    {
+      "name": "Hide the Mind",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/hidethemind.webp",
+      "type": "Action Modifier, Combat",
+      "cost": "",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] [COMBAT] Cancel a combat card requiring Auspex [aus] as it is played, and its cost is not paid.\n[OBF] [ACTION MODIFIER] Cancel a reaction card requiring Auspex as it is played, and its cost is not paid.",
+      "draft": true,
+      "draft_text": "DRAFT: [cel] [combat] Cancel a combat card requiring Presence [pre] as it is played."
+    },
+    {
+      "name": "Hunger of Marduk",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/hungerofmarduk.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [
+        "Banu Haqim"
+      ],
+      "text": "Only usable before range is determined.\n[tha] This round, this vampire can strike, ranged: steal 1 blood or life (becoming blood).\n[THA] As above, but for 2 blood or life (becoming blood).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Immortal Grapple",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/immortalgrapple.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "Grapple. Only usable at close range before strikes are chosen. A vampire can play only one Immortal Grapple each round.\n[pot] Strikes that are not hand strikes cannot be used this round (by either combatant).\n[POT] As above, with 1 optional press. If another round of combat occurs, that round is at close range (skip the determine range step for that round).",
+      "draft": true,
+      "draft_text": "DRAFT: [obf] Press."
+    },
+    {
+      "name": "Infernal Pursuit",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/infernalpursuit.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "[cel] Press.\n[CEL] For the remainder of the combat, each time you replace a card (including when you draw to replace this card), draw an additional card and discard down to your hand size.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Information Highway",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/informationhighway.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\n+2 transfers.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "IR Goggles",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/irgoggles.webp",
+      "type": "Equipment",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Electronic equipment.\nThis minion gets an optional maneuver each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Iron Glare",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/ironglare.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "pot",
+        "pre"
+      ],
+      "clans": [],
+      "text": "[pot][pre] Only usable during the polling step of a political action. This vampire gets +2 votes.\n[POT][PRE] Only usable during a bleed action. +2 bleed (limited).",
+      "draft": true,
+      "draft_text": "DRAFT: [cel][pre] As [pot][pre] above."
+    },
+    {
+      "name": "Island of Yiaros",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/islandofyiaros.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Ventrue"
+      ],
+      "text": "Unique location.\nLock to give a striking vampire you control +X strength for that strike (usable after both combatants have chosen their strike), where X is the number of votes the vampire has (e.g., a prince gets +2 strength).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Ivory Bow",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/ivorybow.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique weapon.\nStrike: 1R aggravated damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "J. S. Simmons, Esq.",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/jssimmonsesq.webp",
+      "type": "Retainer",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique mortal with 1 life.\nThe employer gets +1 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Jake Washington",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/jakewashington.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nPut this card in play; it becomes a unique mortal ally with 1 life, 0 strength and 0 bleed. During your unlock phase, you can burn Jake to add up to 4 blood to a ready vampire with no blood.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Judgment: Camarilla Segregation",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/judgmentcamarillasegregation.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [],
+      "clans": [],
+      "text": "+1 stealth action. Requires a prince or justicar.\nPut this card in play. Each Methuselah controlling a non-Camarilla vampire burns 1 pool during their unlock phase. Methuselahs can burn a non-Camarilla vampire they control during their master phase to burn this card.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Khobar Towers, Al-Khubar",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/khobartowersalkhubar.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Ministry"
+      ],
+      "text": "Unique location.\nLock during your unlock phase to remove a ready minion you control from the game and gain X pool, where X is their capacity or cost.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Kine Resources Contested",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/kineresourcescontested.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Allocate 4 points among two or more Methuselahs. Successful referendum means each Methuselah burns 1 pool for each point allocated.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Kiss of Ra, The",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/kissofrathe.webp",
+      "type": "Action Modifier",
+      "cost": "3 blood",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "Only usable when a vampire who does not have Fortitude [for] attempts to block this acting minion.\n[for] The block attempt is canceled, the blocking vampire burns 2 blood, and the current action is ended (without combat).\n[FOR] As above, and send the blocking vampire to torpor.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "KRCG News Radio",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/krcgnewsradio.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\nYou can lock this card to give a minion you control +1 intercept. You can lock this card and burn 1 pool to give a minion controlled by another Methuselah +1 intercept.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Leather Jacket",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/leatherjacket.webp",
+      "type": "Equipment",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Equipment.\nIf the action to equip with the Leather Jacket is successful, unlock the acting minion at the end of the turn. Bearer may burn Leather Jacket to prevent all the damage from the opposing minion's strike. A minion may have only one Leather Jacket.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Leverage",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/leverage.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable during a bleed action.\nBurn the Edge to get +1 bleed that does not count against the limit. You cannot gain the Edge this action. If you would get the Edge, it is burned instead.",
+      "draft": true,
+      "draft_text": "DRAFT: [dom] +1 stealth."
+    },
+    {
+      "name": "Life in the City",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/lifeinthecity.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Trifle.\nAdd 1 blood to a ready vampire.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Lightning Reflexes",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/lightningreflexes.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "[cel] Additional strike (limited).\n[CEL] Burn X blood to get X additional strikes (limited).",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] Strike: combat ends."
+    },
+    {
+      "name": "Line Brawl",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/linebrawl.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "cel",
+        "pot",
+        "pre"
+      ],
+      "clans": [],
+      "text": "Requires an Anarch.\n[cel] Ⓓ Steal 1 pool from another Methuselah.\n[pot] Ⓓ Enter combat with a minion.\n[pre] Ⓓ Bleed with +1 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Lost in Crowds",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/lostincrowds.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] +1 stealth. Lost in Crowds and cards named /Into Thin Air/ cannot both be played during the same action.\n[OBF] As above, but for +2 stealth.",
+      "draft": true,
+      "draft_text": "DRAFT: [pro] +1 stealth."
+    },
+    {
+      "name": "Magic of the Smith",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/magicofthesmith.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[tha] Search your library for an equipment card and equip this vampire with it (requirements and cost apply as normal; shuffle afterward).\n[THA] As above, but this is a +3 stealth action.",
+      "draft": true,
+      "draft_text": "DRAFT: [tha] As [tha] above; but you can also search your ash heap."
+    },
+    {
+      "name": "Majesty",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/majesty.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "[pre] Strike: combat ends.\n[PRE] As above, and unlock this vampire before combat ends.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Major Boon",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/majorboon.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Master: out-of-turn. Boon. Only usable if another Methuselah is being bled by a minion you do not control and the bleed amount is 1 or more, after blocks are declined.\nPut this card in play. You burn pool for this bleed instead of the target Methuselah (and the bleed is still successful), or this card if you don't burn at least 1 pool.. If you are about to be successfully bled, you can burn this card to have that Methuselah burn pool instead of you (and the bleed is still successful).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Malkavian Prank",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/malkavianprank.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Malkavian"
+      ],
+      "text": "Master.\nEach other Methuselah holds 1 to 4 counters in his or her hand. Guess the number of counters in each Methuselah's hand. If you guess correctly, you gain that much pool from his or her pool. If you guess incorrectly, that Methuselah gains that much pool from the blood bank.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Market Square",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/marketsquare.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [
+        "Banu Haqim"
+      ],
+      "text": "Unique location.\nLock to give an Assamite you control +1 intercept.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Masochism",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/masochism.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[for] Put this card on the acting vampire. Whenever damage is successfully inflicted on this vampire, put 1 rush counter on this card for each point of damage. Remove rush counters in excess of the vampire's capacity. Whenever this vampire plays a card, you may remove X rush counters from this card to reduce that card's blood cost by X.\n[FOR] As above, but put an additional rush counter on this card at the end of any round of combat in which this vampire takes damage.",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] As [for] above."
+    },
+    {
+      "name": "Meat Cleaver",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/meatcleaver.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Melee weapon.\nStrength+1 damage each strike.",
+      "draft": true,
+      "draft_text": "DRAFT: [brujah] Strike: strength+1 damage; with optional maneuver each combat; only usable to get to close range."
+    },
+    {
+      "name": "Melange",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/melange.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "[aus] +1 intercept.\n[AUS] As above, and if this vampire blocks, put this card on the acting minion; you still control this card. During a bleed action against the controller of the attached minion, this reacting vampire can burn this card to get +1 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Mesmerize",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/mesmerize.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[dom] Ⓓ Steal equipment from an ally.\n[DOM] Ⓓ Steal equipment from a younger vampire.",
+      "draft": true,
+      "draft_text": "DRAFT: [pre] Lock a minion."
+    },
+    {
+      "name": "Metro Underground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/metrounderground.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Master: unique location.\nDuring your discard phase, you may lock this card and burn 1 pool to unlock a vampire you control.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Mind Numb",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/mindnumb.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "[pre] Ⓓ Stun an unlocked vampire.\n[PRE] As above, and this is a +1 stealth action.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] Enter combat with vampire."
+    },
+    {
+      "name": "Minion Tap",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/miniontap.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Move any amount of blood from a vampire you control to your pool.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Mirror Walk",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/mirrorwalk.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "Do not replace until your next discard phase.\n[tha] +1 stealth.\n[THA] As above, and if this action is blocked, lock the blocking minion and end the action before block resolution.",
+      "draft": true,
+      "draft_text": "DRAFT: [obf] As [tha] above."
+    },
+    {
+      "name": "Misdirection",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/misdirection.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Lock a minion.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Monocle of Clarity",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/monocleofclarity.webp",
+      "type": "Equipment",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique equipment.\nDuring your unlock phase, if bearer is ready, you can ask any Methuselah a yes-or-no question pertaining to the game. He or she must answer \"yes\" or \"no\" truthfully. If the question pertains to the future, the answer is not binding.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Mr. Winthrop",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/mrwinthrop.webp",
+      "type": "Retainer",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique mortal with 1 life.\nThe employer gets +1 intercept.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Murder of Crows",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/murderofcrows.webp",
+      "type": "Retainer",
+      "cost": "1 blood",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "Animal with 1 life.\n[ani] Murder of Crows inflicts 1R damage on the opposing minion each round of combat during normal strike resolution.\n[ANI] As above, but Murder of Crows has 2 life.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "My Enemy's Enemy",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/myenemysenemy.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "[aus] +1 intercept.\n[AUS] Only usable if a minion controlled by your predator is bleeding you, after blocks are declined. Not usable if there are only two Methuselahs left. Lock this reacting vampire. Change the target of the bleed to your predator's predator (that Methuselah can attempt to block).",
+      "draft": true,
+      "draft_text": "DRAFT: Requires a ready vampire. As [AUS] above but not usable if an older vampire is acting."
+    },
+    {
+      "name": "New Carthage",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/newcarthage.webp",
+      "type": "Master",
+      "cost": "3 pool",
+      "disciplines": [],
+      "clans": [
+        "Brujah"
+      ],
+      "text": "Unique location.\nTitled Brujah get +1 bleed and +1 vote. Ventrue get -1 vote.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Night Moves",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/nightmoves.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] Ⓓ Bleed your predator or prey at +3 stealth. If more than 1 pool is bled with this action, ignore the excess.\n[OBF] Ⓓ As above, but bleed at +6 stealth.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Nosferatu Bestial",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/nosferatubestial.webp",
+      "type": "Action",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [
+        "Nosferatu"
+      ],
+      "text": "+1 stealth action. Unique.\nPut this card in play; it becomes a 2-capacity unique Nosferatu of the same sect as the acting Nosferatu with basic Animalism [ani]. Nosferatu Bestial cannot perform non-hunt actions, cast votes or ballots, or have or use equipment. During your unlock phase, Nosferatu Bestial can employ a retainer requiring Animalism from your hand (requirements and cost apply as normal; this is not an action and cannot be blocked).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Obedience",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/obedience.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "Only usable if this vampire is about to enter combat with an acting younger vampire.\n[dom] Unlock the acting vampire and end the action. (Do not lock this vampire if they are blocking.) The acting vampire cannot perform the same action this turn.\n[DOM] As above, but do not unlock the acting vampire.",
+      "draft": true,
+      "draft_text": "DRAFT: As [dom] above; but do not replace until your unlock phase."
+    },
+    {
+      "name": "On the Qui Vive",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/onthequivive.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable by a locked minion. A minion can play only one On the Qui Vive between their unlock phases.\nThis minion wakes (they ignore the requirement to be unlocked for playing reaction cards and attempting to block until the end of the action). If this minion is an ally, they do not unlock as normal during their next unlock phase.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Open War",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/openwar.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "+1 stealth action. Requires a baron. Only one Open War can be played in a game.\nPut this card in play. Anarchs can enter combat with a minion as a Ⓓ action. Anarchs can burn a location as a Ⓓ action that costs 2 pool. Methuselahs can use a master phase action to move 1 counter from their pool to this card. If this card has 4 counters, burn it and gain 4 pool.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Papillon",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/papillon.webp",
+      "type": "Master",
+      "cost": "3 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location. Hunting ground. Requires a ready vampire with a city title.\nDuring your unlock phase, a ready titled vampire you control can gain 2 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": true,
+      "draft_text": "DRAFT: As above but requires a ready titled vampire."
+    },
+    {
+      "name": "Parity Shift",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/parityshift.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Requires a prince or justicar.\nChoose a Methuselah who has more pool than you do and allocate 3 of their pool among 1 or more other Methuselahs (including you). Successful referendum means the pool is distributed as you chose.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Party out of Bounds",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/partyoutofbounds.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "obf",
+        "pre",
+        "pro"
+      ],
+      "clans": [],
+      "text": "Requires an Anarch.\n[obf] Reduce a bleed against you by 2.\n[pre] Only usable during the polling step of a political action. This vampire gets +2 votes.\n[pro] +1 intercept.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Pentex(TM) Subversion",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/pentextmsubversion.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nPut this card on a ready minion. This minion cannot block. Other minions can burn this card as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Perfect Clarity",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/perfectclarity.webp",
+      "type": "Action Modifier",
+      "cost": "2 blood",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "Only usable when the action is announced.\n[tha] Reaction cards that require Dominate [dom] or Presence [pre] do not affect this vampire for the duration of this action.\n[THA] As above, and for the remainder of this action, minions opposing this vampire in combat cannot play cards that require Dominate or Presence.",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] As [tha] above."
+    },
+    {
+      "name": "Perfectionist",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/perfectionist.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Archetype.\nPut this card on a vampire you control. Once each turn, this vampire can gain 1 blood after performing a successful action during which no reaction cards were played. A vampire can have only one archetype.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Permanent Vacation",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/permanentvacation.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Choose a ready ally. Successful referendum means the chosen ally is removed from the game.",
+      "draft": true,
+      "draft_text": "DRAFT: As above, but choose vampire with capacity 3 or less to remove from the game."
+    },
+    {
+      "name": "Petra Resonance",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/petraresonance.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Malkavian"
+      ],
+      "text": "+1 stealth action. Not usable if any Methuselah's crypt is empty.\nEach Methuselah reveals the top card of his or her crypt. If there is a tie for highest or lowest cost among the revealed cards, every Methuselah burns 1 pool. Otherwise, the Methuselah revealing the highest cost steals 3 pool from the Methuselah revealing the lowest cost. All Methuselahs shuffle their crypts afterward.",
+      "draft": true,
+      "draft_text": "DRAFT: As above."
+    },
+    {
+      "name": "Platinum Protocol, The",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/platinumprotocolthe.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "obf",
+        "pre",
+        "pro"
+      ],
+      "clans": [],
+      "text": "Requires an Anarch. More than one Discipline can be used to play this card. Ⓓ Bleed.\n[obf] This is a +1 stealth action.\n[pre] The bleed is with +1 bleed.\n[pro] Put 1 corruption counter on a minion controlled by the target Methuselah if the bleed is successful (for 1 or more).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Political Ally",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/politicalally.webp",
+      "type": "Ally",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Ventrue"
+      ],
+      "text": "Unique mortal with 1 life. 0 strength, 3 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Political Stranglehold",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/politicalstranglehold.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only one Political Stranglehold can be played or called in a game.\nSuccessful referendum means each Methuselah gains 3 pool for each vampire they control with capacity 8 or more.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Ponticulus",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/ponticulus.webp",
+      "type": "Ally",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Tremere"
+      ],
+      "text": "Unique wraith with 1 life. 0 strength, 0 bleed.\nPonticulus gets +1 intercept during actions directed at you. He can lock to give any Tremere +1 intercept. He is immune to non-aggravated damage. He cannot act and he cannot have or use equipment.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Powerbase: Montreal",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/powerbasemontreal.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\nDuring your influence phase, you can add 1 blood to a vampire in your uncontrolled region. Vampires can steal this location as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Precognition",
+      "rarity": "Common",
+      "count": 2,
+      "img": "images/library-common/precognition.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "[aus] +1 intercept.\n[AUS] As above, and this vampire can prevent 1 damage during the first round of the resulting combat if they block.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Preternatural Strength",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/preternaturalstrength.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "+2 stealth action.\n[pot] Put this card on this vampire. This vampire gets +1 strength. They cannot play cards named /Torn Signpost/. A vampire can have only one Preternatural Strength.\n[POT] As above, but this vampire gets +2 strength.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Procurer",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/procurer.webp",
+      "type": "Ally",
+      "cost": "2 blood",
+      "disciplines": [],
+      "clans": [],
+      "text": "Ghoul with 1 life. 1 strength, 0 bleed.\nProcurer may move 1 blood from the blood bank to a ready vampire you control as a +2 stealth action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Protected Resources",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/protectedresources.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Put this card in play. If you would burn more than 2 pool to a bleed, you burn 2 pool instead. After a minion you control successfully bleeds, burn this card.",
+      "draft": true,
+      "draft_text": "DRAFT: As above, but don't burn this card unless your minion bleeds for 2 or more."
+    },
+    {
+      "name": "Psyche!",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/psyche.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "[cel] Press.\n[CEL] Only usable if both combatants are still ready and combat is about to end. Queue a combat with the opposing minion. (Not usable if there is already a combat queued. This can interrupt the resolution of an effect that ends a combat.)",
+      "draft": true,
+      "draft_text": "DRAFT: [obf] Press."
+    },
+    {
+      "name": "Psychic Veil",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/psychicveil.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] All of your vampires' actions are at +1 stealth this turn.\n[OBF] All of your minions' actions are at +1 stealth this turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Public Trust",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/publictrust.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "[pre] Ⓓ Bleed with +2 bleed.\n[PRE] As above, and if the bleed is successful (for 1 or more), add 1 blood to a vampire in your uncontrolled region.",
+      "draft": true,
+      "draft_text": "DRAFT: [obf] +1 stealth action. D Bleed."
+    },
+    {
+      "name": "Pulled Fangs",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/pulledfangs.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable at close range at the end of a round during which this minion successfully inflicted more damage than the opposing vampire. Not usable by a minion being burned or going to torpor.\nPut this card on the opposing vampire; this minion inflicts 1 damage on them. The attached vampire cannot hunt; if they must hunt, they go to torpor instead. Any vampire(s) can burn this card with two +1 stealth actions. A vampire can have only one Pulled Fangs.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Pulse of the Canaille",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/pulseofthecanaille.webp",
+      "type": "Action",
+      "cost": "3 blood",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[aus] For the remainder of this turn, you may look at all Methuselahs' hands.\n[AUS] Put this card on the acting vampire. The vampire with this card gets +2 bleed. A vampire can have only one Pulse of the Canaille.",
+      "draft": true,
+      "draft_text": "DRAFT: [PRE] As [AUS] above."
+    },
+    {
+      "name": "Pursuit",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/pursuit.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "[cel] Maneuver.\n[CEL] Additional strike (limited).",
+      "draft": true,
+      "draft_text": "DRAFT: [pot] Maneuver."
+    },
+    {
+      "name": "Quickness",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/quickness.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "A vampire can play only one Quickness each round.\n[cel] Additional strike (limited).\n[CEL] Additional strike that does not count against the limit.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] Strike: dodge, with additional strike."
+    },
+    {
+      "name": "Rack, The",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/rackthe.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\nAs this location is played or its controller changes, its controller chooses a ready vampire they control. During this location's controller's unlock phase, the chosen vampire can gain 2 blood. Vampires controlled by another Methuselah can steal this location as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Rapid Change",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/rapidchange.webp",
+      "type": "Action Modifier, Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "[pro] [ACTION MODIFIER] +1 stealth.\n[PRO] [COMBAT] Strike: combat ends.",
+      "draft": true,
+      "draft_text": "DRAFT: [obf] [mod] +1 stealth."
+    },
+    {
+      "name": "Rat's Warning",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/ratswarning.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "Only usable by a locked vampire during a bleed action against you.\n[ani] Unlock this vampire.\n[ANI] As above, with 1 optional press during the resulting combat if this vampire blocks.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Raven Spy",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/ravenspy.webp",
+      "type": "Retainer",
+      "cost": "1 blood",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "Animal with 1 life.\n[ani] The employer gets +1 intercept.\n[ANI] As above, but Raven Spy has 2 life.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Reckless Agitation",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/recklessagitation.webp",
+      "type": "Political Action",
+      "cost": "2 blood",
+      "disciplines": [],
+      "clans": [],
+      "text": "Requires an Independent or Anarch vampire with capacity 5 or more.\nAllocate 6 points among two or more other Methuselahs. Successful referendum means each Methuselah burns 1 pool for each point allocated.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Reinforcements",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/reinforcements.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Requires a titled vampire.\nChoose one or more Methuselahs. Successful referendum means each chosen Methuselah chooses up to three library cards in their ash heap and shuffles them into their library. Remove this card from the game, even if the action or the referendum fails or is canceled.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Reins of Power",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/reinsofpower.webp",
+      "type": "Political Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only one Reins of Power can be played or called in a game.\nSuccessful referendum means each Methuselah can choose a ready vampire they control. Each Methuselah gains 6 pool, then burns pool equal to the capacity of their predator's chosen vampire.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Resist Earth's Grasp",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/resistearthsgrasp.webp",
+      "type": "Action Modifier, Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "[cel] [COMBAT] Press, or maneuver with 1 optional press.\n[CEL] [ACTION MODIFIER] +1 stealth.",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] Maneuver."
+    },
+    {
+      "name": "Resplendent Protector",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/resplendentprotector.webp",
+      "type": "Retainer",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Toreador"
+      ],
+      "text": "Mortal with 1 life.\nThe minion with this retainer may prevent 1 damage each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Restoration",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/restoration.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[for] This vampire gains 2 blood.\n[FOR] This vampire gains 3 blood.",
+      "draft": true,
+      "draft_text": "DRAFT: [dom] As [for] above."
+    },
+    {
+      "name": "Robert Carter",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/robertcarter.webp",
+      "type": "Retainer",
+      "cost": "1 blood",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique ghoul with 1 life.\nDuring your unlock phase, Carter's employer burns 1 blood, or Carter is burned. The vampire with this retainer gets +2 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Roundhouse",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/roundhouse.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "[pot] Strike: hand strike at +2 damage.\n[POT] Strike: hand strike at +3 damage.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] As [pot] above."
+    },
+    {
+      "name": "Saturday-Night Special",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/saturdaynightspecial.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Weapon, gun.\n1R damage each strike, with an optional maneuver each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Scalpel Tongue",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/scalpeltongue.webp",
+      "type": "Action Modifier, Reaction",
+      "cost": "1 blood",
+      "disciplines": [
+        "cel",
+        "pre"
+      ],
+      "clans": [],
+      "text": "Only usable during the polling step of a political action.\n[cel][pre] Choose a vampire who has cast votes or ballots in this referendum. The chosen vampire is locked and abstains (this cancels the chosen vampire's votes and ballots).\n[CEL][PRE] As above, and the chosen vampire burns 1 blood.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Scorn of Adonis",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/scornofadonis.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Toreador"
+      ],
+      "text": "Only usable during the polling step of a political action.\nMethuselahs casting (including controlling a minion casting) votes or ballots against the referendum burn 1 pool once results are tallied.",
+      "draft": true,
+      "draft_text": "DRAFT: [toreador] As above, and gain pool if the referendum passes."
+    },
+    {
+      "name": "Scouting Mission",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/scoutingmission.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "[dom] Ⓓ Bleed with +1 bleed.\n[DOM] +1 stealth action. Add 2 blood to a younger vampire in your uncontrolled region.",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] As [dom] above."
+    },
+    {
+      "name": "Scrounging",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/scrounging.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "+1 stealth action.\nLook at up to 3 cards from the top of your library and move up to 2 of them to your hand (shuffle and discard afterward).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Seal of Veddartha",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/sealofveddartha.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique equipment.\nOnly usable by a vampire with capacity above 5. This vampire can bleed at +1 bleed as a Ⓓ action. During each of your unlock phases, put a counter on this card if it has 3 or fewer counters. The first 2 counters each grant this vampire one level of Dominate [dom]. The next 2 each grant this vampire one level of Fortitude [for]. Remove all counters from this card if another minion gains control of it.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Second Tradition: Domain",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/secondtraditiondomain.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Requires a prince or justicar.\n[REACTION] +2 intercept.\n[REACTION] Only usable by a locked prince or justicar. This vampire burns 1 blood to unlock and attempt to block with +2 intercept, even if intercept is not yet needed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Seduction",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/seduction.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "dom"
+      ],
+      "clans": [],
+      "text": "Only usable as the action is announced.\n[dom] Choose a younger vampire. The chosen vampire cannot block this action.\n[DOM] As above, but choose any vampire.",
+      "draft": true,
+      "draft_text": "DRAFT: [pre] As [dom] above."
+    },
+    {
+      "name": "Sengir Dagger",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/sengirdagger.webp",
+      "type": "Equipment",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique melee weapon.\nStrike: strength aggravated damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Side Strike",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/sidestrike.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "cel"
+      ],
+      "clans": [],
+      "text": "[cel] Strike: dodge.\n[CEL] Additional strike (limited).",
+      "draft": true,
+      "draft_text": "DRAFT: [aus] Strike: dodge."
+    },
+    {
+      "name": "Skin of Rock",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/skinofrock.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "for"
+      ],
+      "clans": [],
+      "text": "[for] Prevent 1 damage.\n[FOR] Prevent 2 damage.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Slam",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/slam.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "[pot] Strike: hand strike at +2 damage.\n[POT] As above, with 1 optional maneuver, only usable to get to close range.",
+      "draft": true,
+      "draft_text": "DRAFT: [tha] As [pot] above."
+    },
+    {
+      "name": "Slum Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/slumhuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Nosferatu"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Smiling Jack, The Anarch",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/smilingjacktheanarch.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique.\nPut this card in play. During your unlock phase, move 1 counter from your pool to this card. During each other Methuselah's unlock phase, for each counter on this card, that Methuselah burns 1 pool or burns 1 blood from a vampire they control. Vampires can burn this card as a Ⓓ action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Society Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/societyhuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Toreador"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Special Report",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/specialreport.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Master: out-of-turn.\nChoose a ready vampire you control. That vampire unlocks and attempts to block. Once this action you may burn 1 pool to give that vampire +1 intercept.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Spirit's Touch",
+      "rarity": "Common",
+      "count": 2,
+      "img": "images/library-common/spiritstouch.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "[aus] +1 intercept.\n[AUS] As above, with 1 optional maneuver during the resulting combat if this vampire blocks.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Sport Bike",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/sportbike.webp",
+      "type": "Equipment",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Vehicle.\nThis minion gets +1 intercept. A minion can have only one vehicle.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Spying Mission",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/spyingmission.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] +1 stealth.\n[OBF] Only usable if a bleed would be successful. Instead, the bleed burns no pool, is unsuccessful, and this card is put on this vampire. The next time this vampire is about to successfully bleed the same Methuselah, burn this card and this vampire gets +2 bleed.",
+      "draft": true,
+      "draft_text": "DRAFT: [pro] +1 stealth."
+    },
+    {
+      "name": "Sudden Reversal",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/suddenreversal.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Out-of-turn.\nCancel a master card as it is played by another Methuselah, and its cost is not paid.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Summoning, The",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/summoningthe.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "+1 stealth action.\n[pre] Search your library for an ally or retainer. Show it to all players and put it in your hand (shuffle and discard afterward).\n[PRE] Search your library for an ally. This vampire recruits that ally (requirements and cost apply as normal). Shuffle afterward.",
+      "draft": true,
+      "draft_text": "DRAFT: [PRE] As [PRE] above; but ignore the requirements of the ally."
+    },
+    {
+      "name": "Sunset Strip, Hollywood",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/sunsetstriphollywood.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Master: unique location.\nLock to give all vampires +1 stealth on hunt actions until your next unlock phase. Lock to reduce the cost to recruit a mortal ally or employ a mortal retainer by 1 blood or pool (but never less than 0 blood or pool).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Swallowed by the Night",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/swallowedbythenight.webp",
+      "type": "Action Modifier, Combat",
+      "cost": "",
+      "disciplines": [
+        "obf"
+      ],
+      "clans": [],
+      "text": "[obf] [ACTION MODIFIER] +1 stealth.\n[OBF] [COMBAT] Maneuver.",
+      "draft": true,
+      "draft_text": "DRAFT: [combat] Do not replace until after combat. Maneuver."
+    },
+    {
+      "name": "Talbot's Chainsaw",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/talbotschainsaw.webp",
+      "type": "Equipment",
+      "cost": "3 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique weapon.\nStrike: 3 damage. If the bearer is ready during your unlock phase, this weapon inflicts 3 unpreventable damage on a ready minion you control. The bearer cannot hunt. The bearer can enter combat with a minion as a +1 stealth Ⓓ action. The bearer gets 1 press (mandatory), only usable to continue combat during the first round, and can prevent 1 damage each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Tasha Morgan",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/tashamorgan.webp",
+      "type": "Retainer",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique mortal with 1 life.\nThe employer gets +1 bleed.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Telepathic Misdirection",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/telepathicmisdirection.webp",
+      "type": "Reaction",
+      "cost": "1 blood",
+      "disciplines": [
+        "aus"
+      ],
+      "clans": [],
+      "text": "[aus] +1 intercept.\n[AUS] Only usable if a minion is bleeding you, after blocks are declined. Lock this reacting vampire. Change the target of the bleed to another Methuselah other than the acting minion's controller (that Methuselah can attempt to block).",
+      "draft": true,
+      "draft_text": "DRAFT: [for] Reduce bleed against you by 3."
+    },
+    {
+      "name": "Temple Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/templehuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Ministry"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Terror Frenzy",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/terrorfrenzy.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "Frenzy. Only usable before range is determined.\n[ani] Only usable during the first round. This combat, the opposing minion cannot maneuver to close range, press to continue combat or use equipment.\n[ANI] This combat, combat cards cost the opposing vampire +1 blood. A vampire can play only one Terror Frenzy at superior each combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Theft of Vitae",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/theftofvitae.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "[tha] Strike, ranged: steal 1 blood or life (becoming blood).\n[THA] Strike, ranged: steal 2 blood or life (becoming blood).",
+      "draft": true,
+      "draft_text": "DRAFT: [pro] Strike: steal 1 blood or life."
+    },
+    {
+      "name": "Thing",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/thing.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Gangrel"
+      ],
+      "text": "+1 stealth action.\nAdd 2 blood to a Gangrel in your uncontrolled region.",
+      "draft": true,
+      "draft_text": "DRAFT: Draw 1 card from your crypt."
+    },
+    {
+      "name": "Tier of Souls",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/tierofsouls.webp",
+      "type": "Action",
+      "cost": "",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "[ani] Ⓓ Steal 1 blood or life from a minion controlled by your prey.\n[ANI] As above, and put this card on this vampire. This vampire gets +1 bleed against your prey. Minions can burn this card as a Ⓓ action. A vampire can have only one Tier of Souls.",
+      "draft": true,
+      "draft_text": "DRAFT: [tha] As [ani] above."
+    },
+    {
+      "name": "Toreador Grand Ball",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/toreadorgrandball.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [
+        "Toreador"
+      ],
+      "text": "Choose two ready Toreador you control, put this card in play, and lock one of the two. The locked Toreador does not unlock as normal. The other Toreador's non-bleed actions cannot be blocked. Minions can burn this card as a Ⓓ action; Nosferatu get -1 stealth during that action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Torn Signpost",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/tornsignpost.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "pot"
+      ],
+      "clans": [],
+      "text": "Only usable before range is determined.\n[pot] This vampire gets a strength of 2 this combat.\n[POT] This vampire gets a strength of 3 this combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Tribute to the Master",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/tributetothemaster.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Move 1 blood from each ready vampire you control to your pool.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Underbridge Stray",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/underbridgestray.webp",
+      "type": "Ally",
+      "cost": "1 blood",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "Animal with 1 life. 0 strength, 0 bleed.\n[ani] This ally can burn 1 life to give a minion you control 1 press. During an action directed at you (or a card you control), you can burn this ally if it is not blocking to unlock a ready minion you control.\n[ANI] As above, but this ally has 2 life and 1 strength.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Underworld Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/underworldhuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Banu Haqim"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Uptown Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/uptownhuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Ventrue"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Vessel",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/vessel.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Trifle.\nPut this card on a vampire and you can burn a card named /Blood Doll/ (if any). During their unlock phase, this vampire's controller can move 1 blood from this vampire to their pool or from their pool to this vampire.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Villein",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/villein.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Trifle.\nPut this card on a vampire you control who has any amount of blood and move 2 to 5 blood from that vampire to your pool. Cards named /Minion Tap/ cost you +1 pool to play. Villein costs +1 pool to play on this vampire.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Voracious Vermin",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/voraciousvermin.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "ani"
+      ],
+      "clans": [],
+      "text": "[ani] Strike: dodge.\n[ANI] As above, with 1 additional ranged strike: burn weapon.",
+      "draft": true,
+      "draft_text": "DRAFT: [pre] Strike: dodge."
+    },
+    {
+      "name": "Voter Captivation",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/votercaptivation.webp",
+      "type": "Action Modifier",
+      "cost": "",
+      "disciplines": [
+        "pre"
+      ],
+      "clans": [],
+      "text": "Only usable after resolution of a political action whose referendum passed.\n[pre] This vampire gains 1 blood for each vote by which the referendum passed.\n[PRE] As above, but move up to 2 of those blood to your pool instead of this vampire.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Vox Domini",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/voxdomini.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Master: out-of-turn.\nOnly usable during the referendum of a political action. Not usable on a referendum that is automatically passing. The referendum fails. Each Methuselah may play only one Vox Domini each game.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Vulnerability",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/vulnerability.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Master.\nBurn a vampire in torpor.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Wake with Evening's Freshness",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/wakewitheveningsfreshness.webp",
+      "type": "Reaction",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable by a locked vampire. Do not replace until your next unlock phase.\nThis vampire wakes (they ignore the requirement to be unlocked for playing reaction cards and attempting to block until the end of the action).",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Walk of Flame",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/walkofflame.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "Not usable during the first round.\n[tha] Strike: 1R aggravated damage.\n[THA] Strike: 2R aggravated damage.",
+      "draft": true,
+      "draft_text": "DRAFT: [cel] Strike: 2R damage."
+    },
+    {
+      "name": "Warrens, The",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/warrensthe.webp",
+      "type": "Reaction",
+      "cost": "1 blood",
+      "disciplines": [],
+      "clans": [
+        "Nosferatu"
+      ],
+      "text": "Only usable during an action directed at you (or a card you control).\n+2 intercept, with an additional +1 intercept if this Nosferatu is titled.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Warsaw Station",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/warsawstation.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Nosferatu"
+      ],
+      "text": "Unique location.\nYou can lock this card as a Nosferatu announces an undirected action; after action resolution, if that action was successful, unlock the acting Nosferatu. You can burn this card (even if it is locked) to move a Nosferatu in torpor to the ready region.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Warzone Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/warzonehuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Brujah"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Waters of Duat",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/watersofduat.webp",
+      "type": "Action",
+      "cost": "1 blood",
+      "disciplines": [],
+      "clans": [
+        "Ministry"
+      ],
+      "text": "+1 stealth action. Requires a non-sterile Follower of Set with capacity 5 or more.\nPut this card in play. It becomes a 1-capacity (non-unique) Follower of Set and must hunt this turn. You can search your library (shuffle afterward), hand, and/or ash heap for a Discipline master card and put it on this new vampire.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Weather Control",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/weathercontrol.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [
+        "tha"
+      ],
+      "clans": [],
+      "text": "Only usable before range is determined during the first round. A vampire can play only one Weather Control each combat.\n[tha] Both combatants and each retainer on them take 1 unpreventable environmental damage before range is determined each round this combat.\n[THA] As above, but the amount of damage inflicted is increased by 1 in each subsequent round.",
+      "draft": true,
+      "draft_text": "DRAFT: [pro] As [tha] above."
+    },
+    {
+      "name": "Weighted Walking Stick",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/weightedwalkingstick.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Only usable before range is determined during the first round.\nPut this card with 5 counters on it on this minion; it becomes a melee weapon equipment that can strike: strength+1 damage. For each damage inflicted by this strike (even if prevented), burn 1 counter from this card. Burn this card if it has no counters. A minion can have only one Weighted Walking Stick.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "WMRH Talk Radio",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/wmrhtalkradio.webp",
+      "type": "Master",
+      "cost": "1 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique location.\nYou can lock this card to give a minion +1 intercept. If that minion does not block the action, burn 1 pool after action resolution.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Wolf Claws",
+      "rarity": "Common",
+      "count": 4,
+      "img": "images/library-common/wolfclaws.webp",
+      "type": "Combat",
+      "cost": "1 blood",
+      "disciplines": [
+        "pro"
+      ],
+      "clans": [],
+      "text": "[pro] Damage from this vampire's hand strikes is aggravated this round.\n[PRO] Press.",
+      "draft": true,
+      "draft_text": "DRAFT: [ani] Press."
+    },
+    {
+      "name": "Wooden Stake",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/woodenstake.webp",
+      "type": "Equipment",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Melee weapon.\nStrike: strength damage. If more than 1 damage is inflicted on an opposing vampire by this weapon in a given combat, that vampire is sent to torpor. In that case, this card is transferred to that vampire, and he or she doesn't unlock as normal during the unlock phase as long as he or she remains in torpor.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Young Bloods",
+      "rarity": "Rare",
+      "count": 1,
+      "img": "images/library-rare/youngbloods.webp",
+      "type": "Ally",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [],
+      "text": "Unique mortal with 3 life. 2 strength, 0 bleed.\nThe Young Bloods can burn 2 blood from a locked vampire with a capacity less than 8 as a +1 stealth Ⓓ action. If a vampire controlled by another Methuselah burns the Young Bloods in combat or as an action, he or she gains 2 blood.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Zip Gun",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/zipgun.webp",
+      "type": "Combat",
+      "cost": "",
+      "disciplines": [],
+      "clans": [],
+      "text": "Before range is determined, put this card on this minion. This card represents an equipment card and doesn't count as a combat card while in play. This equipment is a weapon, gun. Ammo cards cannot be used with this gun. It does 1R damage each strike, with an optional maneuver each combat. Bearer takes 1 damage during strike resolution when striking with this gun, but only once each combat. This card is kept as normal equipment and is not discarded after combat.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
+      "name": "Zoo Hunting Ground",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/zoohuntingground.webp",
+      "type": "Master",
+      "cost": "2 pool",
+      "disciplines": [],
+      "clans": [
+        "Gangrel"
+      ],
+      "text": "Unique location. Hunting ground.\nDuring your unlock phase, a ready vampire you control can gain 1 blood. A vampire can gain blood from only one hunting ground each turn.",
+      "draft": false,
+      "draft_text": ""
+    }
+  ]
+}
