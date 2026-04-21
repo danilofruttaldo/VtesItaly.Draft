@@ -6,6 +6,13 @@
  *
  * VERSION is rewritten to a UTC timestamp by .github/workflows/deploy.yml on each
  * release, so deployed clients always get a fresh cache key. Local dev keeps "v3".
+ *
+ * Update policy: skipWaiting() + clients.claim() activate the new worker
+ * immediately over open tabs. This is safe here because every code/data asset
+ * (HTML, JS, CSS, cards.json) is fetched network-first, so already-open tabs
+ * pick up fresh versions on the next request. The only cache-first resources
+ * are content-addressed static assets (images, icons, manifest) which rarely
+ * change between releases.
  */
 const VERSION = "v3";
 const SHELL_CACHE = `shell-${VERSION}`;
@@ -49,15 +56,26 @@ self.addEventListener("fetch", e => {
   const isData = url.pathname.endsWith("/cards.json");
 
   if (isHtml || isCode || isData) {
-    // network-first
+    // network-first; on failure try the runtime cache, then the original
+    // request in shell, then (only for HTML) the index shell as a last resort.
+    // Never fall back cards.json or JS/CSS to index.html — that yields
+    // a JSON.parse / script-execution error downstream.
     e.respondWith(
       fetch(req)
         .then(resp => {
-          const copy = resp.clone();
-          caches.open(RUNTIME_CACHE).then(c => c.put(req, copy)).catch(() => {});
+          // Only cache successful responses — otherwise a 404/500 would be
+          // served back offline in place of the real (possibly cached) content.
+          if (resp.ok) {
+            const copy = resp.clone();
+            caches.open(RUNTIME_CACHE).then(c => c.put(req, copy)).catch(() => {});
+          }
           return resp;
         })
-        .catch(() => caches.match(req).then(r => r || caches.match("./index.html")))
+        .catch(() => caches.match(req).then(cached => {
+          if (cached) return cached;
+          if (isHtml) return caches.match("./index.html");
+          return new Response("", { status: 504, statusText: "Offline" });
+        }))
     );
     return;
   }

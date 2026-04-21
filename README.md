@@ -40,13 +40,16 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 261 library cards (38
 **Installable (PWA)**
 - `manifest.webmanifest` allows install to home screen / desktop
 - `sw.js` service worker: network-first for HTML, `app.js`, `styles.css` and `cards.json`; cache-first for images/icons/manifest — works offline after first visit
-- Content-Security-Policy meta in `index.html` (`script-src 'self'`, no inline JS)
+- Strict Content-Security-Policy meta in `index.html` (`script-src 'self'`, `style-src 'self'` — no inline JS, no inline styles, `object-src 'none'`, `frame-ancestors 'none'`)
 
 Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 
 ### Publish on GitHub Pages
 
-Deploy runs via `.github/workflows/deploy.yml` on every push to `main`. The workflow rewrites `VERSION` in `sw.js` to a UTC timestamp before publishing, so cache-first assets (images, icons, manifest) are invalidated on each release automatically.
+Deploy runs via `.github/workflows/deploy.yml` on every push to `main`. The workflow:
+1. Rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release.
+2. Stages only the runtime files under `_site/` (HTML, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published.
+3. Uploads the staged artifact to GitHub Pages.
 
 One-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at `https://<user>.github.io/<repo>/`.
 
@@ -76,9 +79,9 @@ python -m http.server 8765
 │   └── favicon.ico, apple-touch-icon.png, vtes.svg
 ├── data/
 │   ├── cards.json                      # gallery data (consumed by index.html)
-│   ├── krcg_vtes.json                  # cached KRCG dataset (build input)
-│   ├── draft_ocr.json                  # raw easyocr output per image
-│   └── draft_overrides.json            # manual DRAFT-clause corrections
+│   ├── krcg_vtes.json                  # cached KRCG dataset (build input, gitignored)
+│   ├── draft_ocr.json                  # raw easyocr output per image (build input)
+│   └── draft_overrides.json            # manual DRAFT-clause corrections (build input)
 ├── docs/
 │   └── DRAFT_OPTION.md                 # report: cards with/without DRAFT clause
 ├── images/
@@ -86,7 +89,7 @@ python -m http.server 8765
 │   ├── library-common/                 # 102
 │   ├── library-uncommon/               # 79
 │   ├── library-rare/                   # 80
-│   └── scan/                           # original user photos (legacy source)
+│   └── scan/                           # original user photos (legacy source, gitignored)
 └── scripts/                            # Python pipeline
 ```
 

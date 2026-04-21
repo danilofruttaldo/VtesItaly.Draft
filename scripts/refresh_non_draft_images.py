@@ -2,31 +2,18 @@
 most recent printing available on KRCG."""
 import io
 import json
-import re
 import sys
 import time
-import unicodedata
 import urllib.request
 from pathlib import Path
 
 from PIL import Image
 
+from _utils import norm
+
 ROOT = Path(__file__).resolve().parent.parent
 CARDS = ROOT / "data" / "cards.json"
 KRCG = ROOT / "data" / "krcg_vtes.json"
-
-_EXTRA_MAP = str.maketrans({
-    "ł": "l", "Ł": "L", "ø": "o", "Ø": "O", "đ": "d", "Đ": "D", "ß": "ss",
-    "æ": "ae", "Æ": "AE", "œ": "oe", "Œ": "OE",
-    "ð": "d", "Ð": "D", "þ": "th", "Þ": "Th",
-})
-
-
-def norm(s: str) -> str:
-    s = (s or "").translate(_EXTRA_MAP)
-    s = unicodedata.normalize("NFKD", s)
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    return re.sub(r"[^a-z0-9]", "", s.lower())
 
 
 def main() -> int:

@@ -29,11 +29,21 @@ jobs:
           sed -i -E "s/^const VERSION = \".*\";$/const VERSION = \"$ts\";/" sw.js
           grep '^const VERSION' sw.js
 
+      - name: Stage site (exclude scripts, build inputs, docs)
+        run: |
+          mkdir -p _site/data _site/images
+          cp index.html manifest.webmanifest sw.js .nojekyll _site/
+          [ -f CNAME ] && cp CNAME _site/ || true
+          cp -r assets _site/
+          cp data/cards.json _site/data/
+          cp -r images/crypt images/library-common images/library-uncommon images/library-rare _site/images/
+          du -sh _site
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: '_site'
 
       - name: Deploy to GitHub Pages
         id: deployment

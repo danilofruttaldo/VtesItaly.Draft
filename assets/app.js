@@ -12,6 +12,28 @@ const SORT_OPTIONS = [
 
 const RARITY_ORDER = { "Common": 0, "Uncommon": 1, "Rare": 2 };
 
+/* Tokens rendered as inline pill in card text.
+ * Covers disciplines, action types, modifiers, and major clan names used in
+ * [x] notation. Any [token] not in this set renders as literal text, which
+ * prevents non-icon bracketed words (e.g. editorial annotations) from being
+ * styled as icons. Extend this set if new expansions add new tokens. */
+const ICON_TOKENS = new Set([
+  // Disciplines
+  "ani","aus","cel","chi","dom","for","obf","obt","pot","pre","pro","ser",
+  "tha","thn","vic","nec","qui","tem","mel","dem","dai","mul","obe","val",
+  "vis","san","spi","mal","abo",
+  // Action / card types
+  "combat","action","reaction","political","ally","equipment","retainer","power",
+  // Clan tokens (generic .disc fallback styling)
+  "brujah","malkavian","nosferatu","toreador","tremere","ventrue","gangrel",
+  "lasombra","tzimisce","assamite","ravnos","giovanni","setite","caitiff",
+  "salubri","pander","imbued","gargoyle","abomination","ahrimanes","akunanse",
+  "baali","cappadocian","daughters","followers","guruhi","harbingers",
+  "ishtarri","kiasyd","nagaraja","osebo","samedi","banu","haqim","ministry",
+  // Modifiers
+  "mod","merged","flight",
+]);
+
 const state = {
   data: { crypt: [], library: [] },
   q: "",
@@ -27,8 +49,12 @@ const state = {
 
 const $ = (id) => document.getElementById(id);
 
+const BASE_TITLE = "VTES Draft Cube";
+
 function norm(s) {
-  return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  // Strip Unicode combining marks (U+0300–U+036F) so accented search queries
+  // match unaccented card names (e.g. "gadeke" matches "Gädeke").
+  return (s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function escapeHtml(s) {
@@ -45,7 +71,9 @@ function renderDisc(token) {
 
 function renderTextWithIcons(text) {
   if (!text) return "";
-  return escapeHtml(text).replace(/\[([A-Za-z]{2,8})\]/g, (_m, tok) => renderDisc(tok));
+  return escapeHtml(text).replace(/\[([A-Za-z]{2,8})\]/g, (m, tok) =>
+    ICON_TOKENS.has(tok.toLowerCase()) ? renderDisc(tok) : m
+  );
 }
 
 function debounce(fn, ms) {
@@ -95,16 +123,18 @@ function sortItems(items, sort) {
     case "count":     arr.sort((a, b) => b.count - a.count || cmpName(a, b)); break;
     case "count-asc": arr.sort((a, b) => a.count - b.count || cmpName(a, b)); break;
     case "capacity":
+      // crypt cards by capacity ascending; library cards (no capacity) pushed to the end
       arr.sort((a, b) => {
-        const ac = a.capacity != null ? a.capacity : 999;
-        const bc = b.capacity != null ? b.capacity : 999;
+        const ac = a.kind === "crypt" && a.capacity != null ? a.capacity : 9999;
+        const bc = b.kind === "crypt" && b.capacity != null ? b.capacity : 9999;
         return ac - bc || cmpName(a, b);
       });
       break;
     case "rarity":
+      // library cards by rarity; crypt cards (no rarity) pushed to the end
       arr.sort((a, b) => {
-        const ar = a.rarity != null ? (RARITY_ORDER[a.rarity] ?? 99) : -1;
-        const br = b.rarity != null ? (RARITY_ORDER[b.rarity] ?? 99) : -1;
+        const ar = a.kind === "library" ? (RARITY_ORDER[a.rarity] ?? 99) : 99;
+        const br = b.kind === "library" ? (RARITY_ORDER[b.rarity] ?? 99) : 99;
         return ar - br || cmpName(a, b);
       });
       break;
@@ -122,12 +152,12 @@ function render() {
     el.className = "card";
     el.setAttribute("role", "listitem");
     el.setAttribute("aria-label", `${c.name}, ${c.count} copies`);
+    el.dataset.idx = String(idx);
     el.innerHTML = `
       <img loading="lazy" decoding="async" width="160" height="223" src="${encodeURI(c.img)}" alt="${escapeHtml(c.name)}">
       <span class="badge" aria-hidden="true">×${c.count}</span>
       <span class="card-name" aria-hidden="true">${escapeHtml(c.name)}</span>
     `;
-    el.addEventListener("click", () => openModal(idx));
     frag.appendChild(el);
   });
   grid.replaceChildren(frag);
@@ -291,7 +321,6 @@ function openModal(idx, pushHistory = true) {
   const firstOpen = state.modalIndex === -1;
   state.modalIndex = idx;
   const c = state.filtered[idx];
-  c.kind = c.kind || (state.data.crypt.includes(c) ? "crypt" : "library");
   const img = $("modal-img");
   img.src = encodeURI(c.img);
   img.alt = c.name;
@@ -304,6 +333,7 @@ function openModal(idx, pushHistory = true) {
   textEl.innerHTML = renderTextWithIcons(body);
   $("modal-counter").textContent = `${idx + 1} / ${state.filtered.length}`;
   $("modal-share").hidden = !(navigator.share || navigator.clipboard);
+  document.title = `${c.name} — ${BASE_TITLE}`;
   preloadNeighbors(idx);
 
   const modal = $("modal");
@@ -336,6 +366,7 @@ function closeModal(fromPopState = false) {
   modal.classList.remove("open");
   setTimeout(() => { modal.hidden = true; }, 180);
   document.body.style.overflow = "";
+  document.title = BASE_TITLE;
   if (state.lastFocus && state.lastFocus.focus) {
     try { state.lastFocus.focus(); } catch (_) {}
   }
@@ -351,12 +382,16 @@ window.addEventListener("popstate", () => {
   if (state.modalIndex >= 0) closeModal(true);
 });
 
-/* --- Focus trap in modal --- */
+/* --- Focus trap in modal ---
+ * Visibility check via getClientRects() instead of offsetParent: the latter
+ * is null for position:fixed descendants (all modal nav buttons), which would
+ * wrongly filter them out and let Tab escape the dialog. */
 const FOCUSABLE = 'button:not([hidden]):not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+function isVisible(n) { return !n.hidden && n.getClientRects().length > 0; }
 function trapFocus(e) {
   if (state.modalIndex < 0 || e.key !== "Tab") return;
   const modal = $("modal");
-  const nodes = Array.from(modal.querySelectorAll(FOCUSABLE)).filter(n => !n.hidden && n.offsetParent !== null);
+  const nodes = Array.from(modal.querySelectorAll(FOCUSABLE)).filter(isVisible);
   if (!nodes.length) return;
   const first = nodes[0], last = nodes[nodes.length - 1];
   if (e.shiftKey && document.activeElement === first) {
@@ -366,26 +401,25 @@ function trapFocus(e) {
   }
 }
 
-/* --- Modal image zoom (click & double-tap) --- */
+/* --- Modal image zoom (tap / click toggles) --- */
 const modalImg = $("modal-img");
 modalImg.addEventListener("click", e => {
   e.stopPropagation();
   modalImg.classList.toggle("zoomed");
-});
-let lastTap = 0;
-modalImg.addEventListener("touchend", e => {
-  const now = Date.now();
-  if (now - lastTap < 320 && e.changedTouches.length === 1) {
-    modalImg.classList.toggle("zoomed");
-    e.preventDefault();
-  }
-  lastTap = now;
 });
 
 /* --- event wiring (static) --- */
 const debouncedRender = debounce(render, 120);
 
 $("q").addEventListener("input", e => { state.q = e.target.value; debouncedRender(); });
+
+// Delegated click handler for card grid — one listener instead of N
+$("grid").addEventListener("click", e => {
+  const card = e.target.closest(".card");
+  if (!card) return;
+  const idx = Number(card.dataset.idx);
+  if (Number.isFinite(idx)) openModal(idx);
+});
 
 function applyTypeConstraint() {
   if (!state.type) return;
@@ -449,12 +483,18 @@ $("modal-share").addEventListener("click", async e => {
   const url = location.origin + location.pathname + "#" + encodeURIComponent(c.name);
   const payload = { title: c.name, text: `${c.name} — VTES Draft Cube`, url };
   try {
-    if (navigator.share) await navigator.share(payload);
-    else if (navigator.clipboard) {
+    if (navigator.share) { await navigator.share(payload); return; }
+    if (navigator.clipboard) {
       await navigator.clipboard.writeText(url);
       showToast("Link copied");
+      return;
     }
-  } catch (_) { /* user cancelled */ }
+    showToast("Sharing not supported");
+  } catch (err) {
+    // AbortError = user cancelled the native sheet — stay silent
+    if (err && err.name === "AbortError") return;
+    showToast("Share failed");
+  }
 });
 
 function showToast(msg) {
@@ -462,16 +502,16 @@ function showToast(msg) {
   if (!el) {
     el = document.createElement("div");
     el.id = "toast";
+    el.className = "toast";
     el.setAttribute("role", "status");
     el.setAttribute("aria-live", "polite");
     el.setAttribute("aria-atomic", "true");
-    el.style.cssText = "position:fixed;left:50%;bottom:calc(2rem + var(--safe-bottom));transform:translateX(-50%);background:rgba(0,0,0,0.9);color:#fff;padding:0.6rem 1rem;border-radius:999px;font-size:0.85rem;z-index:500;opacity:0;transition:opacity 0.2s;pointer-events:none";
     document.body.appendChild(el);
   }
   el.textContent = msg;
-  requestAnimationFrame(() => { el.style.opacity = "1"; });
+  requestAnimationFrame(() => { el.classList.add("show"); });
   clearTimeout(el._t);
-  el._t = setTimeout(() => { el.style.opacity = "0"; }, 1800);
+  el._t = setTimeout(() => { el.classList.remove("show"); }, 1800);
 }
 
 /* --- Keyboard in modal --- */
@@ -483,18 +523,22 @@ document.addEventListener("keydown", e => {
   else if (e.key === "Tab") trapFocus(e);
 });
 
-/* --- Touch gestures in modal: swipe left/right = prev/next, swipe down = close --- */
-let touchStartX = 0, touchStartY = 0, touchTime = 0;
+/* --- Touch gestures in modal: swipe left/right = prev/next, swipe down = close.
+ * Only trigger when the gesture starts on the image or empty modal area — not
+ * inside .modal-info, where vertical pan is needed for reading card text. */
+let touchStartX = 0, touchStartY = 0, touchTime = 0, touchStartOnInfo = false;
 $("modal").addEventListener("touchstart", e => {
   if (state.modalIndex < 0) return;
   const t = e.changedTouches[0];
   touchStartX = t.clientX;
   touchStartY = t.clientY;
   touchTime = Date.now();
+  touchStartOnInfo = !!(e.target && e.target.closest && e.target.closest(".modal-info"));
 }, { passive: true });
 $("modal").addEventListener("touchend", e => {
   if (state.modalIndex < 0) return;
   if (modalImg.classList.contains("zoomed")) return;
+  if (touchStartOnInfo) return;
   const t = e.changedTouches[0];
   const dx = t.clientX - touchStartX;
   const dy = t.clientY - touchStartY;
@@ -708,10 +752,20 @@ fetch("data/cards.json")
     loadStateFromUrl();
     render();
 
-    // Deep link: open card from URL hash
-    const hash = decodeURIComponent(location.hash.replace(/^#/, ""));
+    // Deep link: open card from URL hash. If the card exists but is hidden
+    // by active filters, reset filters silently and open it anyway.
+    let hash = "";
+    try { hash = decodeURIComponent(location.hash.replace(/^#/, "")); }
+    catch (_) { hash = ""; }
     if (hash) {
-      const idx = state.filtered.findIndex(c => c.name === hash);
+      let idx = state.filtered.findIndex(c => c.name === hash);
+      if (idx < 0) {
+        const all = [...state.data.crypt, ...state.data.library];
+        if (all.some(c => c.name === hash)) {
+          resetAll();
+          idx = state.filtered.findIndex(c => c.name === hash);
+        }
+      }
       if (idx >= 0) openModal(idx, false);
     }
   })

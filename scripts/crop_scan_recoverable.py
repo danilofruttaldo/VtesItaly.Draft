@@ -1,13 +1,13 @@
 import json
 import os
-import re
 import sys
-import unicodedata
 import urllib.request
 
 import openpyxl
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 from pathlib import Path
+
+from _utils import norm
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
@@ -64,12 +64,6 @@ RARITY_TO_DIR = {
     "Uncommon": ROOT / "images" / "library-uncommon",
     "Rare": ROOT / "images" / "library-rare",
 }
-
-
-def norm(s: str) -> str:
-    s = unicodedata.normalize("NFKD", s)
-    s = "".join(c for c in s if not unicodedata.combining(c))
-    return re.sub(r"[^a-z0-9]", "", s.lower())
 
 
 def enhance(img: Image.Image) -> Image.Image:

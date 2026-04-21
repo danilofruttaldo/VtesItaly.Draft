@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'">
+<!-- viewport-fit=cover is required so env(safe-area-inset-*) returns non-zero
+     on iOS notched devices; CSS safe-area padding depends on it. -->
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'">
 <meta name="theme-color" content="#121214">
 <meta name="description" content="VTES Draft Cube interactive gallery: browse the crypt and library cards with search, filters and card detail.">
+<link rel="canonical" href="https://draft.vtesitaly.com/">
 <link rel="icon" type="image/svg+xml" href="assets/vtes.svg">
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -13,6 +17,14 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<!-- Open Graph / Twitter Card (shown when cards are shared via the in-app share button) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VTES Draft Cube">
+<meta property="og:title" content="VTES Draft Cube">
+<meta property="og:description" content="Interactive gallery for the VTES Draft Cube: browse the crypt and library cards with search, filters and card detail.">
+<meta property="og:url" content="https://draft.vtesitaly.com/">
+<meta property="og:image" content="https://draft.vtesitaly.com/assets/apple-touch-icon.png">
+<meta name="twitter:card" content="summary">
 <title>VTES Draft Cube</title>
 <link rel="stylesheet" href="assets/styles.css">
 <script src="assets/app.js" defer></script>
@@ -37,7 +49,7 @@
         <span class="count" id="count" aria-live="polite"></span>
       </div>
       <div class="controls-row controls-row-advanced" id="controls-advanced">
-        <div class="drawer-title" aria-hidden="true">
+        <div class="drawer-title">
           <span>Filters</span>
           <button class="drawer-close" id="drawer-close" type="button" aria-label="Close filters">×</button>
         </div>
@@ -51,10 +63,10 @@
         <div class="drawer-section">
           <span class="drawer-section-label">Clan</span>
           <div class="combobox" id="cb-clan" data-for="clan">
-            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Filter by clan">
+            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="cb-clan-panel" aria-label="Filter by clan">
               <span class="combobox-label ph">All clans</span>
             </button>
-            <div class="combobox-panel" role="listbox" aria-label="Clan options">
+            <div class="combobox-panel" id="cb-clan-panel" role="listbox" aria-label="Clan options">
               <div class="combobox-search">
                 <input type="search" placeholder="Search clan..." aria-label="Search clan" autocomplete="off">
               </div>
@@ -65,10 +77,10 @@
         <div class="drawer-section">
           <span class="drawer-section-label">Library type</span>
           <div class="combobox" id="cb-type" data-for="type">
-            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Filter by library type">
+            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="cb-type-panel" aria-label="Filter by library type">
               <span class="combobox-label ph">All types</span>
             </button>
-            <div class="combobox-panel" role="listbox" aria-label="Type options">
+            <div class="combobox-panel" id="cb-type-panel" role="listbox" aria-label="Type options">
               <div class="combobox-search">
                 <input type="search" placeholder="Search type..." aria-label="Search type" autocomplete="off">
               </div>
@@ -87,10 +99,10 @@
         <div class="drawer-section">
           <span class="drawer-section-label">Sort</span>
           <div class="combobox" id="cb-sort" data-for="sort">
-            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-label="Sort order">
+            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="cb-sort-panel" aria-label="Sort order">
               <span class="combobox-label">Default</span>
             </button>
-            <div class="combobox-panel" role="listbox" aria-label="Sort options">
+            <div class="combobox-panel" id="cb-sort-panel" role="listbox" aria-label="Sort options">
               <div class="combobox-list"></div>
             </div>
           </div>
@@ -101,6 +113,12 @@
   </div>
 
   <main>
+    <noscript>
+      <div class="empty">
+        This gallery requires JavaScript to filter and browse the cards.
+        Please enable JavaScript in your browser.
+      </div>
+    </noscript>
     <div class="active-filters" id="active-filters" aria-label="Active filters"></div>
     <div class="grid" id="grid" role="list"></div>
     <div class="empty" id="empty" hidden>

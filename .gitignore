@@ -5,3 +5,11 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
+# Build cache (fetched by scripts/build_site_data.py on demand — not shipped)
+data/krcg_vtes.json
+
+# Legacy user scans (build-time input only — not served by the site)
+images/scan/
+
+# Local dev staging
+_site/

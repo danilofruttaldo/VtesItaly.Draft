@@ -1,6 +1,5 @@
 import json
 import os
-import re
 import sys
 import time
 import urllib.request
@@ -8,15 +7,13 @@ import urllib.request
 import openpyxl
 from pathlib import Path
 
+from _utils import norm
+
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
 SHEET = "Library"
 KRCG_JSON = "https://static.krcg.org/data/vtes.json"
 DRAFT_SETS = ["Lords of the Night", "Kindred Most Wanted"]
-
-
-def norm(s: str) -> str:
-    return re.sub(r"[^a-z0-9]", "", s.lower())
 
 
 def main() -> int:

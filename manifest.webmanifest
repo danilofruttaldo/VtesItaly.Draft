@@ -1,7 +1,11 @@
 {
+  "id": "/",
   "name": "VTES Draft Cube",
   "short_name": "VTES Draft",
   "description": "Browse the VTES Draft Cube crypt and library with search, filters and card detail.",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["games", "entertainment", "utilities"],
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
