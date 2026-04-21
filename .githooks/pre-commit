@@ -24,5 +24,14 @@ npm run --silent format:check
 echo "pre-commit: eslint"
 npm run --silent lint
 
-echo "pre-commit: node --test"
+if command -v python >/dev/null 2>&1 && python -m ruff --version >/dev/null 2>&1; then
+  echo "pre-commit: ruff check"
+  python -m ruff check scripts/ tests/
+  echo "pre-commit: ruff format --check"
+  python -m ruff format --check scripts/ tests/
+else
+  echo "pre-commit: ruff not installed — skipping Python lint" >&2
+fi
+
+echo "pre-commit: tests (node + python)"
 npm test --silent

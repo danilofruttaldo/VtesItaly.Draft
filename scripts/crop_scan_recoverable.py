@@ -2,12 +2,11 @@ import json
 import os
 import sys
 import urllib.request
-
-import openpyxl
-from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 from pathlib import Path
 
+import openpyxl
 from _utils import norm
+from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"

@@ -3,15 +3,29 @@
 Kept in a single place so name-normalization stays consistent across every
 entry point that needs to match user-provided names against KRCG records.
 """
+
 import re
 import unicodedata
 
-_EXTRA_MAP = str.maketrans({
-    "ł": "l", "Ł": "L", "ø": "o", "Ø": "O",
-    "đ": "d", "Đ": "D", "ß": "ss",
-    "æ": "ae", "Æ": "AE", "œ": "oe", "Œ": "OE",
-    "ð": "d", "Ð": "D", "þ": "th", "Þ": "Th",
-})
+_EXTRA_MAP = str.maketrans(
+    {
+        "ł": "l",
+        "Ł": "L",
+        "ø": "o",
+        "Ø": "O",
+        "đ": "d",
+        "Đ": "D",
+        "ß": "ss",
+        "æ": "ae",
+        "Æ": "AE",
+        "œ": "oe",
+        "Œ": "OE",
+        "ð": "d",
+        "Ð": "D",
+        "þ": "th",
+        "Þ": "Th",
+    }
+)
 
 
 def norm(s: str) -> str:

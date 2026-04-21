@@ -2,6 +2,7 @@
 
 Removes original JPGs after a successful conversion. Skips images/scan/.
 """
+
 import json
 import sys
 from pathlib import Path
@@ -44,7 +45,7 @@ def main() -> int:
                 saved += old_size - new_size
                 if not keep_jpg:
                     jpg.unlink()
-                print(f"OK   {jpg.relative_to(ROOT)} -> {webp.name} ({old_size//1024}K -> {new_size//1024}K)")
+                print(f"OK   {jpg.relative_to(ROOT)} -> {webp.name} ({old_size // 1024}K -> {new_size // 1024}K)")
                 converted += 1
             except Exception as e:
                 print(f"FAIL {jpg.name}: {e}")
@@ -56,9 +57,9 @@ def main() -> int:
             if c.get("img", "").endswith(".jpg"):
                 c["img"] = c["img"][:-4] + ".webp"
         CARDS.write_text(json.dumps(cards, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"Updated cards.json paths to .webp")
+        print("Updated cards.json paths to .webp")
 
-    print(f"\nConverted {converted} | skipped (already webp) {skipped} | saved {saved//1024//1024} MB")
+    print(f"\nConverted {converted} | skipped (already webp) {skipped} | saved {saved // 1024 // 1024} MB")
     return 0
 
 

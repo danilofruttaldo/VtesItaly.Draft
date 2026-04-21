@@ -815,11 +815,63 @@ fetch("data/cards.json")
     $("grid").innerHTML = `<div class="empty">Failed to load data/cards.json: ${escapeHtml(e.message)}</div>`;
   });
 
-/* --- PWA service worker --- */
+/* --- PWA service worker + update banner ---
+ * When CI bumps sw.js VERSION, a new worker installs in the background and
+ * sits in the "waiting" state until all tabs close (or skipWaiting fires).
+ * Our sw.js calls skipWaiting() + clients.claim() on install, so the new
+ * worker activates right away — but assets already loaded in this tab still
+ * reflect the old version until the page reloads. The banner gives the user
+ * a one-click way to pick up the fresh assets. */
+function showUpdateBanner(reload) {
+  if (document.getElementById("sw-update")) return;
+  const bar = document.createElement("div");
+  bar.id = "sw-update";
+  bar.className = "sw-update";
+  bar.setAttribute("role", "status");
+  bar.setAttribute("aria-live", "polite");
+  bar.innerHTML = `
+    <span>A new version is available.</span>
+    <button type="button" class="sw-update-btn">Reload</button>
+    <button type="button" class="sw-update-dismiss" aria-label="Dismiss update banner">×</button>
+  `;
+  bar.querySelector(".sw-update-btn").addEventListener("click", reload);
+  bar.querySelector(".sw-update-dismiss").addEventListener("click", () => bar.remove());
+  document.body.appendChild(bar);
+}
+
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").catch(() => {
+  window.addEventListener("load", async () => {
+    try {
+      const reg = await navigator.serviceWorker.register("sw.js");
+
+      // An updated worker is installing: wire its statechange so we only
+      // show the banner once the fresh version is ready to take over.
+      reg.addEventListener("updatefound", () => {
+        const worker = reg.installing;
+        if (!worker) return;
+        worker.addEventListener("statechange", () => {
+          // Only prompt when there was a previous controller — i.e. this is
+          // an update, not the very first install on this origin.
+          if (worker.state === "installed" && navigator.serviceWorker.controller) {
+            showUpdateBanner(() => window.location.reload());
+          }
+        });
+      });
+
+      // Some browsers fire controllerchange when the new SW claims the page
+      // after skipWaiting; treat it as a fallback signal.
+      let reloading = false;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (reloading) return;
+        reloading = true;
+        // Only show the banner if we never caught updatefound (e.g. page
+        // opened while a waiting worker from a previous session took over).
+        if (!document.getElementById("sw-update")) {
+          showUpdateBanner(() => window.location.reload());
+        }
+      });
+    } catch {
       /* SW registration is best-effort */
-    });
+    }
   });
 }

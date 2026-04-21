@@ -32,7 +32,9 @@ export default [
     languageOptions: {
       ecmaVersion: 2022,
       sourceType: "module",
-      globals: globals.node,
+      // DOM tests expose jsdom globals (document, window) via defineProperty
+      // on globalThis so the imported app.js can see them.
+      globals: { ...globals.node, ...globals.browser },
     },
   },
 ];

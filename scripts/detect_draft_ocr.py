@@ -3,6 +3,7 @@
 Saves results to data/draft_ocr.json keyed by image relative path:
   {"images/library-common/44magnum.webp": {"has_draft": true, "snippet": "..."}}
 """
+
 import json
 import re
 import sys
@@ -54,7 +55,7 @@ def main() -> int:
             snippet = ""
             if has:
                 start = max(0, m.start() - 20)
-                snippet = text[start:m.end() + 120].replace("\n", " ").strip()
+                snippet = text[start : m.end() + 120].replace("\n", " ").strip()
                 hits += 1
             results[rel] = {"has_draft": has, "snippet": snippet}
             processed += 1

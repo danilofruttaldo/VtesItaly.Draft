@@ -1,4 +1,5 @@
 """Generate DRAFT_OPTION.md: which library cards have the DRAFT: clause."""
+
 import json
 import sys
 from pathlib import Path

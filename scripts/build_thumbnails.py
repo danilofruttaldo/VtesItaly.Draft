@@ -7,6 +7,7 @@ original for 2x.
 
 Idempotent: skips thumbnails that are already up-to-date with their source.
 """
+
 from __future__ import annotations
 
 import sys

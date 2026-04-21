@@ -1,12 +1,12 @@
 import json
 import os
+import re
 import sys
 import time
 import urllib.request
-
-import openpyxl
 from pathlib import Path
 
+import openpyxl
 from _utils import norm
 
 ROOT = Path(__file__).resolve().parent.parent

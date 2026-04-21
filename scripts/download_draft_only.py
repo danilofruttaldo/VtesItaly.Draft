@@ -4,10 +4,9 @@ import shutil
 import sys
 import time
 import urllib.request
-
-import openpyxl
 from pathlib import Path
 
+import openpyxl
 from _utils import norm
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -39,17 +38,10 @@ def main() -> int:
 
     wb = openpyxl.load_workbook(XLSX)
     ws = wb[SHEET]
-    names = [
-        r[2]
-        for r in ws.iter_rows(min_row=2, values_only=True)
-        if r[1] == rarity and r[2]
-    ]
+    names = [r[2] for r in ws.iter_rows(min_row=2, values_only=True) if r[1] == rarity and r[2]]
 
     data = json.loads(urllib.request.urlopen(KRCG_JSON).read())
-    libs = [
-        c for c in data
-        if "Vampire" not in c.get("types", []) and "Imbued" not in c.get("types", [])
-    ]
+    libs = [c for c in data if "Vampire" not in c.get("types", []) and "Imbued" not in c.get("types", [])]
     by_name: dict[str, list[dict]] = {}
     for c in libs:
         by_name.setdefault(norm(c.get("_name", "")), []).append(c)

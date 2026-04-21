@@ -2,13 +2,12 @@ import json
 import os
 import sys
 import urllib.request
-
-import openpyxl
-import numpy as np
-from PIL import Image
 from pathlib import Path
 
+import numpy as np
+import openpyxl
 from _utils import norm
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
@@ -17,33 +16,95 @@ KRCG_JSON = "https://static.krcg.org/data/vtes.json"
 PHOTOS_DIR = ROOT / "images" / "scan"
 
 PHOTOS: dict[int, list[str | None]] = {
-    1: ["Aid from Bats", "Anonymous Freight", "Apportation",
-        "Armor of Vitality", "Arms Dealer", "Awe",
-        "Bribes", "Burning Wrath", "Burst of Sunlight"],
-    2: ["Carrion Crows", "Catatonic Fear", "Claws of the Dead",
-        "Command of the Beast", "Consanguineous Boon", "Cryptic Mission",
-        "Cryptic Rider", "Day Operation", "Decapitate"],
-    3: ["Dog Pack", "Earth Meld", "Enhanced Senses",
-        "Far Mastery", "Fleetness", "Flurry of Action",
-        "Forced Vigilance", "Force of Will", "Forgotten Labyrinth"],
-    4: ["Form of Mist", "Form of the Bat", "Freak Drive",
-        "Gather", "Grooming the Protégé", "Guard Dogs",
-        "Hidden Strength", "Hide the Mind", "Immortal Grapple"],
-    5: ["Iron Glare", "Leverage", "Lightning Reflexes",
-        "Lost in Crowds", "Magic of the Smith", "Masochism",
-        "Meat Cleaver", "Mesmerize", "Mind Numb"],
-    6: ["Mirror Walk", "My Enemy's Enemy", "Obedience",
-        "Papillon", "Perfect Clarity", "Permanent Vacation",
-        "Petra Resonance", "Psyche!", "Public Trust"],
-    7: ["Pulse of the Canaille", "Pursuit", "Quickness",
-        "Rapid Change", "Resist Earth's Grasp", "Restoration",
-        "Roundhouse", "Scorn of Adonis", "Scouting Mission"],
-    8: ["Seduction", "Side Strike", "Slam",
-        "Spying Mission", "Swallowed by the Night", "Telepathic Misdirection",
-        "Theft of Vitae", "Summoning, The", "Thing"],
-    9: ["Tier of Souls", "Voracious Vermin", "Walk of Flame",
-        "Weather Control", "Wolf Claws", None,
-        None, None, None],
+    1: [
+        "Aid from Bats",
+        "Anonymous Freight",
+        "Apportation",
+        "Armor of Vitality",
+        "Arms Dealer",
+        "Awe",
+        "Bribes",
+        "Burning Wrath",
+        "Burst of Sunlight",
+    ],
+    2: [
+        "Carrion Crows",
+        "Catatonic Fear",
+        "Claws of the Dead",
+        "Command of the Beast",
+        "Consanguineous Boon",
+        "Cryptic Mission",
+        "Cryptic Rider",
+        "Day Operation",
+        "Decapitate",
+    ],
+    3: [
+        "Dog Pack",
+        "Earth Meld",
+        "Enhanced Senses",
+        "Far Mastery",
+        "Fleetness",
+        "Flurry of Action",
+        "Forced Vigilance",
+        "Force of Will",
+        "Forgotten Labyrinth",
+    ],
+    4: [
+        "Form of Mist",
+        "Form of the Bat",
+        "Freak Drive",
+        "Gather",
+        "Grooming the Protégé",
+        "Guard Dogs",
+        "Hidden Strength",
+        "Hide the Mind",
+        "Immortal Grapple",
+    ],
+    5: [
+        "Iron Glare",
+        "Leverage",
+        "Lightning Reflexes",
+        "Lost in Crowds",
+        "Magic of the Smith",
+        "Masochism",
+        "Meat Cleaver",
+        "Mesmerize",
+        "Mind Numb",
+    ],
+    6: [
+        "Mirror Walk",
+        "My Enemy's Enemy",
+        "Obedience",
+        "Papillon",
+        "Perfect Clarity",
+        "Permanent Vacation",
+        "Petra Resonance",
+        "Psyche!",
+        "Public Trust",
+    ],
+    7: [
+        "Pulse of the Canaille",
+        "Pursuit",
+        "Quickness",
+        "Rapid Change",
+        "Resist Earth's Grasp",
+        "Restoration",
+        "Roundhouse",
+        "Scorn of Adonis",
+        "Scouting Mission",
+    ],
+    8: [
+        "Seduction",
+        "Side Strike",
+        "Slam",
+        "Spying Mission",
+        "Swallowed by the Night",
+        "Telepathic Misdirection",
+        "Theft of Vitae",
+        "Summoning, The",
+        "Thing",
+    ],
+    9: ["Tier of Souls", "Voracious Vermin", "Walk of Flame", "Weather Control", "Wolf Claws", None, None, None, None],
 }
 
 RARITY_TO_DIR = {

@@ -1,0 +1,29 @@
+# Ruff config for the scripts/ Python pipeline.
+# Kept deliberately narrow: the scripts are one-off build helpers, not a
+# library. The goal is to catch real errors (undefined names, bad imports,
+# dead code) without forcing stylistic churn.
+
+line-length = 120
+target-version = "py311"
+
+[lint]
+select = [
+  "E",   # pycodestyle errors
+  "F",   # pyflakes (undefined names, unused imports, etc.)
+  "I",   # isort (import order)
+  "UP",  # pyupgrade (use modern syntax when the target-version allows)
+  "B",   # flake8-bugbear (likely bugs)
+  "SIM", # flake8-simplify
+]
+ignore = [
+  "E501", # line too long — already capped at 120; leave to prettier-style judgement
+  "B008", # function call in default args — PIL APIs use it legitimately
+]
+
+[lint.per-file-ignores]
+# `load_krcg` downloads large JSON; keeping the full legacy interface is fine.
+"scripts/build_site_data.py" = ["B904"]
+
+[format]
+quote-style = "double"
+indent-style = "space"

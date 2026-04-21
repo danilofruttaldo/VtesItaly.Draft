@@ -28,8 +28,15 @@ jobs:
           node-version: "20"
           cache: npm
 
-      - name: Install dev tooling
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dev tooling (JS)
         run: npm ci
+
+      - name: Install dev tooling (Python)
+        run: python -m pip install --upgrade ruff
 
       - name: Prettier
         run: npm run format:check
@@ -37,7 +44,13 @@ jobs:
       - name: ESLint
         run: npm run lint
 
-      - name: Node tests
+      - name: Ruff (lint)
+        run: python -m ruff check scripts/ tests/
+
+      - name: Ruff (format check)
+        run: python -m ruff format --check scripts/ tests/
+
+      - name: Tests (Node + Python)
         run: npm test
 
       - name: Bump sw.js VERSION to release timestamp
@@ -58,6 +71,10 @@ jobs:
 
       - name: Minify app.js / core.mjs / styles.css / sw.js in the staged copy
         run: npm run minify
+
+      - name: Lighthouse CI (accessibility blocking, others informational)
+        run: npx --yes @lhci/cli@0.14.x autorun --config=.lighthouserc.json
+        continue-on-error: false
 
       - name: Enforce artifact size budget
         run: |

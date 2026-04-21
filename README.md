@@ -52,12 +52,13 @@ Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 
 Deploy runs via `.github/workflows/deploy.yml` on every push to `main`. The workflow:
 
-1. Installs dev tooling (`npm ci`) and runs `format:check`, `lint`, and `npm test` as a gate.
+1. Installs dev tooling (`npm ci`, `pip install ruff`) and runs `format:check`, `lint`, `ruff check`, `ruff format --check`, and `npm test` (JS + DOM smoke + Python) as a gate.
 2. Rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release.
 3. Stages only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}` — originals + `*-thumb.webp`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published.
 4. Minifies `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged copy (esbuild via `npm run minify`).
-5. Enforces a 60MB artifact size budget (fails the build if exceeded).
-6. Uploads the staged artifact to GitHub Pages.
+5. Runs Lighthouse CI against the staged copy — accessibility threshold blocks, perf/SEO/best-practices warn.
+6. Enforces a 60MB artifact size budget (fails the build if exceeded).
+7. Uploads the staged artifact to GitHub Pages.
 
 One-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at `https://<user>.github.io/<repo>/`.
 
@@ -80,15 +81,18 @@ The site itself ships no JS dependencies. The `package.json` is dev-only — it
 provides the hooks that CI and the pre-commit hook run.
 
 ```
-npm install          # one-time
-npm test             # node --test (no network, no DOM — tests assets/core.mjs)
-npm run lint         # ESLint over assets/, sw.js, tests/
-npm run format       # Prettier write
-npm run format:check # Prettier check
-npm run minify       # esbuild over _site/ (use only against a staged copy)
+npm install                            # one-time (JS dev tooling)
+pip install -r requirements-dev.txt    # one-time (Python lint/format)
+npm test                               # node --test (core.mjs) + jsdom DOM smoke + python unittest
+npm run lint                           # ESLint over assets/, sw.js, tests/
+npm run format                         # Prettier write
+npm run format:check                   # Prettier check
+npm run minify                         # esbuild over _site/ (use only against a staged copy)
+python -m ruff check scripts/ tests/   # Python lint
+python -m ruff format scripts/ tests/  # Python format
 ```
 
-Enable the pre-commit gate (prettier check + eslint + tests) once per clone:
+Enable the pre-commit gate (prettier + eslint + ruff + tests) once per clone:
 
 ```
 git config core.hooksPath .githooks
@@ -132,7 +136,9 @@ Cards with the DRAFT: clause use scans from the draft-era sets (KMW, LoB, LotN, 
 - **`convert_to_webp.py`** - convert all JPGs in `images/{crypt,library-*}` to WebP and update `cards.json` paths.
 - **`build_og_image.py`** - regenerate `assets/og-image.png` (1200×630 Open Graph preview). Run when branding changes.
 - **`build_thumbnails.py`** - emit `<name>-thumb.webp` (320 px wide) next to every card image, consumed by the grid `srcset`. Idempotent — skips thumbs newer than their source.
+- **`ocr_cleanup.py`** - pure `clean_draft_snippet()` module shared by `build_site_data.py` and `tests/test_ocr_cleanup.py`. Do not import openpyxl/PIL from here.
 - **`minify.mjs`** (Node) - minify `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged `_site/` copy via esbuild. CI runs it after staging; do not point it at the source `assets/` directory.
+- **`run-tests.mjs`** (Node) - cross-platform discovery wrapper: runs all `tests/*.test.mjs` via `node --test` and then `tests/test_*.py` via `python -m unittest`.
 - **`download_*.py`, `crop_*.py`** - original image-download / scan-cropping pipeline; depend on the xlsx.
 
 All scripts use paths relative to the repo root (via `__file__`) and can be launched from any working directory.

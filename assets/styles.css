@@ -1147,6 +1147,51 @@ input[type="search"]:focus {
   opacity: 1;
 }
 
+/* Service-worker update prompt, shown when a new version installs after the
+ * page has loaded. Kept visually distinct from the toast (which auto-hides)
+ * because the user has to act on it. */
+.sw-update {
+  position: fixed;
+  left: 50%;
+  bottom: calc(1rem + var(--safe-bottom));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.6rem 0.75rem 0.6rem 1rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow);
+  font-size: 0.9rem;
+  z-index: 600;
+  max-width: calc(100vw - 2rem);
+}
+.sw-update-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .sw-update-btn:hover {
+    background: var(--accent-hover);
+  }
+}
+.sw-update-dismiss {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+  line-height: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

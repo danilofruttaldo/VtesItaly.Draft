@@ -1,5 +1,6 @@
 """For library cards WITHOUT DRAFT clause, replace local image with the
 most recent printing available on KRCG."""
+
 import io
 import json
 import sys
@@ -7,9 +8,8 @@ import time
 import urllib.request
 from pathlib import Path
 
-from PIL import Image
-
 from _utils import norm
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 CARDS = ROOT / "data" / "cards.json"
@@ -60,7 +60,7 @@ def main() -> int:
         dest = ROOT / c["img"]
         if dry:
             best_set = ordered[0]
-            print(f"DRY  {c['name']:35} <- {best_set} ({sets_info[best_set][0].get('release_date','?')})")
+            print(f"DRY  {c['name']:35} <- {best_set} ({sets_info[best_set][0].get('release_date', '?')})")
             updated += 1
             continue
         # try in order until one URL works; final fallback = default card url
@@ -78,7 +78,7 @@ def main() -> int:
                     Image.open(io.BytesIO(data)).convert("RGB").save(dest, "WEBP", quality=85, method=6)
                 else:
                     dest.write_bytes(data)
-                date = sets_info.get(s, [{}])[0].get('release_date', '?') if s != "default" else "default"
+                date = sets_info.get(s, [{}])[0].get("release_date", "?") if s != "default" else "default"
                 print(f"OK   {c['name']:35} <- {s} ({date})")
                 updated += 1
                 success = True

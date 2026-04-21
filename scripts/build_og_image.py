@@ -6,6 +6,7 @@ Run manually when branding changes:
 
 Idempotent. Uses Pillow only (already in requirements.txt) so no extra deps.
 """
+
 from __future__ import annotations
 
 import sys
@@ -18,10 +19,10 @@ ICON = ROOT / "assets" / "apple-touch-icon.png"
 OUT = ROOT / "assets" / "og-image.png"
 
 WIDTH, HEIGHT = 1200, 630
-BG = (18, 18, 20, 255)          # matches --bg in styles.css
-ACCENT = (197, 37, 85, 255)     # matches --accent
-TEXT = (232, 232, 236, 255)     # matches --text
-MUTED = (176, 181, 189, 255)    # matches --muted
+BG = (18, 18, 20, 255)  # matches --bg in styles.css
+ACCENT = (197, 37, 85, 255)  # matches --accent
+TEXT = (232, 232, 236, 255)  # matches --text
+MUTED = (176, 181, 189, 255)  # matches --muted
 
 TITLE = "VTES Draft Cube"
 SUBTITLE = "Interactive gallery — 120 crypt + 261 library cards"
@@ -31,8 +32,8 @@ URL = "draft.vtesitaly.com"
 def _load_font(size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
     """Best-effort: try common system sans-serif fonts, fall back to PIL default."""
     candidates = [
-        "C:/Windows/Fonts/segoeuib.ttf",   # Segoe UI Bold (Windows)
-        "C:/Windows/Fonts/arialbd.ttf",    # Arial Bold (Windows)
+        "C:/Windows/Fonts/segoeuib.ttf",  # Segoe UI Bold (Windows)
+        "C:/Windows/Fonts/arialbd.ttf",  # Arial Bold (Windows)
         "/System/Library/Fonts/Helvetica.ttc",  # macOS
         "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",  # Linux
         "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
