@@ -1,6 +1,6 @@
 # vtesItaly.Draft
 
-Interactive web gallery for a VTES Draft Cube: 120 crypt + 261 library cards (381 total) with search, filters, card detail, OCR-detected DRAFT clause and mobile-friendly layout.
+Interactive web gallery for a VTES Draft Cube: 120 crypt + 262 library cards (382 total) with search, filters, card detail, OCR-detected DRAFT clause and mobile-friendly layout.
 
 ## Gallery (GitHub Pages)
 
@@ -145,6 +145,5 @@ All scripts use paths relative to the repo root (via `__file__`) and can be laun
 
 ## Notes
 
-- 1 card was not recovered: **Ventrue Directorate Assembly** (uncommon). The other 261 library + 120 crypt are present.
-- **DRAFT: clause** detected on 79/261 library cards (44 Common, 16 Uncommon, 19 Rare). KRCG does not expose this clause as data, so detection relies on OCR + manual review. Full breakdown in [docs/DRAFT_OPTION.md](docs/DRAFT_OPTION.md).
+- **DRAFT: clause** detected on 79/262 library cards (44 Common, 16 Uncommon, 19 Rare). KRCG does not expose this clause as data, so detection relies on OCR + manual review. Full breakdown in [docs/DRAFT_OPTION.md](docs/DRAFT_OPTION.md).
 - Some images recovered from user scans have lower quality than the KRCG ones because of the source resolution; the enhancement applied makes them readable but not perfect.

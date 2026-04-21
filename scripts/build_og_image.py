@@ -25,7 +25,7 @@ TEXT = (232, 232, 236, 255)  # matches --text
 MUTED = (176, 181, 189, 255)  # matches --muted
 
 TITLE = "VTES Draft Cube"
-SUBTITLE = "Interactive gallery — 120 crypt + 261 library cards"
+SUBTITLE = "Interactive gallery — 120 crypt + 262 library cards"
 URL = "draft.vtesitaly.com"
 
 
