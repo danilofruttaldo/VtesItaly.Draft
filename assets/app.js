@@ -333,7 +333,6 @@ function openModal(idx, pushHistory = true) {
   textEl.innerHTML = renderTextWithIcons(body);
   $("modal-counter").textContent = `${idx + 1} / ${state.filtered.length}`;
   $("modal-share").hidden = !(navigator.share || navigator.clipboard);
-  document.title = `${c.name} — ${BASE_TITLE}`;
   preloadNeighbors(idx);
 
   const modal = $("modal");
@@ -342,6 +341,10 @@ function openModal(idx, pushHistory = true) {
   document.body.style.overflow = "hidden";
   $("modal-close").focus();
 
+  // History first, then title: browsers snapshot document.title onto the
+  // outgoing entry when pushState runs. Setting the card title before
+  // pushState taints the previous entry, so history.back() on close restores
+  // the card title instead of BASE_TITLE.
   const hash = "#" + encodeURIComponent(c.name);
   if (firstOpen && pushHistory) {
     history.pushState({ modal: true }, "", hash);
@@ -351,6 +354,7 @@ function openModal(idx, pushHistory = true) {
   } else {
     history.replaceState(history.state, "", hash);
   }
+  document.title = `${c.name} — ${BASE_TITLE}`;
 }
 
 function stepModal(delta) {
@@ -380,6 +384,9 @@ function closeModal(fromPopState = false) {
 
 window.addEventListener("popstate", () => {
   if (state.modalIndex >= 0) closeModal(true);
+  // Belt-and-suspenders: some browsers restore the per-entry title on back
+  // navigation *after* popstate fires synchronously — reassert BASE_TITLE.
+  if (state.modalIndex < 0) document.title = BASE_TITLE;
 });
 
 /* --- Focus trap in modal ---
