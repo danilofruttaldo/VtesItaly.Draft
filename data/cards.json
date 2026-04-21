@@ -5273,6 +5273,21 @@
       "draft_text": ""
     },
     {
+      "name": "Ventrue Directorate Assembly",
+      "rarity": "Uncommon",
+      "count": 2,
+      "img": "images/library-uncommon/ventruedirectorateassembly.webp",
+      "type": "Master",
+      "cost": "",
+      "disciplines": [],
+      "clans": [
+        "Ventrue"
+      ],
+      "text": "Put this card in play. Each ready Ventrue gets an additional vote during political actions. This card may be burned by any minion as a Ⓓ action; Brujah get +1 stealth when attempting that action.",
+      "draft": false,
+      "draft_text": ""
+    },
+    {
       "name": "Vessel",
       "rarity": "Common",
       "count": 4,

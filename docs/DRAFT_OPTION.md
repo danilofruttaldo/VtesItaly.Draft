@@ -1,6 +1,6 @@
 # DRAFT option - library cards
 
-Detection via OCR (easyocr) over `images/library-*/`, refined with manual overrides in `data/draft_overrides.json`. Total 261 cards - **79 with DRAFT: clause**, 182 without.
+Detection via OCR (easyocr) over `images/library-*/`, refined with manual overrides in `data/draft_overrides.json`. Total 262 cards - **79 with DRAFT: clause**, 183 without.
 
 > Method: regex `\bDRAFT\s*[:;]` on the extracted text. Accuracy ~95-98% - some cards with low image quality can yield false negatives.
 
@@ -164,7 +164,7 @@ Detection via OCR (easyocr) over `images/library-*/`, refined with manual overri
 - Warrens, The
 
 
-### Uncommon (63)
+### Uncommon (64)
 
 - Abactor
 - Academic Hunting Ground
@@ -221,6 +221,7 @@ Detection via OCR (easyocr) over `images/library-*/`, refined with manual overri
 - Underbridge Stray
 - Underworld Hunting Ground
 - Uptown Hunting Ground
+- Ventrue Directorate Assembly
 - Voter Captivation
 - Vulnerability
 - Warzone Hunting Ground
