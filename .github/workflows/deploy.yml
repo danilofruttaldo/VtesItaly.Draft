@@ -14,14 +14,6 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-# Opt into Node.js 24 for JavaScript-based actions ahead of the June 2026
-# default switch, to silence the deprecation warning. This affects the
-# runtime the runner uses to execute action code (checkout, setup-node,
-# etc.), independently of the Node version setup-node installs for our
-# own scripts.
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -29,14 +21,14 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: npm
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -93,12 +85,12 @@ jobs:
             exit 1
           fi
 
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: "_site"
 
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
