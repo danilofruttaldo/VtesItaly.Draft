@@ -1,9 +1,13 @@
 /* VTES Draft Cube — service worker
  * Strategy:
- *   - HTML & data/cards.json: network-first, fallback to cache (keeps content fresh)
- *   - Card images & static assets: cache-first (images are content-addressed by filename)
+ *   - HTML, app.js, styles.css & data/cards.json: network-first, fallback to cache
+ *     (so code/data updates reach users without needing a VERSION bump)
+ *   - Card images, icons, manifest: cache-first (rarely change, content-addressed)
+ *
+ * VERSION is rewritten to a UTC timestamp by .github/workflows/deploy.yml on each
+ * release, so deployed clients always get a fresh cache key. Local dev keeps "v3".
  */
-const VERSION = "v1";
+const VERSION = "v3";
 const SHELL_CACHE = `shell-${VERSION}`;
 const RUNTIME_CACHE = `runtime-${VERSION}`;
 
@@ -11,6 +15,8 @@ const SHELL_FILES = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
+  "./assets/styles.css",
+  "./assets/app.js",
   "./assets/vtes.svg",
   "./assets/favicon.ico",
   "./assets/apple-touch-icon.png",
@@ -39,9 +45,10 @@ self.addEventListener("fetch", e => {
   if (url.origin !== self.location.origin) return;
 
   const isHtml = req.mode === "navigate" || req.destination === "document";
-  const isData = url.pathname.endsWith("/cards.json") || url.pathname.endsWith("/cards.json");
+  const isCode = req.destination === "script" || req.destination === "style";
+  const isData = url.pathname.endsWith("/cards.json");
 
-  if (isHtml || isData) {
+  if (isHtml || isCode || isData) {
     // network-first
     e.respondWith(
       fetch(req)

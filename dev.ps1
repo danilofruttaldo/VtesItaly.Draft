@@ -5,13 +5,8 @@ $Port = 8765
 $DevProcess = $null
 
 function Start-Dev {
-    param([switch]$NoBrowser)
     Write-Host "Starting static server on port $Port..." -ForegroundColor Cyan
     $proc = Start-Process powershell -ArgumentList "-NoExit", "-Command", "cd '$ProjectDir'; python -m http.server $Port" -PassThru
-    if (-not $NoBrowser) {
-        Start-Sleep -Milliseconds 800
-        Start-Process "http://localhost:$Port"
-    }
     return $proc
 }
 

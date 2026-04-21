@@ -1,0 +1,8 @@
+# Dependencies for the scripts/ pipeline.
+# Standard library modules (json, os, re, sys, time, io, shutil, argparse,
+# urllib.request, unicodedata, pathlib) are not listed.
+
+openpyxl>=3.1
+Pillow>=10.0
+numpy>=1.24
+easyocr>=1.7

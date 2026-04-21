@@ -39,19 +39,21 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 261 library cards (38
 
 **Installable (PWA)**
 - `manifest.webmanifest` allows install to home screen / desktop
-- `sw.js` service worker: network-first for HTML & `cards.json`, cache-first for images — works offline after first visit
+- `sw.js` service worker: network-first for HTML, `app.js`, `styles.css` and `cards.json`; cache-first for images/icons/manifest — works offline after first visit
+- Content-Security-Policy meta in `index.html` (`script-src 'self'`, no inline JS)
 
 Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 
 ### Publish on GitHub Pages
 
-**Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `/ (root)`**.
-The site will be served at `https://<user>.github.io/<repo>/`.
+Deploy runs via `.github/workflows/deploy.yml` on every push to `main`. The workflow rewrites `VERSION` in `sw.js` to a UTC timestamp before publishing, so cache-first assets (images, icons, manifest) are invalidated on each release automatically.
+
+One-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at `https://<user>.github.io/<repo>/`.
 
 ### Run locally
 
 ```powershell
-.\dev.ps1   # interactive menu: start/stop/restart, opens the browser, rebuild cards.json
+.\dev.ps1   # interactive menu: start/stop/restart, rebuild cards.json
 ```
 
 or manually:
@@ -65,10 +67,13 @@ python -m http.server 8765
 
 ```
 /
-├── index.html, .nojekyll, dev.ps1
+├── index.html, .nojekyll, dev.ps1, requirements.txt
 ├── manifest.webmanifest                # PWA manifest (installable)
 ├── sw.js                               # service worker (offline cache)
-├── assets/                             # favicon.ico, apple-touch-icon.png, vtes.svg
+├── .github/workflows/deploy.yml        # CI: bump sw.js VERSION + deploy Pages
+├── assets/
+│   ├── app.js, styles.css              # gallery logic & styles (extracted from HTML)
+│   └── favicon.ico, apple-touch-icon.png, vtes.svg
 ├── data/
 │   ├── cards.json                      # gallery data (consumed by index.html)
 │   ├── krcg_vtes.json                  # cached KRCG dataset (build input)

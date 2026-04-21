@@ -205,7 +205,15 @@ def build_krcg_indexes(data: list[dict]) -> tuple[dict, dict, dict]:
 
 
 def main() -> int:
-    wb = openpyxl.load_workbook(XLSX, data_only=True)
+    if not XLSX.exists():
+        print(f"ERROR: source workbook not found at {XLSX}", file=sys.stderr)
+        print("Restore 'data/Draft Cube.xlsx' locally before running this script.", file=sys.stderr)
+        return 1
+    try:
+        wb = openpyxl.load_workbook(XLSX, data_only=True)
+    except Exception as e:
+        print(f"ERROR: failed to open {XLSX}: {e}", file=sys.stderr)
+        return 1
     krcg = load_krcg()
     crypt_by_ng, crypt_by_n, lib_by_n = build_krcg_indexes(krcg)
     draft_ocr = json.loads(DRAFT_OCR.read_text(encoding="utf-8")) if DRAFT_OCR.exists() else {}
