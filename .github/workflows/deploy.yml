@@ -14,6 +14,14 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
+# Opt into Node.js 24 for JavaScript-based actions ahead of the June 2026
+# default switch, to silence the deprecation warning. This affects the
+# runtime the runner uses to execute action code (checkout, setup-node,
+# etc.), independently of the Node version setup-node installs for our
+# own scripts.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -25,7 +33,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
           cache: npm
 
       - uses: actions/setup-python@v5
