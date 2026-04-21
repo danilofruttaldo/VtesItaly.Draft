@@ -5278,7 +5278,7 @@
       "count": 2,
       "img": "images/library-uncommon/ventruedirectorateassembly.webp",
       "type": "Master",
-      "cost": "",
+      "cost": "2 pool",
       "disciplines": [],
       "clans": [
         "Ventrue"

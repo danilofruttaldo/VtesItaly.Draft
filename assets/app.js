@@ -45,6 +45,7 @@ const state = {
   filtered: [],
   modalIndex: -1,
   lastFocus: null,
+  hideModalTimer: 0,
 };
 
 const $ = (id) => document.getElementById(id);
@@ -241,21 +242,24 @@ $("active-filters").addEventListener("click", e => {
 });
 
 /* --- URL persistence of filter state --- */
+function buildFilterUrl() {
+  const p = new URLSearchParams();
+  if (state.q) p.set("q", state.q);
+  if (state.clan) p.set("clan", state.clan);
+  if (state.type) p.set("type", state.type);
+  if (state.sort) p.set("sort", state.sort);
+  if (state.kinds.size !== 2) p.set("kinds", [...state.kinds].join(","));
+  if (state.rarities.size !== 3) p.set("rarities", [...state.rarities].join(","));
+  const qs = p.toString();
+  return qs ? `${location.pathname}?${qs}` : location.pathname;
+}
+
 let urlSyncTimer;
 function syncUrl() {
   clearTimeout(urlSyncTimer);
   urlSyncTimer = setTimeout(() => {
     if (state.modalIndex >= 0) return;
-    const p = new URLSearchParams();
-    if (state.q) p.set("q", state.q);
-    if (state.clan) p.set("clan", state.clan);
-    if (state.type) p.set("type", state.type);
-    if (state.sort) p.set("sort", state.sort);
-    if (state.kinds.size !== 2) p.set("kinds", [...state.kinds].join(","));
-    if (state.rarities.size !== 3) p.set("rarities", [...state.rarities].join(","));
-    const qs = p.toString();
-    const url = qs ? `${location.pathname}?${qs}` : location.pathname;
-    history.replaceState(null, "", url + location.hash);
+    history.replaceState(null, "", buildFilterUrl() + location.hash);
   }, 200);
 }
 
@@ -320,6 +324,12 @@ function openModal(idx, pushHistory = true) {
   if (state.modalIndex === -1) state.lastFocus = document.activeElement;
   const firstOpen = state.modalIndex === -1;
   state.modalIndex = idx;
+  // Cancel pending hide from a previous close so a rapid reopen doesn't get
+  // invisibilized when the deferred `modal.hidden = true` fires.
+  if (state.hideModalTimer) {
+    clearTimeout(state.hideModalTimer);
+    state.hideModalTimer = 0;
+  }
   const c = state.filtered[idx];
   const img = $("modal-img");
   img.src = encodeURI(c.img);
@@ -368,17 +378,21 @@ function closeModal(fromPopState = false) {
   state.modalIndex = -1;
   const modal = $("modal");
   modal.classList.remove("open");
-  setTimeout(() => { modal.hidden = true; }, 180);
+  clearTimeout(state.hideModalTimer);
+  state.hideModalTimer = setTimeout(() => { modal.hidden = true; }, 180);
   document.body.style.overflow = "";
   document.title = BASE_TITLE;
   if (state.lastFocus && state.lastFocus.focus) {
     try { state.lastFocus.focus(); } catch (_) {}
   }
+  // Rebuild the URL from live state: location.search may still hold filter
+  // params from before a resetAll (e.g. deep-link into a filtered-out card
+  // or any filter change made while syncUrl's debounce was pending).
   if (!fromPopState) {
     if (history.state && history.state.modal) history.back();
-    else history.replaceState(null, "", location.pathname + location.search);
+    else history.replaceState(null, "", buildFilterUrl());
   } else {
-    history.replaceState(null, "", location.pathname + location.search);
+    history.replaceState(null, "", buildFilterUrl());
   }
 }
 
@@ -523,7 +537,13 @@ function showToast(msg) {
 
 /* --- Keyboard in modal --- */
 document.addEventListener("keydown", e => {
-  if (state.modalIndex < 0) return;
+  if (state.modalIndex < 0) {
+    // Escape dismisses the mobile filter drawer even when no modal is open.
+    if (e.key === "Escape" && advancedRow.classList.contains("open")) {
+      closeDrawer();
+    }
+    return;
+  }
   if (e.key === "Escape") closeModal();
   else if (e.key === "ArrowLeft") stepModal(-1);
   else if (e.key === "ArrowRight") stepModal(1);
