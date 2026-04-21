@@ -143,22 +143,41 @@ function sortItems(items, sort) {
   return arr;
 }
 
+// Reuse grid nodes across renders: card data is static, so we only rebuild the
+// element the first time the card is seen. Subsequent renders just reorder +
+// update dataset.idx, avoiding createElement + img re-decoding for hundreds of
+// cards on every keystroke.
+const cardNodeCache = new Map();
+
+function cardKey(c) { return c.kind + ":" + c.name; }
+
+function buildCardNode(c) {
+  const el = document.createElement("button");
+  el.type = "button";
+  el.className = "card";
+  el.setAttribute("role", "listitem");
+  el.setAttribute("aria-label", `${c.name}, ${c.count} copies`);
+  el.innerHTML = `
+    <img loading="lazy" decoding="async" width="160" height="223" src="${encodeURI(c.img)}" alt="${escapeHtml(c.name)}">
+    <span class="badge" aria-hidden="true">×${c.count}</span>
+    <span class="card-name" aria-hidden="true">${escapeHtml(c.name)}</span>
+  `;
+  return el;
+}
+
 function render() {
   state.filtered = computeFiltered();
   const grid = $("grid");
   const frag = document.createDocumentFragment();
   state.filtered.forEach((c, idx) => {
-    const el = document.createElement("button");
-    el.type = "button";
-    el.className = "card";
-    el.setAttribute("role", "listitem");
-    el.setAttribute("aria-label", `${c.name}, ${c.count} copies`);
-    el.dataset.idx = String(idx);
-    el.innerHTML = `
-      <img loading="lazy" decoding="async" width="160" height="223" src="${encodeURI(c.img)}" alt="${escapeHtml(c.name)}">
-      <span class="badge" aria-hidden="true">×${c.count}</span>
-      <span class="card-name" aria-hidden="true">${escapeHtml(c.name)}</span>
-    `;
+    const key = cardKey(c);
+    let el = cardNodeCache.get(key);
+    if (!el) {
+      el = buildCardNode(c);
+      cardNodeCache.set(key, el);
+    }
+    const idxStr = String(idx);
+    if (el.dataset.idx !== idxStr) el.dataset.idx = idxStr;
     frag.appendChild(el);
   });
   grid.replaceChildren(frag);
