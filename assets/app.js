@@ -5,6 +5,7 @@ import {
   renderDisc,
   renderTextWithIcons,
   cardKey,
+  thumbSrc,
   computeFiltered,
   countActiveFilters,
   buildFilterSearchParams,
@@ -48,8 +49,12 @@ function buildCardNode(c) {
   el.className = "card";
   el.setAttribute("role", "listitem");
   el.setAttribute("aria-label", `${c.name}, ${c.count} copies`);
+  const thumb = encodeURI(thumbSrc(c.img));
+  const full = encodeURI(c.img);
   el.innerHTML = `
-    <img loading="lazy" decoding="async" width="160" height="223" src="${encodeURI(c.img)}" alt="${escapeHtml(c.name)}">
+    <img loading="lazy" decoding="async" width="160" height="223"
+         src="${thumb}" srcset="${thumb} 1x, ${full} 2x"
+         alt="${escapeHtml(c.name)}">
     <span class="badge" aria-hidden="true">×${c.count}</span>
     <span class="card-name" aria-hidden="true">${escapeHtml(c.name)}</span>
   `;

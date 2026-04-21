@@ -25,7 +25,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
           cache: npm
 
       - name: Install dev tooling
@@ -56,6 +56,9 @@ jobs:
           cp -r images/crypt images/library-common images/library-uncommon images/library-rare _site/images/
           du -sh _site
 
+      - name: Minify app.js / core.mjs / styles.css / sw.js in the staged copy
+        run: npm run minify
+
       - name: Enforce artifact size budget
         run: |
           SIZE_MB=$(du -sm _site | cut -f1)
@@ -69,7 +72,7 @@ jobs:
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: '_site'
+          path: "_site"
 
       - name: Deploy to GitHub Pages
         id: deployment

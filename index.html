@@ -1,154 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<!-- viewport-fit=cover is required so env(safe-area-inset-*) returns non-zero
+  <head>
+    <meta charset="utf-8" />
+    <!-- viewport-fit=cover is required so env(safe-area-inset-*) returns non-zero
      on iOS notched devices; CSS safe-area padding depends on it. -->
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests">
-<meta name="theme-color" content="#121214">
-<meta name="description" content="VTES Draft Cube interactive gallery: browse the crypt and library cards with search, filters and card detail.">
-<link rel="canonical" href="https://draft.vtesitaly.com/">
-<link rel="icon" type="image/svg+xml" href="assets/vtes.svg">
-<link rel="icon" href="assets/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<!-- Open Graph / Twitter Card (shown when cards are shared via the in-app share button) -->
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="VTES Draft Cube">
-<meta property="og:title" content="VTES Draft Cube">
-<meta property="og:description" content="Interactive gallery for the VTES Draft Cube: browse the crypt and library cards with search, filters and card detail.">
-<meta property="og:url" content="https://draft.vtesitaly.com/">
-<meta property="og:image" content="https://draft.vtesitaly.com/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="VTES Draft Cube — interactive gallery for 120 crypt and 261 library cards.">
-<meta name="twitter:card" content="summary_large_image">
-<title>VTES Draft Cube</title>
-<link rel="stylesheet" href="assets/styles.css">
-<script type="module" src="assets/app.js"></script>
-</head>
-<body>
-  <a href="#grid" class="skip">Skip to cards</a>
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+    />
+    <meta name="theme-color" content="#121214" />
+    <meta
+      name="description"
+      content="VTES Draft Cube interactive gallery: browse the crypt and library cards with search, filters and card detail."
+    />
+    <link rel="canonical" href="https://draft.vtesitaly.com/" />
+    <link rel="icon" type="image/svg+xml" href="assets/vtes.svg" />
+    <link rel="icon" href="assets/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- Open Graph / Twitter Card (shown when cards are shared via the in-app share button) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="VTES Draft Cube" />
+    <meta property="og:title" content="VTES Draft Cube" />
+    <meta
+      property="og:description"
+      content="Interactive gallery for the VTES Draft Cube: browse the crypt and library cards with search, filters and card detail."
+    />
+    <meta property="og:url" content="https://draft.vtesitaly.com/" />
+    <meta property="og:image" content="https://draft.vtesitaly.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="VTES Draft Cube — interactive gallery for 120 crypt and 261 library cards."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>VTES Draft Cube</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script type="module" src="assets/app.js"></script>
+  </head>
+  <body>
+    <a href="#grid" class="skip">Skip to cards</a>
 
-  <div class="topbar" id="topbar">
-    <header>
-      <h1>VTES Draft Cube</h1>
-      <span class="sub" id="summary"></span>
-    </header>
+    <div class="topbar" id="topbar">
+      <header>
+        <h1>VTES Draft Cube</h1>
+        <span class="sub" id="summary"></span>
+      </header>
 
-    <div class="controls" role="search">
-      <div class="controls-row">
-        <input type="search" id="q" placeholder="Search by name, text, discipline, type..." autocomplete="off" aria-label="Search cards" enterkeyhint="search">
-        <button class="filters-toggle" id="filters-toggle" type="button" aria-expanded="false" aria-controls="controls-advanced">
-          <span>Filters</span>
-          <span class="active-count" id="filters-count" hidden>0</span>
-        </button>
-        <button class="chip chip-reset" id="reset" type="button" hidden>Reset</button>
-        <span class="count" id="count" aria-live="polite"></span>
-      </div>
-      <div class="controls-row controls-row-advanced" id="controls-advanced">
-        <div class="drawer-title">
-          <span>Filters</span>
-          <button class="drawer-close" id="drawer-close" type="button" aria-label="Close filters">×</button>
+      <div class="controls" role="search">
+        <div class="controls-row">
+          <input
+            type="search"
+            id="q"
+            placeholder="Search by name, text, discipline, type..."
+            autocomplete="off"
+            aria-label="Search cards"
+            enterkeyhint="search"
+          />
+          <button
+            class="filters-toggle"
+            id="filters-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="controls-advanced"
+          >
+            <span>Filters</span>
+            <span class="active-count" id="filters-count" hidden>0</span>
+          </button>
+          <button class="chip chip-reset" id="reset" type="button" hidden>Reset</button>
+          <span class="count" id="count" aria-live="polite"></span>
         </div>
-        <div class="drawer-section">
-          <span class="drawer-section-label">Card kind</span>
-          <div class="chip-group" role="group" aria-label="Card kind">
-            <button class="chip" data-kind="crypt" aria-pressed="true">Crypt</button>
-            <button class="chip" data-kind="library" aria-pressed="true">Library</button>
+        <div class="controls-row controls-row-advanced" id="controls-advanced">
+          <div class="drawer-title">
+            <span>Filters</span>
+            <button class="drawer-close" id="drawer-close" type="button" aria-label="Close filters">×</button>
           </div>
-        </div>
-        <div class="drawer-section">
-          <span class="drawer-section-label">Clan</span>
-          <div class="combobox" id="cb-clan" data-for="clan">
-            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="cb-clan-panel" aria-label="Filter by clan">
-              <span class="combobox-label ph">All clans</span>
-            </button>
-            <div class="combobox-panel" id="cb-clan-panel" role="listbox" aria-label="Clan options">
-              <div class="combobox-search">
-                <input type="search" placeholder="Search clan..." aria-label="Search clan" autocomplete="off">
+          <div class="drawer-section">
+            <span class="drawer-section-label">Card kind</span>
+            <div class="chip-group" role="group" aria-label="Card kind">
+              <button class="chip" data-kind="crypt" aria-pressed="true">Crypt</button>
+              <button class="chip" data-kind="library" aria-pressed="true">Library</button>
+            </div>
+          </div>
+          <div class="drawer-section">
+            <span class="drawer-section-label">Clan</span>
+            <div class="combobox" id="cb-clan" data-for="clan">
+              <button
+                class="combobox-btn"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="cb-clan-panel"
+                aria-label="Filter by clan"
+              >
+                <span class="combobox-label ph">All clans</span>
+              </button>
+              <div class="combobox-panel" id="cb-clan-panel" role="listbox" aria-label="Clan options">
+                <div class="combobox-search">
+                  <input type="search" placeholder="Search clan..." aria-label="Search clan" autocomplete="off" />
+                </div>
+                <div class="combobox-list"></div>
               </div>
-              <div class="combobox-list"></div>
             </div>
           </div>
-        </div>
-        <div class="drawer-section">
-          <span class="drawer-section-label">Library type</span>
-          <div class="combobox" id="cb-type" data-for="type">
-            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="cb-type-panel" aria-label="Filter by library type">
-              <span class="combobox-label ph">All types</span>
-            </button>
-            <div class="combobox-panel" id="cb-type-panel" role="listbox" aria-label="Type options">
-              <div class="combobox-search">
-                <input type="search" placeholder="Search type..." aria-label="Search type" autocomplete="off">
+          <div class="drawer-section">
+            <span class="drawer-section-label">Library type</span>
+            <div class="combobox" id="cb-type" data-for="type">
+              <button
+                class="combobox-btn"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="cb-type-panel"
+                aria-label="Filter by library type"
+              >
+                <span class="combobox-label ph">All types</span>
+              </button>
+              <div class="combobox-panel" id="cb-type-panel" role="listbox" aria-label="Type options">
+                <div class="combobox-search">
+                  <input type="search" placeholder="Search type..." aria-label="Search type" autocomplete="off" />
+                </div>
+                <div class="combobox-list"></div>
               </div>
-              <div class="combobox-list"></div>
+            </div>
+          </div>
+          <div class="drawer-section">
+            <span class="drawer-section-label">Library rarity</span>
+            <div class="chip-group" role="group" aria-label="Library rarity">
+              <button class="chip" data-rarity="Common" aria-pressed="true">Common</button>
+              <button class="chip" data-rarity="Uncommon" aria-pressed="true">Uncommon</button>
+              <button class="chip" data-rarity="Rare" aria-pressed="true">Rare</button>
+            </div>
+          </div>
+          <div class="drawer-section">
+            <span class="drawer-section-label">Sort</span>
+            <div class="combobox" id="cb-sort" data-for="sort">
+              <button
+                class="combobox-btn"
+                type="button"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="cb-sort-panel"
+                aria-label="Sort order"
+              >
+                <span class="combobox-label">Default</span>
+              </button>
+              <div class="combobox-panel" id="cb-sort-panel" role="listbox" aria-label="Sort options">
+                <div class="combobox-list"></div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="drawer-section">
-          <span class="drawer-section-label">Library rarity</span>
-          <div class="chip-group" role="group" aria-label="Library rarity">
-            <button class="chip" data-rarity="Common" aria-pressed="true">Common</button>
-            <button class="chip" data-rarity="Uncommon" aria-pressed="true">Uncommon</button>
-            <button class="chip" data-rarity="Rare" aria-pressed="true">Rare</button>
-          </div>
+      </div>
+      <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    </div>
+
+    <main>
+      <noscript>
+        <div class="empty">
+          This gallery requires JavaScript to filter and browse the cards. Please enable JavaScript in your browser.
         </div>
-        <div class="drawer-section">
-          <span class="drawer-section-label">Sort</span>
-          <div class="combobox" id="cb-sort" data-for="sort">
-            <button class="combobox-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="cb-sort-panel" aria-label="Sort order">
-              <span class="combobox-label">Default</span>
-            </button>
-            <div class="combobox-panel" id="cb-sort-panel" role="listbox" aria-label="Sort options">
-              <div class="combobox-list"></div>
-            </div>
-          </div>
+      </noscript>
+      <div class="active-filters" id="active-filters" aria-label="Active filters"></div>
+      <div class="grid" id="grid" role="list"></div>
+      <div class="empty" id="empty" hidden>
+        <div>No cards match your filters.</div>
+        <div class="empty-actions">
+          <button class="chip" type="button" id="empty-reset">Clear filters</button>
         </div>
       </div>
-    </div>
-    <div class="drawer-backdrop" id="drawer-backdrop"></div>
-  </div>
+      <div class="loading" id="loading">Loading cards...</div>
+    </main>
 
-  <main>
-    <noscript>
-      <div class="empty">
-        This gallery requires JavaScript to filter and browse the cards.
-        Please enable JavaScript in your browser.
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" hidden>
+      <button class="modal-close" id="modal-close" type="button" aria-label="Close">×</button>
+      <button class="modal-share" id="modal-share" type="button" aria-label="Share card" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"
+          />
+        </svg>
+      </button>
+      <span class="modal-counter" id="modal-counter" aria-hidden="true"></span>
+      <button class="modal-nav prev" id="modal-prev" type="button" aria-label="Previous card">‹</button>
+      <div class="modal-inner">
+        <img id="modal-img" alt="" width="360" height="503" />
+        <div class="modal-info">
+          <h2 id="modal-name"></h2>
+          <div class="tags" id="modal-tags"></div>
+          <div class="text" id="modal-text"></div>
+        </div>
       </div>
-    </noscript>
-    <div class="active-filters" id="active-filters" aria-label="Active filters"></div>
-    <div class="grid" id="grid" role="list"></div>
-    <div class="empty" id="empty" hidden>
-      <div>No cards match your filters.</div>
-      <div class="empty-actions">
-        <button class="chip" type="button" id="empty-reset">Clear filters</button>
-      </div>
+      <button class="modal-nav next" id="modal-next" type="button" aria-label="Next card">›</button>
     </div>
-    <div class="loading" id="loading">Loading cards...</div>
-  </main>
-
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" hidden>
-    <button class="modal-close" id="modal-close" type="button" aria-label="Close">×</button>
-    <button class="modal-share" id="modal-share" type="button" aria-label="Share card" hidden>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
-    </button>
-    <span class="modal-counter" id="modal-counter" aria-hidden="true"></span>
-    <button class="modal-nav prev" id="modal-prev" type="button" aria-label="Previous card">‹</button>
-    <div class="modal-inner">
-      <img id="modal-img" alt="" width="360" height="503">
-      <div class="modal-info">
-        <h2 id="modal-name"></h2>
-        <div class="tags" id="modal-tags"></div>
-        <div class="text" id="modal-text"></div>
-      </div>
-    </div>
-    <button class="modal-nav next" id="modal-next" type="button" aria-label="Next card">›</button>
-  </div>
-</body>
+  </body>
 </html>

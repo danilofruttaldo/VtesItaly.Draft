@@ -7,6 +7,7 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 261 library cards (38
 `index.html` is a single static page that displays all cards in one grid.
 
 **Filters & search**
+
 - search by name, text, discipline, type, clan
 - Crypt / Library kind toggles (segmented)
 - searchable combobox for clan, library type, and sort — with typeahead
@@ -17,6 +18,7 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 261 library cards (38
 - Reset button appears only when filters are active
 
 **Card detail (modal)**
+
 - image with click / double-tap to zoom
 - tags, KRCG card text, DRAFT: clause when present
 - navigation: arrows, keyboard (← →), touch swipe left/right, prev/next preload
@@ -28,6 +30,7 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 261 library cards (38
 - styled discipline badges (`[aus]`, `[PRE]`, ...) rendered as colored pills
 
 **Mobile & accessibility**
+
 - bottom-sheet filter drawer on phones (tap "Filters" to open) with backdrop
 - 44×44px minimum touch targets, iOS-safe font-size on inputs (no zoom)
 - `env(safe-area-inset-*)` respected for notch / home-indicator devices
@@ -38,6 +41,7 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 261 library cards (38
 - `prefers-reduced-motion` respected
 
 **Installable (PWA)**
+
 - `manifest.webmanifest` allows install to home screen / desktop
 - `sw.js` service worker: network-first for HTML, `app.js`, `styles.css` and `cards.json`; cache-first for images/icons/manifest — works offline after first visit
 - Strict Content-Security-Policy meta in `index.html` (`script-src 'self'`, `style-src 'self'` — no inline JS, no inline styles, `object-src 'none'`, `frame-ancestors 'none'`)
@@ -47,11 +51,13 @@ Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 ### Publish on GitHub Pages
 
 Deploy runs via `.github/workflows/deploy.yml` on every push to `main`. The workflow:
+
 1. Installs dev tooling (`npm ci`) and runs `format:check`, `lint`, and `npm test` as a gate.
 2. Rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release.
-3. Stages only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published.
-4. Enforces a 60MB artifact size budget (fails the build if exceeded).
-5. Uploads the staged artifact to GitHub Pages.
+3. Stages only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}` — originals + `*-thumb.webp`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published.
+4. Minifies `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged copy (esbuild via `npm run minify`).
+5. Enforces a 60MB artifact size budget (fails the build if exceeded).
+6. Uploads the staged artifact to GitHub Pages.
 
 One-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at `https://<user>.github.io/<repo>/`.
 
@@ -79,6 +85,7 @@ npm test             # node --test (no network, no DOM — tests assets/core.mjs
 npm run lint         # ESLint over assets/, sw.js, tests/
 npm run format       # Prettier write
 npm run format:check # Prettier check
+npm run minify       # esbuild over _site/ (use only against a staged copy)
 ```
 
 Enable the pre-commit gate (prettier check + eslint + tests) once per clone:
@@ -124,6 +131,8 @@ Cards with the DRAFT: clause use scans from the draft-era sets (KMW, LoB, LotN, 
 - **`refresh_non_draft_images.py`** - for cards without DRAFT clause, replace the local image with the most recent KRCG printing.
 - **`convert_to_webp.py`** - convert all JPGs in `images/{crypt,library-*}` to WebP and update `cards.json` paths.
 - **`build_og_image.py`** - regenerate `assets/og-image.png` (1200×630 Open Graph preview). Run when branding changes.
+- **`build_thumbnails.py`** - emit `<name>-thumb.webp` (320 px wide) next to every card image, consumed by the grid `srcset`. Idempotent — skips thumbs newer than their source.
+- **`minify.mjs`** (Node) - minify `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged `_site/` copy via esbuild. CI runs it after staging; do not point it at the source `assets/` directory.
 - **`download_*.py`, `crop_*.py`** - original image-download / scan-cropping pipeline; depend on the xlsx.
 
 All scripts use paths relative to the repo root (via `__file__`) and can be launched from any working directory.

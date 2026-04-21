@@ -3,14 +3,7 @@ import globals from "globals";
 
 export default [
   {
-    ignores: [
-      "node_modules/**",
-      "_site/**",
-      "data/**",
-      "images/**",
-      "docs/**",
-      "scripts/**",
-    ],
+    ignores: ["node_modules/**", "_site/**", "data/**", "images/**", "docs/**", "scripts/**"],
   },
   js.configs.recommended,
   {

@@ -10,6 +10,7 @@ import {
   renderDisc,
   renderTextWithIcons,
   cardKey,
+  thumbSrc,
   matchSearch,
   sortItems,
   computeFiltered,
@@ -94,6 +95,19 @@ test("renderTextWithIcons returns empty string for empty input", () => {
 test("cardKey combines kind and name", () => {
   assert.equal(cardKey({ kind: "crypt", name: "Alice" }), "crypt:Alice");
   assert.equal(cardKey({ kind: "library", name: "Govern the Unaligned" }), "library:Govern the Unaligned");
+});
+
+/* --- thumbSrc --- */
+
+test("thumbSrc appends -thumb before the .webp extension", () => {
+  assert.equal(thumbSrc("images/crypt/alice.webp"), "images/crypt/alice-thumb.webp");
+  assert.equal(thumbSrc("images/library-rare/govern.webp"), "images/library-rare/govern-thumb.webp");
+});
+
+test("thumbSrc leaves non-webp paths untouched", () => {
+  // Defensive: build_thumbnails.py only emits webp siblings, so anything else
+  // means the caller passed something unexpected.
+  assert.equal(thumbSrc("images/crypt/alice.png"), "images/crypt/alice.png");
 });
 
 /* --- matchSearch --- */
