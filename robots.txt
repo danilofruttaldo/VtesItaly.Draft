@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Build inputs and Python pipeline are not shipped by the CI workflow
+# (.github/workflows/deploy.yml), so no Disallow entries are needed.

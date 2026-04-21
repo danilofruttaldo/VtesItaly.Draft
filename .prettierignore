@@ -1,0 +1,8 @@
+node_modules/
+_site/
+data/cards.json
+data/krcg_vtes.json
+data/draft_ocr.json
+images/
+docs/
+*.xlsx

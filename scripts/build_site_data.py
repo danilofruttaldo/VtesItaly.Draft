@@ -1,4 +1,5 @@
 """Generate cards.json for the GitHub Pages gallery from Draft Cube.xlsx."""
+import argparse
 import json
 import os
 import re
@@ -44,9 +45,10 @@ def find_crypt(stem_index: dict[str, str], name: str) -> str | None:
     return None
 
 
-def load_krcg() -> list[dict]:
-    if not KRCG_CACHE.exists():
-        print(f"Downloading KRCG data → {KRCG_CACHE.name}")
+def load_krcg(*, force_refresh: bool = False) -> list[dict]:
+    if force_refresh or not KRCG_CACHE.exists():
+        action = "Refreshing" if KRCG_CACHE.exists() else "Downloading"
+        print(f"{action} KRCG data → {KRCG_CACHE.name}")
         req = urllib.request.Request(KRCG_URL, headers={"User-Agent": "Vtes.Draft/1.0"})
         with urllib.request.urlopen(req, timeout=60) as resp:
             KRCG_CACHE.write_bytes(resp.read())
@@ -190,7 +192,15 @@ def build_krcg_indexes(data: list[dict]) -> tuple[dict, dict, dict]:
     return crypt_by_ng, crypt_by_n, lib_by_n
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--refresh-krcg",
+        action="store_true",
+        help="Re-download data/krcg_vtes.json from KRCG even if the local cache exists.",
+    )
+    args = parser.parse_args(argv)
+
     if not XLSX.exists():
         print(f"ERROR: source workbook not found at {XLSX}", file=sys.stderr)
         print("Restore 'data/Draft Cube.xlsx' locally before running this script.", file=sys.stderr)
@@ -200,7 +210,7 @@ def main() -> int:
     except Exception as e:
         print(f"ERROR: failed to open {XLSX}: {e}", file=sys.stderr)
         return 1
-    krcg = load_krcg()
+    krcg = load_krcg(force_refresh=args.refresh_krcg)
     crypt_by_ng, crypt_by_n, lib_by_n = build_krcg_indexes(krcg)
     draft_ocr = json.loads(DRAFT_OCR.read_text(encoding="utf-8")) if DRAFT_OCR.exists() else {}
     draft_overrides: dict[str, str] = {}

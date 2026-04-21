@@ -47,9 +47,11 @@ Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 ### Publish on GitHub Pages
 
 Deploy runs via `.github/workflows/deploy.yml` on every push to `main`. The workflow:
-1. Rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release.
-2. Stages only the runtime files under `_site/` (HTML, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published.
-3. Uploads the staged artifact to GitHub Pages.
+1. Installs dev tooling (`npm ci`) and runs `format:check`, `lint`, and `npm test` as a gate.
+2. Rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release.
+3. Stages only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published.
+4. Enforces a 60MB artifact size budget (fails the build if exceeded).
+5. Uploads the staged artifact to GitHub Pages.
 
 One-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at `https://<user>.github.io/<repo>/`.
 
@@ -64,6 +66,25 @@ or manually:
 ```
 python -m http.server 8765
 # open http://localhost:8765
+```
+
+### JS tooling (lint / format / test)
+
+The site itself ships no JS dependencies. The `package.json` is dev-only — it
+provides the hooks that CI and the pre-commit hook run.
+
+```
+npm install          # one-time
+npm test             # node --test (no network, no DOM — tests assets/core.mjs)
+npm run lint         # ESLint over assets/, sw.js, tests/
+npm run format       # Prettier write
+npm run format:check # Prettier check
+```
+
+Enable the pre-commit gate (prettier check + eslint + tests) once per clone:
+
+```
+git config core.hooksPath .githooks
 ```
 
 ## Layout
@@ -99,9 +120,10 @@ Cards with the DRAFT: clause use scans from the draft-era sets (KMW, LoB, LotN, 
 
 - **`detect_draft_ocr.py`** - run easyocr on every `images/library-*/*.webp` to detect the **DRAFT:** clause; writes `data/draft_ocr.json`. Idempotent; pass `--force` to redo.
 - **`build_draft_report.py`** - generate `docs/DRAFT_OPTION.md` from `data/cards.json`.
-- **`build_site_data.py`** - rebuild `data/cards.json` from the source xlsx (not in repo) joined with KRCG data + DRAFT OCR + manual overrides. Requires the original `data/Draft Cube.xlsx`; restore it locally if you need to regenerate.
+- **`build_site_data.py`** - rebuild `data/cards.json` from the source xlsx (not in repo) joined with KRCG data + DRAFT OCR + manual overrides. Requires the original `data/Draft Cube.xlsx`; restore it locally if you need to regenerate. Pass `--refresh-krcg` to force re-download the KRCG cache.
 - **`refresh_non_draft_images.py`** - for cards without DRAFT clause, replace the local image with the most recent KRCG printing.
 - **`convert_to_webp.py`** - convert all JPGs in `images/{crypt,library-*}` to WebP and update `cards.json` paths.
+- **`build_og_image.py`** - regenerate `assets/og-image.png` (1200×630 Open Graph preview). Run when branding changes.
 - **`download_*.py`, `crop_*.py`** - original image-download / scan-cropping pipeline; depend on the xlsx.
 
 All scripts use paths relative to the repo root (via `__file__`) and can be launched from any working directory.

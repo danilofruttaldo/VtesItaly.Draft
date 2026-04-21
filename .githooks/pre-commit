@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# vtesItaly.Draft — pre-commit gate.
+#
+# Enable once per clone:
+#   git config core.hooksPath .githooks
+#
+# Runs Prettier (check only), ESLint, and the test suite. Fails fast.
+
+set -e
+
+if [ -z "$(command -v npx)" ]; then
+  echo "pre-commit: npx not found — skipping JS checks" >&2
+  exit 0
+fi
+
+if [ ! -d node_modules ]; then
+  echo "pre-commit: node_modules missing — run 'npm install' first" >&2
+  exit 1
+fi
+
+echo "pre-commit: prettier --check"
+npx prettier --check assets/ sw.js tests/
+
+echo "pre-commit: eslint"
+npx eslint assets/ sw.js tests/ --max-warnings=0
+
+echo "pre-commit: node --test"
+node --test "tests/**/*.test.mjs"
