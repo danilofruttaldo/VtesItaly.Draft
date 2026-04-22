@@ -1,4 +1,8 @@
-name: Deploy to GitHub Pages
+name: CI
+
+# Single workflow per commit: ci → lighthouse → deploy.
+# Lighthouse and deploy reuse the _site/ artifact uploaded by `ci`, so the
+# whole build pipeline runs only once per push.
 
 on:
   push:
@@ -7,89 +11,111 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  ci:
+    # Gate that runs on every push: lint/format/typecheck/test/stage/minify/budget.
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v5
         with:
-          node-version: "22"
+          node-version: 22
           cache: npm
 
       - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
 
-      - name: Install dev tooling (JS)
-        run: npm ci
+      - run: npm ci
+      - run: python -m pip install --upgrade ruff
 
-      - name: Install dev tooling (Python)
-        run: python -m pip install --upgrade ruff
+      - run: npm audit --omit=dev
 
-      - name: Prettier
-        run: npm run format:check
-
-      - name: ESLint
-        run: npm run lint
-
-      - name: Ruff (lint)
-        run: python -m ruff check scripts/ tests/
-
-      - name: Ruff (format check)
-        run: python -m ruff format --check scripts/ tests/
-
-      - name: Tests (Node + Python)
-        run: npm test
+      - run: npm run lint
+      - run: npm run format:check
+      - run: python -m ruff check scripts/ tests/
+      - run: python -m ruff format --check scripts/ tests/
+      - run: npm test
 
       - name: Bump sw.js VERSION to release timestamp
-        run: |
-          ts=$(date -u +%Y%m%d-%H%M%S)
-          sed -i -E "s/^const VERSION = \".*\";$/const VERSION = \"$ts\";/" sw.js
-          grep '^const VERSION' sw.js
+        run: node scripts/stamp-sw.mjs
 
       - name: Stage site (exclude scripts, build inputs, docs)
-        run: |
-          mkdir -p _site/data _site/images
-          cp index.html manifest.webmanifest sw.js robots.txt .nojekyll _site/
-          [ -f CNAME ] && cp CNAME _site/ || true
-          cp -r assets _site/
-          cp data/cards.json _site/data/
-          cp -r images/crypt images/library-common images/library-uncommon images/library-rare _site/images/
-          du -sh _site
+        run: node scripts/stage-site.mjs
 
       - name: Minify app.js / core.mjs / styles.css / sw.js in the staged copy
         run: npm run minify
 
-      - name: Lighthouse CI (accessibility blocking, others informational)
-        run: npx --yes @lhci/cli@0.14.x autorun --config=.lighthouserc.json
-        continue-on-error: false
-
       - name: Enforce artifact size budget
         run: |
           SIZE_MB=$(du -sm _site | cut -f1)
-          echo "Deploy artifact: ${SIZE_MB}MB"
+          echo "_site artifact: ${SIZE_MB}MB"
           if [ "$SIZE_MB" -gt 60 ]; then
             echo "::error::_site is ${SIZE_MB}MB, above the 60MB budget. Review images/ or compress further."
             exit 1
           fi
 
+      - name: Upload _site artifact (shared with lighthouse + deploy)
+        uses: actions/upload-artifact@v7
+        with:
+          name: _site
+          path: _site
+          retention-days: 1
+
+  lighthouse:
+    # Lighthouse is a deploy gate (accessibility blocking). Reuses the _site
+    # artifact from ci so no rebuild is needed; keeping it separate means a
+    # lighthouse rerun doesn't redo lint/test/stage/minify.
+    needs: ci
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Download _site artifact from ci
+        uses: actions/download-artifact@v8
+        with:
+          name: _site
+          path: _site
+
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: .lighthouserc.json
+          uploadArtifacts: true
+
+  deploy:
+    needs: [ci, lighthouse]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Download _site artifact from ci
+        uses: actions/download-artifact@v8
+        with:
+          name: _site
+          path: _site
+
       - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: "_site"
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment

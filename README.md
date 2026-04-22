@@ -50,15 +50,13 @@ Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 
 ### Publish on GitHub Pages
 
-Deploy runs via `.github/workflows/deploy.yml` on every push to `main`. The workflow:
+Deploy runs via `.github/workflows/deploy.yml` on every push to `main` (or manual `workflow_dispatch`). The workflow has three sequential jobs sharing a single `_site/` artifact:
 
-1. Installs dev tooling (`npm ci`, `pip install ruff`) and runs `format:check`, `lint`, `ruff check`, `ruff format --check`, and `npm test` (JS + DOM smoke + Python) as a gate.
-2. Rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release.
-3. Stages only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}` — originals + `*-thumb.webp`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published.
-4. Minifies `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged copy (esbuild via `npm run minify`).
-5. Runs Lighthouse CI against the staged copy — accessibility threshold blocks, perf/SEO/best-practices warn.
-6. Enforces a 60MB artifact size budget (fails the build if exceeded).
-7. Uploads the staged artifact to GitHub Pages.
+1. **`ci`** — installs dev tooling (`npm ci`, `pip install ruff`, both cached) and runs `npm audit --omit=dev` → `lint` → `format:check` → `ruff check` → `ruff format --check` → `npm test` (JS + DOM smoke + Python) as a gate. Then `scripts/stamp-sw.mjs` rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release; `scripts/stage-site.mjs` copies only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}` — originals + `*-thumb.webp`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published. Finally `npm run minify` shrinks `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged copy (esbuild), a 60 MB size guard runs, and `_site/` is uploaded as an artifact.
+2. **`lighthouse`** — depends on `ci`. Downloads the `_site/` artifact and runs Lighthouse CI from `.lighthouserc.json` against it. Accessibility threshold blocks; perf/SEO/best-practices warn.
+3. **`deploy`** — depends on both `ci` and `lighthouse`. Downloads the same `_site/` artifact and publishes it to GitHub Pages. No re-build.
+
+Workflow-level `concurrency: pages` serialises overlapping pushes; `permissions: contents: read` scopes the default token to the minimum (the `deploy` job elevates to `pages: write` + `id-token: write` only for itself). Single workflow per push: one CI gate, one Lighthouse audit, one deploy — never duplicated.
 
 One-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at `https://<user>.github.io/<repo>/`.
 
@@ -138,6 +136,8 @@ Cards with the DRAFT: clause use scans from the draft-era sets (KMW, LoB, LotN, 
 - **`build_thumbnails.py`** - emit `<name>-thumb.webp` (320 px wide) next to every card image, consumed by the grid `srcset`. Idempotent — skips thumbs newer than their source.
 - **`ocr_cleanup.py`** - pure `clean_draft_snippet()` module shared by `build_site_data.py` and `tests/test_ocr_cleanup.py`. Do not import openpyxl/PIL from here.
 - **`minify.mjs`** (Node) - minify `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged `_site/` copy via esbuild. CI runs it after staging; do not point it at the source `assets/` directory.
+- **`stamp-sw.mjs`** (Node) - rewrite `const VERSION` in `sw.js` to a UTC timestamp (`YYYYMMDD-HHMMSS`). CI runs it before staging so each release invalidates cache-first assets. Fails loud if the `VERSION` line can't be matched.
+- **`stage-site.mjs`** (Node) - build the `_site/` deploy tree (mkdir + recursive copy of runtime files only) and print the staged size. Replaces the previous inline bash in the workflow; use it locally to reproduce the exact deploy layout.
 - **`run-tests.mjs`** (Node) - cross-platform discovery wrapper: runs all `tests/*.test.mjs` via `node --test` and then `tests/test_*.py` via `python -m unittest`.
 - **`download_*.py`, `crop_*.py`** - original image-download / scan-cropping pipeline; depend on the xlsx.
 
