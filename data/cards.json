@@ -2085,7 +2085,7 @@
       "clans": [],
       "text": "+3 stealth equip action. Requires a vampire.\nEquip this vampire with a non-location equipment card from your hand (requirements and cost apply as normal).",
       "draft": true,
-      "draft_text": "DRAFT: As above; but ignore the requirements of the equipment."
+      "draft_text": "DRAFT: As above, but ignore requirements of the equipment."
     },
     {
       "name": "Apportation",
@@ -2100,7 +2100,7 @@
       "clans": [],
       "text": "[tha] Press, only usable to continue combat.\n[THA] Maneuver.",
       "draft": true,
-      "draft_text": "DRAFT: [aus] Strike: dodge."
+      "draft_text": "DRAFT: [aus] Dodge."
     },
     {
       "name": "Aranthebes, the Immortal",
@@ -2156,7 +2156,7 @@
       "clans": [],
       "text": "[for] Prevent 3 damage.\n[FOR] As above, and if any of the damage was from the opposing minion's melee weapon, that weapon is destroyed.",
       "draft": true,
-      "draft_text": "DRAFT: [pro] Prevent 3 non-aggravated damage."
+      "draft_text": "DRAFT: [qui] As [for] above."
     },
     {
       "name": "Arms Dealer",
@@ -2257,7 +2257,7 @@
       "clans": [],
       "text": "Only usable during the polling step of a political action.\n[pre] This vampire gets +X+1 votes.\n[PRE] This vampire gets +2X+1 votes.",
       "draft": true,
-      "draft_text": "DRAFT: [pot] This vampire gets +X votes."
+      "draft_text": "DRAFT: [pot] This vampire gains X votes."
     },
     {
       "name": "Bait and Switch",
@@ -2354,7 +2354,7 @@
       "clans": [],
       "text": "[pro] Strike: 2 aggravated damage.\n[PRO] Strike: 2R aggravated damage.",
       "draft": true,
-      "draft_text": "DRAFT: Only usable in combat with an ally or a younger vampire. Strike: 2 aggravated damage."
+      "draft_text": "DRAFT: Only usable in combat with an ally or younger vampire. Strike: 2 aggravated damage."
     },
     {
       "name": "Bonding",
@@ -2438,7 +2438,7 @@
       "clans": [],
       "text": "[pot] Strike: hand strike at +1 damage, aggravated.\n[POT] Strike: hand strike at +2 damage, aggravated.",
       "draft": true,
-      "draft_text": "DRAFT: [ani] As [pot] above."
+      "draft_text": "DRAFT: [cel] As [pot] above."
     },
     {
       "name": "Burst of Sunlight",
@@ -2481,7 +2481,7 @@
       "clans": [],
       "text": "Only usable before range is determined. A vampire can play only one Carrion Crows each combat.\n[ani] This combat, the opposing minion takes 1R environmental damage each round during normal strike resolution.\n[ANI] As above, but for 2R environmental damage.",
       "draft": true,
-      "draft_text": "DRAFT: [pre] As [ani] above; but only for this round."
+      "draft_text": "DRAFT: [pot] As [ani] above, but only for this round."
     },
     {
       "name": "Catatonic Fear",
@@ -2584,7 +2584,7 @@
       "clans": [],
       "text": "[pro] Damage from this vampire's hand strikes is aggravated this round.\n[PRO] Maneuver.",
       "draft": true,
-      "draft_text": "DRAFT: [ani] Maneuver."
+      "draft_text": "DRAFT: [vic] As [pro] above."
     },
     {
       "name": "Cloak the Gathering",
@@ -2627,7 +2627,7 @@
       "clans": [],
       "text": "Only usable during a bleed action.\n[dom] +1 bleed (limited).\n[DOM] +1 bleed that does not count against the limit.",
       "draft": true,
-      "draft_text": "DRAFT: [pre] +1 bleed (limited)."
+      "draft_text": "DRAFT: [obt] +1 stealth."
     },
     {
       "name": "Concealed Weapon",
@@ -2752,7 +2752,7 @@
       "clans": [],
       "text": "Only usable on a successful referendum.\nThe next referendum a vampire you control calls this turn passes automatically.",
       "draft": true,
-      "draft_text": "DRAFT: The next referendum vampire you control calls before the end ofyour next turn passes automatically."
+      "draft_text": "DRAFT: The next referendum a vampire you control calls before the end of your next turn passes automatically."
     },
     {
       "name": "Daring The Dawn",
@@ -3032,8 +3032,8 @@
       ],
       "clans": [],
       "text": "[obf] +1 stealth.\n[OBF] Only usable if a minion attempts to block. That attempt fails and the blocking minion cannot attempt to block this action again.",
-      "draft": false,
-      "draft_text": ""
+      "draft": true,
+      "draft_text": "DRAFT: [dem] +1 stealth."
     },
     {
       "name": "Elder Library",
@@ -3103,8 +3103,8 @@
       ],
       "clans": [],
       "text": "[obf] +1 stealth.\n[OBF] As above, and minions who attempt to block this action and fail become locked before action resolution.",
-      "draft": false,
-      "draft_text": ""
+      "draft": true,
+      "draft_text": "DRAFT: This acting vampire burns 2 blood to get +1 stealth."
     },
     {
       "name": "Fake Out",
@@ -3145,7 +3145,7 @@
       "clans": [],
       "text": "+1 stealth action.\n[dom] Ⓓ Steal a retainer controlled by another vampire.\n[DOM] Ⓓ Steal an ally controlled by another Methuselah.",
       "draft": true,
-      "draft_text": "DRAFT: Search your library and/or ash heap for an ally or retainer card, reveal it and move it to your hand."
+      "draft_text": "DRAFT: Search your library for a retainer or ally and move that card to your hand (discard afterward)."
     },
     {
       "name": "Ferraille",
@@ -3231,7 +3231,7 @@
       "clans": [],
       "text": "[cel] Ⓓ Bleed. If the bleed is successful, draw two cards (discard afterward).\n[CEL] Ⓓ Bleed. If the bleed is successful, this vampire unlocks.",
       "draft": true,
-      "draft_text": "DRAFT: +1 stealth action. Discard Up to three cards."
+      "draft_text": "DRAFT: +1 stealth action. Discard up to three cards (draw afterward)."
     },
     {
       "name": "Force of Personality",
@@ -3261,7 +3261,7 @@
       "clans": [],
       "text": "Only usable by a locked vampire.\n[for] Ⓓ Bleed with +1 bleed. After resolution, this vampire takes 2 unpreventable aggravated damage even if the action is blocked.\n[FOR] As above, but with +2 bleed, and the acting vampire takes only 1 unpreventable aggravated damage.",
       "draft": true,
-      "draft_text": "DRAFT: [aus] +1 stealth action: This vampire unlocks."
+      "draft_text": "DRAFT: [aus] +1 stealth action. This vampire untaps."
     },
     {
       "name": "Forced Vigilance",
@@ -3448,7 +3448,7 @@
       "clans": [],
       "text": "Only usable by a locked vampire during a bleed action directed at you.\n[ani] Unlock this vampire.\n[ANI] As above, with 1 optional maneuver during the resulting combat if this vampire blocks.",
       "draft": true,
-      "draft_text": "DRAFT: This vampire wakes."
+      "draft_text": "DRAFT: This reacting vampire can play reaction cards and attempt to block as though untapped until the current action is concluded."
     },
     {
       "name": "Guardian Angel",
@@ -3586,7 +3586,7 @@
       "clans": [],
       "text": "[obf] [COMBAT] Cancel a combat card requiring Auspex [aus] as it is played, and its cost is not paid.\n[OBF] [ACTION MODIFIER] Cancel a reaction card requiring Auspex as it is played, and its cost is not paid.",
       "draft": true,
-      "draft_text": "DRAFT: [cel] [combat] Cancel a combat card requiring Presence [pre] as it is played."
+      "draft_text": "DRAFT: [obf] [action modifier] +1 stealth"
     },
     {
       "name": "Hunger of Marduk",
@@ -3824,7 +3824,7 @@
       "clans": [],
       "text": "Only usable during a bleed action.\nBurn the Edge to get +1 bleed that does not count against the limit. You cannot gain the Edge this action. If you would get the Edge, it is burned instead.",
       "draft": true,
-      "draft_text": "DRAFT: [dom] +1 stealth."
+      "draft_text": "DRAFT: [dom] +1 stealth"
     },
     {
       "name": "Life in the City",
@@ -3899,7 +3899,7 @@
       "clans": [],
       "text": "+1 stealth action.\n[tha] Search your library for an equipment card and equip this vampire with it (requirements and cost apply as normal; shuffle afterward).\n[THA] As above, but this is a +3 stealth action.",
       "draft": true,
-      "draft_text": "DRAFT: [tha] As [tha] above; but you can also search your ash heap."
+      "draft_text": "DRAFT: As [tha] above."
     },
     {
       "name": "Majesty",
@@ -4140,7 +4140,7 @@
       "clans": [],
       "text": "[aus] +1 intercept.\n[AUS] Only usable if a minion controlled by your predator is bleeding you, after blocks are declined. Not usable if there are only two Methuselahs left. Lock this reacting vampire. Change the target of the bleed to your predator's predator (that Methuselah can attempt to block).",
       "draft": true,
-      "draft_text": "DRAFT: Requires a ready vampire. As [AUS] above but not usable if an older vampire is acting."
+      "draft_text": "DRAFT: Requires a ready vampire. As [AUS] above, but not useable on an older vampire."
     },
     {
       "name": "New Carthage",
@@ -4200,7 +4200,7 @@
       "clans": [],
       "text": "Only usable if this vampire is about to enter combat with an acting younger vampire.\n[dom] Unlock the acting vampire and end the action. (Do not lock this vampire if they are blocking.) The acting vampire cannot perform the same action this turn.\n[DOM] As above, but do not unlock the acting vampire.",
       "draft": true,
-      "draft_text": "DRAFT: As [dom] above; but do not replace until your unlock phase."
+      "draft_text": "DRAFT: As [dom] above, but do not replace until your untap phase."
     },
     {
       "name": "On the Qui Vive",
@@ -4323,7 +4323,7 @@
       "clans": [],
       "text": "Choose a ready ally. Successful referendum means the chosen ally is removed from the game.",
       "draft": true,
-      "draft_text": "DRAFT: As above, but choose vampire with capacity 3 or less to remove from the game."
+      "draft_text": "DRAFT: As above, but chose a vampire with a capacity below 4 to remove from the game."
     },
     {
       "name": "Petra Resonance",
@@ -4425,8 +4425,8 @@
       ],
       "clans": [],
       "text": "[aus] +1 intercept.\n[AUS] As above, and this vampire can prevent 1 damage during the first round of the resulting combat if they block.",
-      "draft": false,
-      "draft_text": ""
+      "draft": true,
+      "draft_text": "DRAFT: [dem] +1 intercept."
     },
     {
       "name": "Preternatural Strength",
@@ -4512,7 +4512,7 @@
       "clans": [],
       "text": "[pre] Ⓓ Bleed with +2 bleed.\n[PRE] As above, and if the bleed is successful (for 1 or more), add 1 blood to a vampire in your uncontrolled region.",
       "draft": true,
-      "draft_text": "DRAFT: [obf] +1 stealth action. D Bleed."
+      "draft_text": "DRAFT: [obf] (D) Bleed at +1 stealth"
     },
     {
       "name": "Pulled Fangs",
@@ -4570,7 +4570,7 @@
       "clans": [],
       "text": "A vampire can play only one Quickness each round.\n[cel] Additional strike (limited).\n[CEL] Additional strike that does not count against the limit.",
       "draft": true,
-      "draft_text": "DRAFT: [ani] Strike: dodge, with additional strike."
+      "draft_text": "DRAFT: [aus] additional strike."
     },
     {
       "name": "Rack, The",
@@ -4598,7 +4598,7 @@
       "clans": [],
       "text": "[pro] [ACTION MODIFIER] +1 stealth.\n[PRO] [COMBAT] Strike: combat ends.",
       "draft": true,
-      "draft_text": "DRAFT: [obf] [mod] +1 stealth."
+      "draft_text": "DRAFT: [obf] [Action Modifier] +1 stealth."
     },
     {
       "name": "Rat's Warning",
@@ -4911,7 +4911,7 @@
       "clans": [],
       "text": "[pot] Strike: hand strike at +2 damage.\n[POT] As above, with 1 optional maneuver, only usable to get to close range.",
       "draft": true,
-      "draft_text": "DRAFT: [tha] As [pot] above."
+      "draft_text": "DRAFT: [ser] As [pot] above."
     },
     {
       "name": "Slum Hunting Ground",
@@ -5066,7 +5066,7 @@
       "clans": [],
       "text": "[obf] [ACTION MODIFIER] +1 stealth.\n[OBF] [COMBAT] Maneuver.",
       "draft": true,
-      "draft_text": "DRAFT: [combat] Do not replace until after combat. Maneuver."
+      "draft_text": "DRAFT: [Combat] Do not replace until after combat. Maneuver."
     },
     {
       "name": "Talbot's Chainsaw",
@@ -5107,7 +5107,7 @@
       "clans": [],
       "text": "[aus] +1 intercept.\n[AUS] Only usable if a minion is bleeding you, after blocks are declined. Lock this reacting vampire. Change the target of the bleed to another Methuselah other than the acting minion's controller (that Methuselah can attempt to block).",
       "draft": true,
-      "draft_text": "DRAFT: [for] Reduce bleed against you by 3."
+      "draft_text": "DRAFT: [dom] +1 intercept."
     },
     {
       "name": "Temple Hunting Ground",
@@ -5152,7 +5152,7 @@
       "clans": [],
       "text": "[tha] Strike, ranged: steal 1 blood or life (becoming blood).\n[THA] Strike, ranged: steal 2 blood or life (becoming blood).",
       "draft": true,
-      "draft_text": "DRAFT: [pro] Strike: steal 1 blood or life."
+      "draft_text": "DRAFT: [obt] As [tha] above."
     },
     {
       "name": "Thing",
@@ -5182,7 +5182,7 @@
       "clans": [],
       "text": "[ani] Ⓓ Steal 1 blood or life from a minion controlled by your prey.\n[ANI] As above, and put this card on this vampire. This vampire gets +1 bleed against your prey. Minions can burn this card as a Ⓓ action. A vampire can have only one Tier of Souls.",
       "draft": true,
-      "draft_text": "DRAFT: [tha] As [ani] above."
+      "draft_text": "DRAFT: [vic] As [ani] above."
     },
     {
       "name": "Toreador Grand Ball",
@@ -5340,8 +5340,8 @@
       ],
       "clans": [],
       "text": "Only usable after resolution of a political action whose referendum passed.\n[pre] This vampire gains 1 blood for each vote by which the referendum passed.\n[PRE] As above, but move up to 2 of those blood to your pool instead of this vampire.",
-      "draft": false,
-      "draft_text": ""
+      "draft": true,
+      "draft_text": "DRAFT: [aus] As [pre] above."
     },
     {
       "name": "Vox Domini",
@@ -5395,7 +5395,7 @@
       "clans": [],
       "text": "Not usable during the first round.\n[tha] Strike: 1R aggravated damage.\n[THA] Strike: 2R aggravated damage.",
       "draft": true,
-      "draft_text": "DRAFT: [cel] Strike: 2R damage."
+      "draft_text": "DRAFT: [obt] Strike: 2R damage."
     },
     {
       "name": "Warrens, The",
