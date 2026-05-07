@@ -2,7 +2,7 @@
 # Standard library modules (json, os, re, sys, time, io, shutil, argparse,
 # urllib.request, unicodedata, pathlib) are not listed.
 
-openpyxl>=3.1,<4
+openpyxl>=3.1.5,<4
 Pillow>=12.2.0,<13
 numpy>=2.4.4,<3
 easyocr>=1.7.2,<2
