@@ -15,8 +15,12 @@ permissions:
   contents: read
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  # Per-ref group so a Dependabot burst of PRs doesn't cancel each other in
+  # the queue (default queue depth is 1 in-progress + 1 queued). Pages itself
+  # rejects parallel deploys, but those only run on push to main where ref
+  # collapses to the same group anyway.
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ci:
