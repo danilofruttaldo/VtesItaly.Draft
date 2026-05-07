@@ -6,14 +6,35 @@
   "description": "VTES Draft Cube interactive gallery (static site, vanilla JS, Python build pipeline).",
   "scripts": {
     "test": "node scripts/run-tests.mjs",
+    "test:coverage": "c8 node scripts/run-tests.mjs",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "minify": "node scripts/minify.mjs"
   },
+  "c8": {
+    "include": [
+      "assets/**/*.{js,mjs}",
+      "scripts/**/*.mjs"
+    ],
+    "exclude": [
+      "**/*.test.mjs",
+      "scripts/run-tests.mjs"
+    ],
+    "reporter": [
+      "text-summary",
+      "lcov"
+    ],
+    "check-coverage": true,
+    "lines": 65,
+    "statements": 65,
+    "functions": 70,
+    "branches": 60
+  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "c8": "^11.0.0",
     "esbuild": "^0.28.0",
     "eslint": "^10.3.0",
     "globals": "^17.6.0",

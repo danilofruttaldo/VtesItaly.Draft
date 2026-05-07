@@ -50,7 +50,7 @@ jobs:
       - run: npm run format:check
       - run: python -m ruff check scripts/ tests/
       - run: python -m ruff format --check scripts/ tests/
-      - run: npm test
+      - run: npm run test:coverage
 
       - name: Bump sw.js VERSION to release timestamp
         run: node scripts/stamp-sw.mjs
