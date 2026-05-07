@@ -4,6 +4,12 @@
   "private": true,
   "type": "module",
   "description": "VTES Draft Cube interactive gallery (static site, vanilla JS, Python build pipeline).",
+  "license": "MIT",
+  "author": "VTES Italy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danilofruttaldo/VtesItaly.Draft.git"
+  },
   "scripts": {
     "test": "node scripts/run-tests.mjs",
     "test:coverage": "c8 node scripts/run-tests.mjs",

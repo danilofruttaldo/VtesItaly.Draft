@@ -52,11 +52,11 @@ Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 
 Deploy runs via `.github/workflows/deploy.yml` on every push to `main` (or manual `workflow_dispatch`). The workflow has three sequential jobs sharing a single `_site/` artifact:
 
-1. **`ci`** — installs dev tooling (`npm ci`, `pip install ruff`, both cached) and runs `npm audit --omit=dev` → `lint` → `format:check` → `ruff check` → `ruff format --check` → `npm test` (JS + DOM smoke + Python) as a gate. Then `scripts/stamp-sw.mjs` rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release; `scripts/stage-site.mjs` copies only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}` — originals + `*-thumb.webp`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published. Finally `npm run minify` shrinks `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged copy (esbuild), a 60 MB size guard runs, and `_site/` is uploaded as an artifact.
+1. **`ci`** — installs dev tooling (`npm ci`, `pip install ruff`, both cached) and runs `npm audit --omit=dev` → `lint` → `format:check` → `ruff check` → `ruff format --check` → `npm run test:coverage` (JS via `node --test` wrapped by c8 + DOM smoke + axe-core a11y + Python unittest, with c8 thresholds gated at 65/60/70/65 in `package.json#c8`) as a gate. Then `scripts/stamp-sw.mjs` rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release; `scripts/stage-site.mjs` copies only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}` — originals + `*-thumb.webp`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published. Finally `npm run minify` shrinks `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged copy (esbuild), a 60 MB size guard runs, and `_site/` is uploaded as an artifact.
 2. **`lighthouse`** — depends on `ci`. Downloads the `_site/` artifact and runs Lighthouse CI from `.lighthouserc.json` against it. Accessibility threshold blocks; perf/SEO/best-practices warn.
-3. **`deploy`** — depends on both `ci` and `lighthouse`. Downloads the same `_site/` artifact and publishes it to GitHub Pages. No re-build.
+3. **`deploy`** — depends on both `ci` and `lighthouse`, and only on push (not on PR). Downloads the same `_site/` artifact and publishes it to GitHub Pages. No re-build.
 
-Workflow-level `concurrency: pages` serialises overlapping pushes; `permissions: contents: read` scopes the default token to the minimum (the `deploy` job elevates to `pages: write` + `id-token: write` only for itself). Single workflow per push: one CI gate, one Lighthouse audit, one deploy — never duplicated.
+Workflow-level `concurrency: pages-${{ github.ref }}` is per-ref so a Dependabot burst of PRs doesn't cancel each other in the queue; pushes to `main` collapse to a single group. `permissions: contents: read` scopes the default token to the minimum (the `deploy` job elevates to `pages: write` + `id-token: write` only for itself). Single workflow per push: one CI gate, one Lighthouse audit, one deploy — never duplicated.
 
 One-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at `https://<user>.github.io/<repo>/`.
 
@@ -81,7 +81,8 @@ provides the hooks that CI and the pre-commit hook run.
 ```
 npm install                            # one-time (JS dev tooling)
 pip install -r requirements-dev.txt    # one-time (Python lint/format)
-npm test                               # node --test (core.mjs) + jsdom DOM smoke + python unittest
+npm test                               # node --test (core.mjs) + jsdom DOM smoke + axe-core a11y + python unittest
+npm run test:coverage                  # same suite under c8 with thresholds gated (65/60/70/65)
 npm run lint                           # ESLint over assets/, sw.js, tests/
 npm run format                         # Prettier write
 npm run format:check                   # Prettier check
@@ -147,3 +148,7 @@ All scripts use paths relative to the repo root (via `__file__`) and can be laun
 
 - **DRAFT: clause** detected on 79/262 library cards (44 Common, 16 Uncommon, 19 Rare). KRCG does not expose this clause as data, so detection relies on OCR + manual review. Full breakdown in [docs/DRAFT_OPTION.md](docs/DRAFT_OPTION.md).
 - Some images recovered from user scans have lower quality than the KRCG ones because of the source resolution; the enhancement applied makes them readable but not perfect.
+
+## License
+
+[MIT](LICENSE) — © 2026 VTES Italy.
