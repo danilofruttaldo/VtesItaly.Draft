@@ -101,11 +101,11 @@
               >
                 <span class="combobox-label ph">All clans</span>
               </button>
-              <div class="combobox-panel" id="cb-clan-panel" role="listbox" aria-label="Clan options">
+              <div class="combobox-panel" id="cb-clan-panel">
                 <div class="combobox-search">
                   <input type="search" placeholder="Search clan..." aria-label="Search clan" autocomplete="off" />
                 </div>
-                <div class="combobox-list"></div>
+                <div class="combobox-list" role="listbox" aria-label="Clan options"></div>
               </div>
             </div>
           </div>
@@ -122,11 +122,11 @@
               >
                 <span class="combobox-label ph">All types</span>
               </button>
-              <div class="combobox-panel" id="cb-type-panel" role="listbox" aria-label="Type options">
+              <div class="combobox-panel" id="cb-type-panel">
                 <div class="combobox-search">
                   <input type="search" placeholder="Search type..." aria-label="Search type" autocomplete="off" />
                 </div>
-                <div class="combobox-list"></div>
+                <div class="combobox-list" role="listbox" aria-label="Type options"></div>
               </div>
             </div>
           </div>
@@ -151,8 +151,8 @@
               >
                 <span class="combobox-label">Default</span>
               </button>
-              <div class="combobox-panel" id="cb-sort-panel" role="listbox" aria-label="Sort options">
-                <div class="combobox-list"></div>
+              <div class="combobox-panel" id="cb-sort-panel">
+                <div class="combobox-list" role="listbox" aria-label="Sort options"></div>
               </div>
             </div>
           </div>
@@ -167,7 +167,7 @@
           This gallery requires JavaScript to filter and browse the cards. Please enable JavaScript in your browser.
         </div>
       </noscript>
-      <div class="active-filters" id="active-filters" aria-label="Active filters"></div>
+      <div class="active-filters" id="active-filters" role="status" aria-label="Active filters"></div>
       <div class="grid" id="grid" role="list"></div>
       <div class="empty" id="empty" hidden>
         <div>No cards match your filters.</div>
