@@ -7,13 +7,12 @@ import urllib.request
 from pathlib import Path
 
 import openpyxl
-from _utils import norm
+from _utils import KRCG_JSON_URL, norm
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
 SHEET = "Crypt"
 OUT_DIR = ROOT / "images" / "crypt"
-KRCG_JSON = "https://static.krcg.org/data/vtes.json"
 
 
 def main() -> int:
@@ -21,7 +20,7 @@ def main() -> int:
     ws = wb[SHEET]
     excel_names = [r[2] for r in ws.iter_rows(min_row=2, values_only=True) if r[2]]
 
-    data = json.loads(urllib.request.urlopen(KRCG_JSON).read())
+    data = json.loads(urllib.request.urlopen(KRCG_JSON_URL).read())
     vamps = [c for c in data if "Vampire" in c.get("types", []) or "Imbued" in c.get("types", [])]
 
     by_name_group: dict[tuple[str, str], dict] = {}

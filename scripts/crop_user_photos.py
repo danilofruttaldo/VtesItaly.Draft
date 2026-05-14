@@ -6,13 +6,12 @@ from pathlib import Path
 
 import numpy as np
 import openpyxl
-from _utils import norm
+from _utils import KRCG_JSON_URL, LIB_RARITY_DIRS, norm
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
 SHEET = "Library"
-KRCG_JSON = "https://static.krcg.org/data/vtes.json"
 PHOTOS_DIR = ROOT / "images" / "scan"
 
 PHOTOS: dict[int, list[str | None]] = {
@@ -107,11 +106,7 @@ PHOTOS: dict[int, list[str | None]] = {
     9: ["Tier of Souls", "Voracious Vermin", "Walk of Flame", "Weather Control", "Wolf Claws", None, None, None, None],
 }
 
-RARITY_TO_DIR = {
-    "Common": ROOT / "images" / "library-common",
-    "Uncommon": ROOT / "images" / "library-uncommon",
-    "Rare": ROOT / "images" / "library-rare",
-}
+RARITY_TO_DIR = {r: ROOT / d for r, d in LIB_RARITY_DIRS.items()}
 
 
 def content_bbox(im: Image.Image) -> tuple[int, int, int, int]:
@@ -132,7 +127,7 @@ def main() -> int:
         if r[1] in RARITY_TO_DIR and r[2]:
             rarity_by_name[norm(r[2])] = r[1]
 
-    data = json.loads(urllib.request.urlopen(KRCG_JSON).read())
+    data = json.loads(urllib.request.urlopen(KRCG_JSON_URL).read())
     libs = [c for c in data if "Vampire" not in c.get("types", []) and "Imbued" not in c.get("types", [])]
     by_norm: dict[str, dict] = {}
     for c in libs:

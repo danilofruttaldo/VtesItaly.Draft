@@ -5,13 +5,12 @@ import urllib.request
 from pathlib import Path
 
 import openpyxl
-from _utils import norm
+from _utils import KRCG_JSON_URL, LIB_RARITY_DIRS, norm
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
 SHEET = "Library"
-KRCG_JSON = "https://static.krcg.org/data/vtes.json"
 
 # Entries: (image_path, card_name, (x0,y0,x1,y1), rotate_degrees_CCW)
 CROPS: list[tuple[str, str, tuple[int, int, int, int], int]] = [
@@ -58,11 +57,7 @@ CROPS: list[tuple[str, str, tuple[int, int, int, int], int]] = [
     ("images/scan/GmeRzBsaIAAqVfs.jpg", "Creeping Sabotage", (640, 1160, 910, 1570), 0),
 ]
 
-RARITY_TO_DIR = {
-    "Common": ROOT / "images" / "library-common",
-    "Uncommon": ROOT / "images" / "library-uncommon",
-    "Rare": ROOT / "images" / "library-rare",
-}
+RARITY_TO_DIR = {r: ROOT / d for r, d in LIB_RARITY_DIRS.items()}
 
 
 def enhance(img: Image.Image) -> Image.Image:
@@ -81,7 +76,7 @@ def main() -> int:
         if r[1] in RARITY_TO_DIR and r[2]:
             rarity_by_norm[norm(r[2])] = r[1]
 
-    data = json.loads(urllib.request.urlopen(KRCG_JSON).read())
+    data = json.loads(urllib.request.urlopen(KRCG_JSON_URL).read())
     libs = [c for c in data if "Vampire" not in c.get("types", []) and "Imbued" not in c.get("types", [])]
     by_norm: dict[str, dict] = {}
     for c in libs:

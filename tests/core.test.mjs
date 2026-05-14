@@ -318,6 +318,11 @@ test("countActiveFilters counts each active filter once", () => {
   assert.equal(countActiveFilters(state), 6);
 });
 
+test("countActiveFilters with includeSearch:false ignores the query", () => {
+  const state = buildState({ q: "alice", clan: "Brujah" });
+  assert.equal(countActiveFilters(state, { includeSearch: false }), 1);
+});
+
 /* --- buildFilterSearchParams --- */
 
 test("buildFilterSearchParams emits only active filters", () => {

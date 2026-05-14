@@ -92,20 +92,11 @@ function updateResetButton() {
 }
 
 function updateFiltersCount() {
-  // Exclude the search box from the drawer badge (search is visible outside the drawer)
-  let n = 0;
-  if (state.clan) n++;
-  if (state.type) n++;
-  if (state.sort) n++;
-  if (state.kinds.size !== 2) n++;
-  if (state.rarities.size !== 3) n++;
+  // Exclude the search box from the drawer badge (search is visible outside the drawer).
+  const n = countActiveFilters(state, { includeSearch: false });
   const badge = $("filters-count");
-  if (n > 0) {
-    badge.hidden = false;
-    badge.textContent = String(n);
-  } else {
-    badge.hidden = true;
-  }
+  badge.hidden = n === 0;
+  if (n > 0) badge.textContent = String(n);
 }
 
 function renderActiveFilters() {

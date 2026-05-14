@@ -217,9 +217,9 @@ export function computeFiltered(state) {
   return sortItems(items, state.sort);
 }
 
-export function countActiveFilters(state) {
+export function countActiveFilters(state, { includeSearch = true } = {}) {
   let n = 0;
-  if (state.q) n++;
+  if (includeSearch && state.q) n++;
   if (state.clan) n++;
   if (state.type) n++;
   if (state.sort) n++;

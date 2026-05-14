@@ -30,7 +30,6 @@ def main() -> int:
             by_norm.setdefault(norm(v), []).append(c)
 
     updated = 0
-    skipped = 0
     failed = 0
     no_scan = 0
     for c in cards["library"]:
@@ -90,7 +89,7 @@ def main() -> int:
             print(f"FAIL {c['name']}: {last_err}")
             failed += 1
 
-    print(f"\nUpdated {updated} | skipped {skipped} | no scan {no_scan} | failed {failed}")
+    print(f"\nUpdated {updated} | no scan {no_scan} | failed {failed}")
     return 0
 
 

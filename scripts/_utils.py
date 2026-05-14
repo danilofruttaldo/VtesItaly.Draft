@@ -7,6 +7,17 @@ entry point that needs to match user-provided names against KRCG records.
 import re
 import unicodedata
 
+KRCG_JSON_URL = "https://static.krcg.org/data/vtes.json"
+
+# Library rarity → relative image dir. Scripts that need absolute paths build
+# them with `ROOT / LIB_RARITY_DIRS[rarity]`; build_site_data uses the strings
+# directly when serializing card.img into cards.json.
+LIB_RARITY_DIRS = {
+    "Common": "images/library-common",
+    "Uncommon": "images/library-uncommon",
+    "Rare": "images/library-rare",
+}
+
 _EXTRA_MAP = str.maketrans(
     {
         "ł": "l",

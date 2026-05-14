@@ -9,21 +9,15 @@ import urllib.request
 from pathlib import Path
 
 import openpyxl
-from _utils import norm
+from _utils import KRCG_JSON_URL, LIB_RARITY_DIRS, norm
 from ocr_cleanup import clean_draft_snippet
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
 KRCG_CACHE = ROOT / "data" / "krcg_vtes.json"
-KRCG_URL = "https://static.krcg.org/data/vtes.json"
 DRAFT_OCR = ROOT / "data" / "draft_ocr.json"
 DRAFT_OVERRIDES = ROOT / "data" / "draft_overrides.json"
 CRYPT_DIR = "images/crypt"
-LIB_DIRS = {
-    "Common": "images/library-common",
-    "Uncommon": "images/library-uncommon",
-    "Rare": "images/library-rare",
-}
 OUT = ROOT / "data" / "cards.json"
 
 
@@ -50,7 +44,7 @@ def load_krcg(*, force_refresh: bool = False) -> list[dict]:
     if force_refresh or not KRCG_CACHE.exists():
         action = "Refreshing" if KRCG_CACHE.exists() else "Downloading"
         print(f"{action} KRCG data → {KRCG_CACHE.name}")
-        req = urllib.request.Request(KRCG_URL, headers={"User-Agent": "Vtes.Draft/1.0"})
+        req = urllib.request.Request(KRCG_JSON_URL, headers={"User-Agent": "Vtes.Draft/1.0"})
         with urllib.request.urlopen(req, timeout=60) as resp:
             KRCG_CACHE.write_bytes(resp.read())
     return json.loads(KRCG_CACHE.read_text(encoding="utf-8"))
@@ -150,7 +144,7 @@ def main(argv: list[str] | None = None) -> int:
             }
         )
 
-    lib_idx = {rar: index_dir(ROOT / d) for rar, d in LIB_DIRS.items()}
+    lib_idx = {rar: index_dir(ROOT / d) for rar, d in LIB_RARITY_DIRS.items()}
     library: list[dict] = []
     missing_lib: list[str] = []
     for row in wb["Library"].iter_rows(min_row=2, values_only=True):
@@ -166,7 +160,7 @@ def main(argv: list[str] | None = None) -> int:
         uniq = {c["id"]: c for c in ms}
         card = next(iter(uniq.values())) if len(uniq) == 1 else None
 
-        img_rel = f"{LIB_DIRS[rarity]}/{fname}"
+        img_rel = f"{LIB_RARITY_DIRS[rarity]}/{fname}"
         ocr = draft_ocr.get(img_rel, {})
         override = draft_overrides.get(name.lower())
         has_draft = bool(ocr.get("has_draft")) or bool(override)

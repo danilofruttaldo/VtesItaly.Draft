@@ -10,13 +10,10 @@ import sys
 from pathlib import Path
 
 import easyocr
+from _utils import LIB_RARITY_DIRS
 
 ROOT = Path(__file__).resolve().parent.parent
-LIB_DIRS = [
-    ROOT / "images" / "library-common",
-    ROOT / "images" / "library-uncommon",
-    ROOT / "images" / "library-rare",
-]
+LIB_DIRS = [ROOT / d for d in LIB_RARITY_DIRS.values()]
 OUT = ROOT / "data" / "draft_ocr.json"
 
 DRAFT_PAT = re.compile(r"\bDRAFT\s*[:;]", re.IGNORECASE)

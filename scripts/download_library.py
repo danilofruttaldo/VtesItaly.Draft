@@ -7,17 +7,12 @@ import urllib.request
 from pathlib import Path
 
 import openpyxl
-from _utils import norm
+from _utils import KRCG_JSON_URL, LIB_RARITY_DIRS, norm
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
 SHEET = "Library"
-KRCG_JSON = "https://static.krcg.org/data/vtes.json"
-RARITIES = {
-    "Common": ROOT / "images" / "library-common",
-    "Uncommon": ROOT / "images" / "library-uncommon",
-    "Rare": ROOT / "images" / "library-rare",
-}
+RARITIES = {r: ROOT / d for r, d in LIB_RARITY_DIRS.items()}
 
 
 def main() -> int:
@@ -32,7 +27,7 @@ def main() -> int:
     ws = wb[SHEET]
     names = [r[2] for r in ws.iter_rows(min_row=2, values_only=True) if r[1] == args.rarity and r[2]]
 
-    data = json.loads(urllib.request.urlopen(KRCG_JSON).read())
+    data = json.loads(urllib.request.urlopen(KRCG_JSON_URL).read())
     libs = [c for c in data if "Vampire" not in c.get("types", []) and "Imbued" not in c.get("types", [])]
 
     by_name: dict[str, list[dict]] = {}
