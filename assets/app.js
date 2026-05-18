@@ -9,6 +9,7 @@ import {
   computeFiltered,
   countActiveFilters,
   buildFilterSearchParams,
+  decodeHashName,
 } from "./core.mjs";
 
 const state = {
@@ -800,12 +801,14 @@ fetch("data/cards.json")
     render();
 
     // Deep link: open card from URL hash. If the card exists but is hidden
-    // by active filters, reset filters silently and open it anyway.
-    let hash = "";
-    try {
-      hash = decodeURIComponent(location.hash.replace(/^#/, ""));
-    } catch (_) {
-      hash = "";
+    // by active filters, reset filters silently and open it anyway. A
+    // malformed percent-sequence in the hash yields null and is surfaced
+    // as a console warning so testers spot bad share links instead of
+    // hitting a silent no-op.
+    const rawHash = location.hash;
+    const hash = decodeHashName(rawHash);
+    if (hash === null && rawHash && rawHash !== "#") {
+      console.warn("[draft] ignoring malformed hash:", rawHash);
     }
     if (hash) {
       let idx = state.filtered.findIndex((c) => c.name === hash);

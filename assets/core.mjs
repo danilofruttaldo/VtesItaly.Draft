@@ -228,6 +228,29 @@ export function countActiveFilters(state, { includeSearch = true } = {}) {
   return n;
 }
 
+/* Decode a `#fragment` value into a plain card name. The hash arrives
+ * URI-encoded (the browser percent-encodes spaces, punctuation, non-ASCII).
+ * A malformed percent sequence (lone `%` or `%XY` with non-hex) makes
+ * decodeURIComponent throw; we return `null` so callers can distinguish
+ * "no hash" from "hash present but unparseable" and decide whether to log.
+ * An empty/whitespace hash returns null too, matching the "nothing to do"
+ * case at the call site.
+ *
+ * @param {string} raw  the raw `location.hash` (with or without leading `#`)
+ * @returns {string | null}
+ */
+export function decodeHashName(raw) {
+  if (typeof raw !== "string") return null;
+  const stripped = raw.replace(/^#/, "");
+  if (!stripped) return null;
+  try {
+    const decoded = decodeURIComponent(stripped);
+    return decoded.trim() ? decoded : null;
+  } catch {
+    return null;
+  }
+}
+
 export function buildFilterSearchParams(state) {
   const p = new URLSearchParams();
   if (state.q) p.set("q", state.q);
