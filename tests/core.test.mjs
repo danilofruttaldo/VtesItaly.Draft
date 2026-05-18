@@ -16,6 +16,7 @@ import {
   computeFiltered,
   countActiveFilters,
   buildFilterSearchParams,
+  decodeHashName,
 } from "../assets/core.mjs";
 
 /* --- norm --- */
@@ -361,4 +362,38 @@ test("ICON_TOKENS covers the clan tokens that exceeded the old 8-char regex", ()
   for (const tok of ["malkavian", "cappadocian", "abomination", "harbingers"]) {
     assert.ok(ICON_TOKENS.has(tok), `ICON_TOKENS missing ${tok}`);
   }
+});
+
+/* --- decodeHashName: deep-link fragment parsing --- */
+
+test("decodeHashName returns null for empty / whitespace / non-string input", () => {
+  assert.equal(decodeHashName(""), null);
+  assert.equal(decodeHashName("#"), null);
+  assert.equal(decodeHashName("#%20%20"), null);
+  assert.equal(decodeHashName(null), null);
+  assert.equal(decodeHashName(undefined), null);
+  assert.equal(decodeHashName(42), null);
+});
+
+test("decodeHashName strips a leading # and decodes percent-encoded names", () => {
+  assert.equal(decodeHashName("#Alice%20Example"), "Alice Example");
+  assert.equal(decodeHashName("Alice%20Example"), "Alice Example");
+  assert.equal(decodeHashName("#G%C3%A4deke"), "Gädeke");
+});
+
+test("decodeHashName preserves filter-querystring collision: name with ?, =, & is intact", () => {
+  // A card name containing query-string delimiters must round-trip via the
+  // hash without colliding with filter params upstream.
+  assert.equal(decodeHashName("#Who%3F%20Me%3F"), "Who? Me?");
+  assert.equal(decodeHashName("#A%26B"), "A&B");
+  assert.equal(decodeHashName("#x%3Dy"), "x=y");
+});
+
+test("decodeHashName returns null on malformed percent sequences (not a silent empty string)", () => {
+  // Bug guarded: lone '%' or non-hex '%XY' previously threw, app.js caught
+  // it and silently set hash = "". The helper must distinguish "malformed"
+  // (null) from "no hash" so callers can warn.
+  assert.equal(decodeHashName("#%"), null);
+  assert.equal(decodeHashName("#%E0%A4"), null); // truncated multi-byte
+  assert.equal(decodeHashName("#%ZZ"), null);
 });

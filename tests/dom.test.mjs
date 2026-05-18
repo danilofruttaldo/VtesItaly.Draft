@@ -139,6 +139,32 @@ test("DOM smoke: clearing the search restores all cards", async () => {
   assert.equal(document.querySelectorAll(".card").length, 3);
 });
 
+test("DOM smoke: modal keyboard nav — Escape closes, ArrowRight/Left step", async () => {
+  // Open the first card.
+  const cards = document.querySelectorAll(".card");
+  cards[0].click();
+  await new Promise((r) => setTimeout(r, 30));
+  const modal = document.getElementById("modal");
+  assert.equal(modal.hidden, false);
+  const firstName = document.getElementById("modal-name").textContent;
+
+  // ArrowRight steps forward; the modal title must change.
+  document.dispatchEvent(new window.KeyboardEvent("keydown", { key: "ArrowRight", bubbles: true }));
+  await new Promise((r) => setTimeout(r, 30));
+  const secondName = document.getElementById("modal-name").textContent;
+  assert.notEqual(secondName, firstName, "ArrowRight should advance to the next card");
+
+  // ArrowLeft steps back to the original.
+  document.dispatchEvent(new window.KeyboardEvent("keydown", { key: "ArrowLeft", bubbles: true }));
+  await new Promise((r) => setTimeout(r, 30));
+  assert.equal(document.getElementById("modal-name").textContent, firstName, "ArrowLeft should restore the first card");
+
+  // Escape dismisses the modal.
+  document.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+  await new Promise((r) => setTimeout(r, 200));
+  assert.equal(modal.hidden, true, "Escape should hide the modal");
+});
+
 test("DOM smoke: kind toggle filters out crypt cards", async () => {
   document.querySelector('[data-kind="crypt"]').click();
   await new Promise((r) => setTimeout(r, 30));
