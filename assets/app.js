@@ -102,21 +102,39 @@ function updateFiltersCount() {
 function renderActiveFilters() {
   const host = $("active-filters");
   const chips = [];
-  const mk = (label, onRemove) =>
-    `<button class="filter-chip" data-rm="${onRemove}" type="button" aria-label="Remove filter ${escapeHtml(label)}">${escapeHtml(label)}<span class="x" aria-hidden="true">×</span></button>`;
-  if (state.q) chips.push(mk(`"${state.q}"`, "q"));
-  if (state.clan) chips.push(mk(`Clan: ${state.clan}`, "clan"));
-  if (state.type) chips.push(mk(`Type: ${state.type}`, "type"));
+  const mk = (label, onRemove) => {
+    const btn = document.createElement("button");
+    btn.className = "filter-chip";
+    btn.type = "button";
+    btn.dataset.rm = onRemove;
+    btn.setAttribute("aria-label", `Remove filter ${label}`);
+    btn.append(label);
+    const x = document.createElement("span");
+    x.className = "x";
+    x.setAttribute("aria-hidden", "true");
+    x.textContent = "×";
+    btn.append(x);
+    chips.push(btn);
+  };
+  if (state.q) mk(`"${state.q}"`, "q");
+  if (state.clan) mk(`Clan: ${state.clan}`, "clan");
+  if (state.type) mk(`Type: ${state.type}`, "type");
   if (state.sort) {
     const opt = SORT_OPTIONS.find((s) => s.value === state.sort);
-    if (opt) chips.push(mk(`Sort: ${opt.label}`, "sort"));
+    if (opt) mk(`Sort: ${opt.label}`, "sort");
   }
-  if (!state.kinds.has("crypt")) chips.push(mk("Crypt off", "kind:crypt"));
-  if (!state.kinds.has("library")) chips.push(mk("Library off", "kind:library"));
+  if (!state.kinds.has("crypt")) mk("Crypt off", "kind:crypt");
+  if (!state.kinds.has("library")) mk("Library off", "kind:library");
   for (const r of ["Common", "Uncommon", "Rare"]) {
-    if (!state.rarities.has(r)) chips.push(mk(`${r} off`, "rarity:" + r));
+    if (!state.rarities.has(r)) mk(`${r} off`, "rarity:" + r);
   }
-  host.innerHTML = chips.length ? `<span class="label">Active:</span>${chips.join("")}` : "";
+  host.replaceChildren();
+  if (chips.length) {
+    const label = document.createElement("span");
+    label.className = "label";
+    label.textContent = "Active:";
+    host.append(label, ...chips);
+  }
 }
 
 $("active-filters").addEventListener("click", (e) => {
