@@ -24,7 +24,7 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 262 library cards (38
 - navigation: arrows, keyboard (← →), touch swipe left/right, prev/next preload
 - swipe down or tap outside to close
 - Web Share button (Web Share API with clipboard fallback and toast)
-- deep-link to a single card via URL hash (`#CardName`)
+- deep-link to a single card via URL hash (`#CardName`); the parser (`decodeHashName` in `assets/core.mjs`) distinguishes "no hash" from "malformed hash" and surfaces the latter as a console warning so testers spot broken share links instead of hitting a silent no-op
 - browser back button closes the modal (`pushState` / `popstate`)
 - focus trap (Tab stays inside the dialog)
 - styled discipline badges (`[aus]`, `[PRE]`, ...) rendered as colored pills
@@ -83,7 +83,7 @@ npm install                            # one-time (JS dev tooling)
 pip install -r requirements-dev.txt    # one-time (Python lint/format)
 npm test                               # node --test (core.mjs) + jsdom DOM smoke + axe-core a11y + python unittest
 npm run test:coverage                  # same suite under c8 with thresholds gated (65/60/70/65)
-npm run lint                           # ESLint over assets/, sw.js, tests/
+npm run lint                           # ESLint over assets/, sw.js, scripts/*.mjs, tests/
 npm run format                         # Prettier write
 npm run format:check                   # Prettier check
 npm run minify                         # esbuild over _site/ (use only against a staged copy)
