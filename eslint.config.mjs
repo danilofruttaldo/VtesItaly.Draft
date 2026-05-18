@@ -3,7 +3,15 @@ import globals from "globals";
 
 export default [
   {
-    ignores: ["node_modules/**", "_site/**", "data/**", "images/**", "docs/**", "scripts/**"],
+    ignores: [
+      "node_modules/**",
+      "_site/**",
+      "data/**",
+      "images/**",
+      "docs/**",
+      "scripts/**/*.py",
+      "scripts/__pycache__/**",
+    ],
   },
   js.configs.recommended,
   {
@@ -22,6 +30,23 @@ export default [
         { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" },
       ],
       "no-console": ["warn", { allow: ["warn", "error"] }],
+      eqeqeq: ["error", "smart"],
+      "no-var": "error",
+      "prefer-const": "error",
+    },
+  },
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "module",
+      globals: { ...globals.node },
+    },
+    rules: {
+      "no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" },
+      ],
       eqeqeq: ["error", "smart"],
       "no-var": "error",
       "prefer-const": "error",
