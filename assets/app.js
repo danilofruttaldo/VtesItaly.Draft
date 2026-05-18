@@ -216,8 +216,15 @@ function preloadNeighbors(idx) {
   const n = state.filtered.length;
   if (n < 2) return;
   for (const i of [(idx + 1) % n, (idx - 1 + n) % n]) {
+    const src = state.filtered[i]?.img;
+    if (!src) continue;
     const im = new Image();
-    im.src = encodeURI(state.filtered[i].img);
+    // Preload is best-effort: a 404 or network drop here would otherwise
+    // surface as a noisy "Uncaught (in promise)" in DevTools when the
+    // browser fires the error event. We deliberately swallow because the
+    // real fetch (on user navigation) will retry and show a proper miss.
+    im.onerror = () => {};
+    im.src = encodeURI(src);
   }
 }
 
@@ -479,6 +486,7 @@ $("modal-share").addEventListener("click", async (e) => {
   }
 });
 
+let toastHideTimer = 0;
 function showToast(msg) {
   let el = document.getElementById("toast");
   if (!el) {
@@ -494,8 +502,8 @@ function showToast(msg) {
   requestAnimationFrame(() => {
     el.classList.add("show");
   });
-  clearTimeout(el._t);
-  el._t = setTimeout(() => {
+  clearTimeout(toastHideTimer);
+  toastHideTimer = setTimeout(() => {
     el.classList.remove("show");
   }, 1800);
 }
@@ -644,7 +652,10 @@ function initCombobox(cbId, options, onChange) {
       renderOptions("");
       if (searchInput) {
         searchInput.value = "";
-        setTimeout(() => searchInput.focus(), 30);
+        // Focus on the next frame so the .open class has taken effect and
+        // the input is laid out and focusable. setTimeout(0) races layout
+        // on slow devices; rAF is the documented affordance for this.
+        requestAnimationFrame(() => searchInput.focus());
       }
     }
   });
