@@ -7,18 +7,14 @@ name: CI
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  # Per-ref group so a Dependabot burst of PRs doesn't cancel each other in
-  # the queue (default queue depth is 1 in-progress + 1 queued). Pages itself
-  # rejects parallel deploys, but those only run on push to main where ref
-  # collapses to the same group anyway.
+  # Pages rejects parallel deploys; collapse concurrent pushes to the same
+  # ref so a newer commit supersedes an in-flight run.
   group: pages-${{ github.ref }}
   cancel-in-progress: true
 
@@ -101,7 +97,6 @@ jobs:
 
   deploy:
     needs: [ci, lighthouse]
-    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
