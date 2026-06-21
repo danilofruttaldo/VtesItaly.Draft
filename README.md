@@ -62,16 +62,18 @@ One-time repo setup: **Settings → Pages → Build and deployment → Source: G
 
 ### Run locally
 
-```powershell
-.\dev.ps1   # interactive menu: start/stop/restart, rebuild cards.json
-```
+In VS Code press **F5** ("Sito locale (dev)"): it starts the dev server quietly
+(logs in the Debug Console, no terminal) and opens the default browser. Saving a
+file live-reloads the page. The profile lives in `.vscode/launch.json` (local,
+git-ignored).
 
 or manually:
 
 ```
-python -m http.server 8765
-# open http://localhost:8765
+npm run dev        # @web/dev-server on http://localhost:8765 (watch + live-reload)
 ```
+
+Rebuilding `data/cards.json` stays a separate step (`python scripts/build_site_data.py`).
 
 ### JS tooling (lint / format / test)
 
@@ -101,7 +103,7 @@ git config core.hooksPath .githooks
 
 ```
 /
-├── index.html, .nojekyll, dev.ps1, requirements.txt
+├── index.html, .nojekyll, requirements.txt
 ├── manifest.webmanifest                # PWA manifest (installable)
 ├── sw.js                               # service worker (offline cache)
 ├── .github/workflows/deploy.yml        # CI: bump sw.js VERSION + deploy Pages

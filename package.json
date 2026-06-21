@@ -11,6 +11,7 @@
     "url": "git+https://github.com/danilofruttaldo/VtesItaly.Draft.git"
   },
   "scripts": {
+    "dev": "wds --watch --port 8765",
     "test": "node scripts/run-tests.mjs",
     "test:coverage": "c8 node scripts/run-tests.mjs",
     "lint": "eslint . --max-warnings=0",
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@web/dev-server": "^0.4.6",
     "axe-core": "^4.11.4",
     "c8": "^11.0.0",
     "esbuild": "^0.28.0",
