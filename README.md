@@ -62,16 +62,13 @@ One-time repo setup: **Settings → Pages → Build and deployment → Source: G
 
 ### Run locally
 
-In VS Code press **F5** ("Sito locale (dev)"): it starts the dev server quietly
-(logs in the Debug Console, no terminal) and opens the default browser. Saving a
-file live-reloads the page. The profile lives in `.vscode/launch.json` (local,
-git-ignored).
-
-or manually:
-
 ```
-npm run dev        # @web/dev-server on http://localhost:8765 (watch + live-reload)
+npm run dev        # @web/dev-server on http://localhost:8765 (watch + live-reload + opens the browser)
 ```
+
+Saving a file live-reloads the page. In the shared `vtesItaly.code-workspace`
+the **Tutti i siti (dev)** profile (F5) launches Draft + Site + Judge together,
+each quiet in its own Debug Console.
 
 Rebuilding `data/cards.json` stays a separate step (`python scripts/build_site_data.py`).
 
