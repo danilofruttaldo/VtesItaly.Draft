@@ -20,30 +20,11 @@
     "format:check": "prettier --check .",
     "minify": "node scripts/minify.mjs"
   },
-  "c8": {
-    "include": [
-      "assets/**/*.{js,mjs}",
-      "scripts/**/*.mjs"
-    ],
-    "exclude": [
-      "**/*.test.mjs",
-      "scripts/run-tests.mjs"
-    ],
-    "reporter": [
-      "text-summary",
-      "lcov"
-    ],
-    "check-coverage": true,
-    "lines": 65,
-    "statements": 65,
-    "functions": 70,
-    "branches": 60
-  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@web/dev-server": "^0.4.6",
+    "@web/dev-server": "^1.0.0",
     "axe-core": "^4.11.4",
-    "c8": "^11.0.0",
+    "c8": "^12.0.0",
     "esbuild": "^0.28.0",
     "eslint": "^10.4.0",
     "globals": "^17.6.0",
@@ -51,6 +32,6 @@
     "prettier": "^3.3.3"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }

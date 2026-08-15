@@ -52,7 +52,7 @@ Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 
 Deploy runs via `.github/workflows/deploy.yml` on every push to `main` (or manual `workflow_dispatch`). The workflow has three sequential jobs sharing a single `_site/` artifact:
 
-1. **`ci`** — installs dev tooling (`npm ci`, `pip install ruff`, both cached) and runs `npm audit --omit=dev` → `lint` → `format:check` → `ruff check` → `ruff format --check` → `npm run test:coverage` (JS via `node --test` wrapped by c8 + DOM smoke + axe-core a11y + Python unittest, with c8 thresholds gated at 65/60/70/65 in `package.json#c8`) as a gate. Then `scripts/stamp-sw.mjs` rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release; `scripts/stage-site.mjs` copies only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}` — originals + `*-thumb.webp`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published. Finally `npm run minify` shrinks `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged copy (esbuild), a 60 MB size guard runs, and `_site/` is uploaded as an artifact.
+1. **`ci`** — installs dev tooling (`npm ci`, `pip install ruff`, both cached) and runs `npm audit --omit=dev` → `lint` → `format:check` → `ruff check` → `ruff format --check` → `npm run test:coverage` (JS via `node --test` wrapped by c8 + DOM smoke + axe-core a11y + Python unittest, with c8 thresholds gated at 65/60/70/65 in `.c8rc.json`) as a gate. Then `scripts/stamp-sw.mjs` rewrites `VERSION` in `sw.js` to a UTC timestamp so cache-first assets (images, icons, manifest) are invalidated on each release; `scripts/stage-site.mjs` copies only the runtime files under `_site/` (HTML, `robots.txt`, `manifest.webmanifest`, `sw.js`, `assets/`, `data/cards.json`, `images/{crypt,library-*}` — originals + `*-thumb.webp`). Build scripts, Python sources, `docs/`, `requirements.txt`, `data/krcg_vtes.json`, `data/draft_ocr.json`, `data/draft_overrides.json` and `images/scan/` are **not** published. Finally `npm run minify` shrinks `app.js` / `core.mjs` / `styles.css` / `sw.js` in the staged copy (esbuild), a 60 MB size guard runs, and `_site/` is uploaded as an artifact.
 2. **`lighthouse`** — depends on `ci`. Downloads the `_site/` artifact and runs Lighthouse CI from `.lighthouserc.json` against it. Accessibility threshold blocks; perf/SEO/best-practices warn.
 3. **`deploy`** — depends on both `ci` and `lighthouse`, and only on push (not on PR). Downloads the same `_site/` artifact and publishes it to GitHub Pages. No re-build.
 
@@ -64,6 +64,8 @@ One-time repo setup: **Settings → Pages → Build and deployment → Source: G
 
 ```
 npm run dev        # @web/dev-server on http://localhost:8765 (watch + live-reload + opens the browser)
+                   # ⚠️ engines now require Node >=22 (was >=20): @web/dev-server 1.0 asks for it.
+                   # No gate covers the dev server, so smoke-test it by hand after each bump.
 ```
 
 Saving a file live-reloads the page. In the shared `vtesItaly.code-workspace`
@@ -89,6 +91,16 @@ npm run minify                         # esbuild over _site/ (use only against a
 python -m ruff check scripts/ tests/   # Python lint
 python -m ruff format scripts/ tests/  # Python format
 ```
+
+⚠️ **The c8 config lives in `.c8rc.json`, not in `package.json#c8` — and moving it was mandatory, not cosmetic.** On 2026-08-15 c8 was bumped 11 → 12, and **c8 12 silently ignores the `c8` key in `package.json`**. Nothing errors out: the thresholds simply stop being enforced. Proof, run on this repo with a deliberately impossible threshold of 99%:
+
+|                           | threshold 99%                                                                         | verdict       |
+| ------------------------- | ------------------------------------------------------------------------------------- | ------------- |
+| c8 11 + `package.json#c8` | exit **1**, `ERROR: Coverage for lines (68.61%) does not meet global threshold (99%)` | gate alive    |
+| c8 12 + `package.json#c8` | exit **0**, no message                                                                | **gate dead** |
+| c8 12 + `.c8rc.json`      | exit **1**, same explicit error                                                       | gate alive    |
+
+⚠️ The tell-tale was **not** the exit code but the report itself: c8 12 printed a table instead of the configured `text-summary`, and listed `scripts/run-tests.mjs` even though `exclude` drops it. A config that isn't read doesn't announce itself — the output shape is what gives it away. With `.c8rc.json` the numbers match the c8 11 baseline exactly (68.61% statements, 798/1163), which is how you know the `include`/`exclude` are being honoured again.
 
 Enable the pre-commit gate (prettier + eslint + ruff + tests) once per clone:
 
