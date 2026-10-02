@@ -1188,3 +1188,13 @@ input[type="search"]:focus {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Footer with the privacy link, below the grid. */
+.app-footer {
+  padding: 0 1rem calc(1.5rem + var(--safe-bottom));
+  text-align: center;
+  font-size: 0.75rem;
+}
+.app-footer a {
+  color: var(--muted);
+}
