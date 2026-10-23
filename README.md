@@ -77,7 +77,7 @@ Rebuilding `data/cards.json` stays a separate step (`python scripts/build_site_d
 ### JS tooling (lint / format / test)
 
 The site itself ships no JS dependencies. The `package.json` is dev-only — it
-provides the hooks that CI and the pre-commit hook run.
+provides the tooling that CI and `npm run ci:verify` run.
 
 ```
 npm install                            # one-time (JS dev tooling)
@@ -102,11 +102,9 @@ python -m ruff format scripts/ tests/  # Python format
 
 ⚠️ The tell-tale was **not** the exit code but the report itself: c8 12 printed a table instead of the configured `text-summary`, and listed `scripts/run-tests.mjs` even though `exclude` drops it. A config that isn't read doesn't announce itself — the output shape is what gives it away. With `.c8rc.json` the numbers match the c8 11 baseline exactly (68.61% statements, 798/1163), which is how you know the `include`/`exclude` are being honoured again.
 
-Enable the pre-commit gate (prettier + eslint + ruff + tests) once per clone:
-
-```
-git config core.hooksPath .githooks
-```
+`npm run ci:verify` runs the same gates as CI (audit, eslint, prettier, ruff,
+tests with coverage). The global pre-push hook runs it before every push; bypass
+with `SKIP_VERIFY=1 git push` only in emergencies.
 
 ## Layout
 
