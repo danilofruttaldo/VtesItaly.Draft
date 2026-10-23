@@ -139,7 +139,7 @@ test("DOM smoke: search input narrows the grid (debounced)", async () => {
   await new Promise((r) => setTimeout(r, 200));
   const cards = document.querySelectorAll(".card");
   assert.equal(cards.length, 1, "only the Govern library card should match");
-  assert.match(cards[0].getAttribute("aria-label"), /Govern the Unaligned/);
+  assert.match(cards[0].textContent, /Govern the Unaligned/);
 });
 
 test("DOM smoke: clearing the search restores all cards", async () => {
@@ -179,7 +179,7 @@ test("DOM smoke: modal keyboard nav — Escape closes, ArrowRight/Left step", as
 test("DOM smoke: kind toggle filters out crypt cards", async () => {
   document.querySelector('[data-kind="crypt"]').click();
   await new Promise((r) => setTimeout(r, 30));
-  const labels = [...document.querySelectorAll(".card")].map((c) => c.getAttribute("aria-label"));
+  const labels = [...document.querySelectorAll(".card")].map((c) => c.textContent);
   assert.equal(labels.length, 1);
   assert.match(labels[0], /Govern the Unaligned/);
   // Restore

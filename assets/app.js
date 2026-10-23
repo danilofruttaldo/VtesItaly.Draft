@@ -54,7 +54,9 @@ const cardNodeCache = new Map();
 const CARD_SIZES = "(max-width: 380px) 50vw, (max-width: 640px) 125px, 180px";
 
 // The listitem is a wrapper <div>: role="listitem" on the <button> itself
-// would strip its button semantics (axe: aria-allowed-role).
+// would strip its button semantics (axe: aria-allowed-role). The button is
+// named by its own text ("Name 3 copies") rather than an aria-label, so the
+// name contains the visible name and count (WCAG 2.5.3, label in name).
 function buildCardNode(c) {
   const cell = document.createElement("div");
   cell.className = "card-cell";
@@ -62,15 +64,14 @@ function buildCardNode(c) {
   const el = document.createElement("button");
   el.type = "button";
   el.className = "card";
-  el.setAttribute("aria-label", `${c.name}, ${c.count} copies`);
   const thumb = encodeURI(thumbSrc(c.img));
   const full = encodeURI(c.img);
   el.innerHTML = `
     <img loading="lazy" decoding="async" width="160" height="223"
          src="${thumb}" srcset="${thumb} 320w, ${full} 358w" sizes="${CARD_SIZES}"
-         alt="${escapeHtml(c.name)}">
-    <span class="badge" aria-hidden="true">×${c.count}</span>
-    <span class="card-name" aria-hidden="true">${escapeHtml(c.name)}</span>
+         alt="">
+    <span class="card-name">${escapeHtml(c.name)}</span>
+    <span class="badge"><span aria-hidden="true">×</span>${c.count}<span class="sr-only"> copies</span></span>
   `;
   cell.append(el);
   return cell;
@@ -623,10 +624,13 @@ function openDrawer() {
   document.body.style.overflow = "hidden";
 }
 function closeDrawer() {
+  // Hiding the drawer with focus inside would drop focus to <body>.
+  const focusInside = advancedRow.contains(document.activeElement);
   advancedRow.classList.remove("open");
   drawerBackdrop.classList.remove("open");
   filtersToggle.setAttribute("aria-expanded", "false");
   if (state.modalIndex < 0) document.body.style.overflow = "";
+  if (focusInside && isMobile()) filtersToggle.focus();
 }
 filtersToggle.addEventListener("click", () => {
   if (advancedRow.classList.contains("open")) closeDrawer();
