@@ -19,7 +19,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "minify": "node scripts/minify.mjs",
-    "ci:verify": "npm audit --omit=dev && npm run lint && npm run format:check && python -m ruff check scripts/ tests/ && python -m ruff format --check scripts/ tests/ && npm run test:coverage"
+    "ci:verify": "npm audit --audit-level=high && npm run lint && npm run format:check && python -m ruff check scripts/ tests/ && python -m ruff format --check scripts/ tests/ && npm run test:coverage"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
