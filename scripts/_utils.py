@@ -4,6 +4,7 @@ Kept in a single place so name-normalization stays consistent across every
 entry point that needs to match user-provided names against KRCG records.
 """
 
+import json
 import os
 import re
 import unicodedata
@@ -12,6 +13,10 @@ from pathlib import Path
 
 KRCG_JSON_URL = "https://static.krcg.org/data/vtes.json"
 USER_AGENT = "Vtes.Draft/1.0"
+ROOT = Path(__file__).resolve().parent.parent
+# Local copy of KRCG_JSON_URL (git-ignored). Shared by every script that
+# needs KRCG data, so one download serves the whole pipeline.
+KRCG_CACHE = ROOT / "data" / "krcg_vtes.json"
 
 # Library rarity → relative image dir. Scripts that need absolute paths build
 # them with `ROOT / LIB_RARITY_DIRS[rarity]`; build_site_data uses the strings
@@ -72,3 +77,16 @@ def download_atomic(url: str, dest: str | Path, *, timeout: float = 30) -> None:
         os.replace(tmp, dest)
     finally:
         tmp.unlink(missing_ok=True)
+
+
+def load_krcg(*, force_refresh: bool = False, timeout: float = 60) -> list[dict]:
+    """Return the KRCG card list, downloading it to KRCG_CACHE when missing.
+
+    force_refresh re-downloads even if the cache exists. The download goes
+    through download_atomic, so a failed refresh keeps the previous cache.
+    """
+    if force_refresh or not KRCG_CACHE.exists():
+        action = "Refreshing" if KRCG_CACHE.exists() else "Downloading"
+        print(f"{action} KRCG data -> {KRCG_CACHE.name}")
+        download_atomic(KRCG_JSON_URL, KRCG_CACHE, timeout=timeout)
+    return json.loads(KRCG_CACHE.read_text(encoding="utf-8"))

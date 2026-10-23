@@ -1,13 +1,11 @@
-import json
 import os
 import re
 import sys
 import time
-import urllib.request
 from pathlib import Path
 
 import openpyxl
-from _utils import KRCG_JSON_URL, download_atomic, norm
+from _utils import download_atomic, load_krcg, norm
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
@@ -20,7 +18,7 @@ def main() -> int:
     ws = wb[SHEET]
     excel_names = [r[2] for r in ws.iter_rows(min_row=2, values_only=True) if r[2]]
 
-    data = json.loads(urllib.request.urlopen(KRCG_JSON_URL).read())
+    data = load_krcg()
     vamps = [c for c in data if "Vampire" in c.get("types", []) or "Imbued" in c.get("types", [])]
 
     by_name_group: dict[tuple[str, str], dict] = {}

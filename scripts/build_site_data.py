@@ -5,16 +5,14 @@ import json
 import os
 import re
 import sys
-import urllib.request
 from pathlib import Path
 
 import openpyxl
-from _utils import KRCG_JSON_URL, LIB_RARITY_DIRS, norm
+from _utils import LIB_RARITY_DIRS, load_krcg, norm
 from ocr_cleanup import clean_draft_snippet
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
-KRCG_CACHE = ROOT / "data" / "krcg_vtes.json"
 DRAFT_OCR = ROOT / "data" / "draft_ocr.json"
 DRAFT_OVERRIDES = ROOT / "data" / "draft_overrides.json"
 CRYPT_DIR = "images/crypt"
@@ -38,16 +36,6 @@ def find_crypt(stem_index: dict[str, str], name: str) -> str | None:
         if pat.match(stem):
             return fname
     return None
-
-
-def load_krcg(*, force_refresh: bool = False) -> list[dict]:
-    if force_refresh or not KRCG_CACHE.exists():
-        action = "Refreshing" if KRCG_CACHE.exists() else "Downloading"
-        print(f"{action} KRCG data → {KRCG_CACHE.name}")
-        req = urllib.request.Request(KRCG_JSON_URL, headers={"User-Agent": "Vtes.Draft/1.0"})
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            KRCG_CACHE.write_bytes(resp.read())
-    return json.loads(KRCG_CACHE.read_text(encoding="utf-8"))
 
 
 def lib_cost(card: dict) -> str:

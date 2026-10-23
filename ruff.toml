@@ -20,10 +20,6 @@ ignore = [
   "B008", # function call in default args — PIL APIs use it legitimately
 ]
 
-[lint.per-file-ignores]
-# `load_krcg` downloads large JSON; keeping the full legacy interface is fine.
-"scripts/build_site_data.py" = ["B904"]
-
 [format]
 quote-style = "double"
 indent-style = "space"

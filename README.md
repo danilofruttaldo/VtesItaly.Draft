@@ -119,7 +119,7 @@ with `SKIP_VERIFY=1 git push` only in emergencies.
 │   └── favicon.ico, apple-touch-icon.png, vtes.svg, icon-{192,512}.png, icon-maskable-512.png (PWA icons rendered from vtes.svg)
 ├── data/
 │   ├── cards.json                      # gallery data (consumed by index.html)
-│   ├── krcg_vtes.json                  # cached KRCG dataset (build input, gitignored)
+│   ├── krcg_vtes.json                  # cached KRCG dataset (build input, gitignored; shared by every script via _utils.load_krcg)
 │   ├── draft_ocr.json                  # raw easyocr output per image (build input)
 │   └── draft_overrides.json            # manual DRAFT-clause corrections (build input)
 ├── docs/

@@ -1,11 +1,9 @@
-import json
 import os
 import sys
-import urllib.request
 from pathlib import Path
 
 import openpyxl
-from _utils import KRCG_JSON_URL, LIB_RARITY_DIRS, norm
+from _utils import LIB_RARITY_DIRS, load_krcg, norm
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -76,7 +74,7 @@ def main() -> int:
         if r[1] in RARITY_TO_DIR and r[2]:
             rarity_by_norm[norm(r[2])] = r[1]
 
-    data = json.loads(urllib.request.urlopen(KRCG_JSON_URL).read())
+    data = load_krcg()
     libs = [c for c in data if "Vampire" not in c.get("types", []) and "Imbued" not in c.get("types", [])]
     by_norm: dict[str, dict] = {}
     for c in libs:
