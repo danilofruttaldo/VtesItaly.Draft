@@ -10,16 +10,19 @@ import {
   countActiveFilters,
   buildFilterSearchParams,
   decodeHashName,
+  parseSetParam,
+  KINDS,
+  RARITIES,
 } from "./core.mjs";
 
 const state = {
   data: { crypt: [], library: [] },
   q: "",
-  kinds: new Set(["crypt", "library"]),
+  kinds: new Set(KINDS),
   clan: "",
   type: "",
   sort: "",
-  rarities: new Set(["Common", "Uncommon", "Rare"]),
+  rarities: new Set(RARITIES),
   filtered: [],
   modalIndex: -1,
   lastFocus: null,
@@ -138,7 +141,7 @@ function renderActiveFilters() {
   }
   if (!state.kinds.has("crypt")) mk("Crypt off", "kind:crypt");
   if (!state.kinds.has("library")) mk("Library off", "kind:library");
-  for (const r of ["Common", "Uncommon", "Rare"]) {
+  for (const r of RARITIES) {
     if (!state.rarities.has(r)) mk(`${r} off`, "rarity:" + r);
   }
   host.replaceChildren();
@@ -208,14 +211,16 @@ function loadStateFromUrl() {
     state.sort = p.get("sort");
     setComboLabel("sort", state.sort);
   }
-  if (p.has("kinds")) {
-    state.kinds = new Set(p.get("kinds").split(",").filter(Boolean));
+  const kinds = p.has("kinds") ? parseSetParam(p.get("kinds"), KINDS) : null;
+  if (kinds) {
+    state.kinds = kinds;
     document
       .querySelectorAll("[data-kind]")
       .forEach((b) => b.setAttribute("aria-pressed", String(state.kinds.has(b.dataset.kind))));
   }
-  if (p.has("rarities")) {
-    state.rarities = new Set(p.get("rarities").split(",").filter(Boolean));
+  const rarities = p.has("rarities") ? parseSetParam(p.get("rarities"), RARITIES) : null;
+  if (rarities) {
+    state.rarities = rarities;
     document
       .querySelectorAll("[data-rarity]")
       .forEach((b) => b.setAttribute("aria-pressed", String(state.rarities.has(b.dataset.rarity))));
@@ -465,8 +470,8 @@ function resetAll() {
   state.clan = "";
   state.type = "";
   state.sort = "";
-  state.kinds = new Set(["crypt", "library"]);
-  state.rarities = new Set(["Common", "Uncommon", "Rare"]);
+  state.kinds = new Set(KINDS);
+  state.rarities = new Set(RARITIES);
   $("q").value = "";
   setComboLabel("clan", "");
   setComboLabel("type", "");

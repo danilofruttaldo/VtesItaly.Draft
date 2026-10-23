@@ -261,3 +261,23 @@ export function buildFilterSearchParams(state) {
   if (state.rarities.size !== 3) p.set("rarities", [...state.rarities].join(","));
   return p;
 }
+
+export const KINDS = ["crypt", "library"];
+export const RARITIES = ["Common", "Uncommon", "Rare"];
+
+/* Parse a comma-separated filter param (`kinds`, `rarities`) against the
+ * allowed values. Unknown values are dropped, so a stale or hand-edited URL
+ * can't count as an active filter. Returns null when the param held only
+ * unknown values: the caller keeps the default. An empty param ("kinds=")
+ * is a deliberate "none selected" and returns an empty Set.
+ *
+ * @param {string} raw
+ * @param {readonly string[]} allowed
+ * @returns {Set<string> | null}
+ */
+export function parseSetParam(raw, allowed) {
+  const values = String(raw).split(",").filter(Boolean);
+  const valid = values.filter((v) => allowed.includes(v));
+  if (values.length && !valid.length) return null;
+  return new Set(valid);
+}

@@ -2,6 +2,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 
 import {
+  KINDS,
+  RARITIES,
+  parseSetParam,
   ICON_TOKENS,
   SORT_OPTIONS,
   RARITY_ORDER,
@@ -396,4 +399,18 @@ test("decodeHashName returns null on malformed percent sequences (not a silent e
   assert.equal(decodeHashName("#%"), null);
   assert.equal(decodeHashName("#%E0%A4"), null); // truncated multi-byte
   assert.equal(decodeHashName("#%ZZ"), null);
+});
+
+test("parseSetParam keeps only allowed values", () => {
+  assert.deepEqual([...parseSetParam("library,bogus", KINDS)], ["library"]);
+  assert.deepEqual([...parseSetParam("Rare,,Common,Mythic", RARITIES)], ["Rare", "Common"]);
+});
+
+test("parseSetParam returns null when every value is unknown", () => {
+  assert.equal(parseSetParam("foo,bar", KINDS), null);
+  assert.equal(parseSetParam("common", RARITIES), null, "matching is case-sensitive");
+});
+
+test("parseSetParam treats an empty param as an explicit empty selection", () => {
+  assert.equal(parseSetParam("", KINDS).size, 0);
 });
