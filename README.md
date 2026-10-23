@@ -116,7 +116,7 @@ with `SKIP_VERIFY=1 git push` only in emergencies.
 ├── .github/workflows/deploy.yml        # CI: bump sw.js VERSION + deploy Pages
 ├── assets/
 │   ├── app.js, styles.css              # gallery logic & styles (extracted from HTML)
-│   └── favicon.ico, apple-touch-icon.png, vtes.svg
+│   └── favicon.ico, apple-touch-icon.png, vtes.svg, icon-{192,512}.png, icon-maskable-512.png (PWA icons rendered from vtes.svg)
 ├── data/
 │   ├── cards.json                      # gallery data (consumed by index.html)
 │   ├── krcg_vtes.json                  # cached KRCG dataset (build input, gitignored)
