@@ -198,3 +198,19 @@ test("DOM smoke: a hashchange to a card name opens its modal", async () => {
   await new Promise((r) => setTimeout(r, 200));
   assert.equal(modal.hidden, true);
 });
+
+test("DOM smoke: Escape in a combobox inside the drawer closes only the combobox", async () => {
+  // jsdom has no matchMedia, so open the mobile drawer by its class directly.
+  const drawer = document.getElementById("controls-advanced");
+  drawer.classList.add("open");
+  const cb = document.getElementById("cb-clan");
+  cb.querySelector(".combobox-btn").click();
+  assert.ok(cb.classList.contains("open"));
+  const input = cb.querySelector(".combobox-search input");
+  input.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+  assert.equal(cb.classList.contains("open"), false, "Escape closes the combobox");
+  assert.ok(drawer.classList.contains("open"), "the drawer stays open");
+  // A second Escape, with no combobox open, closes the drawer.
+  document.dispatchEvent(new window.KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+  assert.equal(drawer.classList.contains("open"), false);
+});

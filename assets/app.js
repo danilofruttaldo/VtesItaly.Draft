@@ -701,10 +701,7 @@ function initCombobox(cbId, options, onChange) {
   if (searchInput) {
     searchInput.addEventListener("input", (e) => renderOptions(e.target.value));
     searchInput.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeAllCombos();
-        btn.focus();
-      } else if (e.key === "ArrowDown") {
+      if (e.key === "ArrowDown") {
         const first = list.querySelector(".combobox-option:not(.none)");
         if (first) {
           first.focus();
@@ -719,6 +716,16 @@ function initCombobox(cbId, options, onChange) {
       }
     });
   }
+
+  // Escape from anywhere inside an open combobox (button, search, options)
+  // closes just the combobox: stopPropagation keeps the document listener
+  // from also closing the mobile filter drawer around it.
+  root.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape" || !root.classList.contains("open")) return;
+    e.stopPropagation();
+    closeAllCombos();
+    btn.focus();
+  });
 
   list.addEventListener("click", (e) => {
     const opt = e.target.closest(".combobox-option:not(.none)");
@@ -742,9 +749,6 @@ function initCombobox(cbId, options, onChange) {
         searchInput.focus();
         e.preventDefault();
       }
-    } else if (e.key === "Escape") {
-      closeAllCombos();
-      btn.focus();
     } else if (e.key === "Enter" && idx >= 0) {
       opts[idx].click();
       e.preventDefault();
