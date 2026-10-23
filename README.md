@@ -56,7 +56,7 @@ Deploy runs via `.github/workflows/deploy.yml` on every push to `main` (or manua
 2. **`lighthouse`** — depends on `ci`. Downloads the `_site/` artifact and runs Lighthouse CI from `.lighthouserc.json` against it. Accessibility threshold blocks; perf/SEO/best-practices warn.
 3. **`deploy`** — depends on both `ci` and `lighthouse`, and only on push (not on PR). Downloads the same `_site/` artifact and publishes it to GitHub Pages. No re-build.
 
-Workflow-level `concurrency: pages-${{ github.ref }}` is per-ref so a Dependabot burst of PRs doesn't cancel each other in the queue; pushes to `main` collapse to a single group. `permissions: contents: read` scopes the default token to the minimum (the `deploy` job elevates to `pages: write` + `id-token: write` only for itself). Single workflow per push: one CI gate, one Lighthouse audit, one deploy — never duplicated.
+Workflow-level `concurrency: pages-${{ github.ref }}` is per-ref: pushes to `main` collapse to a single group. `audit.yml` runs `npm audit --audit-level=high` every Monday on the whole tree: no Dependabot, dependencies are updated by hand. `permissions: contents: read` scopes the default token to the minimum (the `deploy` job elevates to `pages: write` + `id-token: write` only for itself). Single workflow per push: one CI gate, one Lighthouse audit, one deploy — never duplicated.
 
 One-time repo setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**. The site is served at `https://<user>.github.io/<repo>/`.
 
