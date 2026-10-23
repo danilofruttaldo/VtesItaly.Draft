@@ -865,6 +865,9 @@ function showUpdateBanner(reload) {
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
+      // Captured before register: on a first visit clients.claim() also fires
+      // controllerchange (null → worker), which is not an update.
+      const hadController = !!navigator.serviceWorker.controller;
       const reg = await navigator.serviceWorker.register("sw.js");
 
       // An updated worker is installing: wire its statechange so we only
@@ -885,7 +888,7 @@ if ("serviceWorker" in navigator) {
       // after skipWaiting; treat it as a fallback signal.
       let reloading = false;
       navigator.serviceWorker.addEventListener("controllerchange", () => {
-        if (reloading) return;
+        if (reloading || !hadController) return;
         reloading = true;
         // Only show the banner if we never caught updatefound (e.g. page
         // opened while a waiting worker from a previous session took over).
