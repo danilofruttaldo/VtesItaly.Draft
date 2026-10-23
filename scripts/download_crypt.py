@@ -7,7 +7,7 @@ import urllib.request
 from pathlib import Path
 
 import openpyxl
-from _utils import KRCG_JSON_URL, norm
+from _utils import KRCG_JSON_URL, download_atomic, norm
 
 ROOT = Path(__file__).resolve().parent.parent
 XLSX = ROOT / "data" / "Draft Cube.xlsx"
@@ -55,9 +55,7 @@ def main() -> int:
             print(f"skip {name} -> {fname} (already present)")
             continue
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "Vtes.Draft/1.0"})
-            with urllib.request.urlopen(req, timeout=30) as resp, open(dest, "wb") as f:
-                f.write(resp.read())
+            download_atomic(url, dest)
             print(f"ok   {name} -> {fname}")
             time.sleep(0.1)
         except Exception as e:
