@@ -103,11 +103,22 @@ test("DOM smoke: summary reports crypt / library totals", () => {
   assert.match(summary, /1 library \(3\)/);
 });
 
-test("DOM smoke: card <img> carries a 1x/2x srcset", () => {
+test("DOM smoke: card <img> srcset uses width descriptors + sizes", () => {
   const img = document.querySelector(".card img");
   const srcset = img.getAttribute("srcset") || "";
-  assert.match(srcset, /-thumb\.webp 1x/);
-  assert.match(srcset, /\.webp 2x/);
+  assert.match(srcset, /-thumb\.webp 320w/);
+  assert.match(srcset, /[^b]\.webp 358w/);
+  assert.ok(img.getAttribute("sizes"), "sizes is required with w descriptors");
+});
+
+test("DOM smoke: grid items are listitem wrappers around real buttons", () => {
+  const cells = document.querySelectorAll('#grid > [role="listitem"]');
+  assert.equal(cells.length, 3);
+  for (const cell of cells) {
+    const btn = cell.firstElementChild;
+    assert.equal(btn.tagName, "BUTTON");
+    assert.equal(btn.hasAttribute("role"), false, "button must keep its implicit role");
+  }
 });
 
 test("DOM smoke: clicking a card opens the modal with its name", async () => {

@@ -44,22 +44,33 @@ function debounce(fn, ms) {
 // cards on every keystroke.
 const cardNodeCache = new Map();
 
+// Thumbs are 320px wide and full scans ~358px or more: with `w` descriptors
+// the browser only fetches the full image when the cell needs more than 320
+// device pixels. `sizes` mirrors the grid columns in styles.css (2 columns
+// up to 380px, ~115-175px cells up to 640px, 130-200px cells above).
+const CARD_SIZES = "(max-width: 380px) 50vw, (max-width: 640px) 125px, 180px";
+
+// The listitem is a wrapper <div>: role="listitem" on the <button> itself
+// would strip its button semantics (axe: aria-allowed-role).
 function buildCardNode(c) {
+  const cell = document.createElement("div");
+  cell.className = "card-cell";
+  cell.setAttribute("role", "listitem");
   const el = document.createElement("button");
   el.type = "button";
   el.className = "card";
-  el.setAttribute("role", "listitem");
   el.setAttribute("aria-label", `${c.name}, ${c.count} copies`);
   const thumb = encodeURI(thumbSrc(c.img));
   const full = encodeURI(c.img);
   el.innerHTML = `
     <img loading="lazy" decoding="async" width="160" height="223"
-         src="${thumb}" srcset="${thumb} 1x, ${full} 2x"
+         src="${thumb}" srcset="${thumb} 320w, ${full} 358w" sizes="${CARD_SIZES}"
          alt="${escapeHtml(c.name)}">
     <span class="badge" aria-hidden="true">×${c.count}</span>
     <span class="card-name" aria-hidden="true">${escapeHtml(c.name)}</span>
   `;
-  return el;
+  cell.append(el);
+  return cell;
 }
 
 function render() {
@@ -68,14 +79,15 @@ function render() {
   const frag = document.createDocumentFragment();
   state.filtered.forEach((c, idx) => {
     const key = cardKey(c);
-    let el = cardNodeCache.get(key);
-    if (!el) {
-      el = buildCardNode(c);
-      cardNodeCache.set(key, el);
+    let cell = cardNodeCache.get(key);
+    if (!cell) {
+      cell = buildCardNode(c);
+      cardNodeCache.set(key, cell);
     }
+    const btn = cell.firstElementChild;
     const idxStr = String(idx);
-    if (el.dataset.idx !== idxStr) el.dataset.idx = idxStr;
-    frag.appendChild(el);
+    if (btn.dataset.idx !== idxStr) btn.dataset.idx = idxStr;
+    frag.appendChild(cell);
   });
   grid.replaceChildren(frag);
 
