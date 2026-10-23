@@ -155,7 +155,7 @@ All scripts use paths relative to the repo root (via `__file__`) and can be laun
 
 ## Notes
 
-- **DRAFT: clause** detected on 79/262 library cards (44 Common, 16 Uncommon, 19 Rare). KRCG does not expose this clause as data, so detection relies on OCR + manual review. Full breakdown in [docs/DRAFT_OPTION.md](docs/DRAFT_OPTION.md).
+- **DRAFT: clause** detected on 83/262 library cards (47 Common, 17 Uncommon, 19 Rare). KRCG does not expose this clause as data, so detection relies on OCR + manual review. Full breakdown in [docs/DRAFT_OPTION.md](docs/DRAFT_OPTION.md).
 - Some images recovered from user scans have lower quality than the KRCG ones because of the source resolution; the enhancement applied makes them readable but not perfect.
 
 ## License
