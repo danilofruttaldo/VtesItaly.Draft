@@ -347,6 +347,32 @@ function closeModal(fromPopState = false) {
   }
 }
 
+// Open a card by name. If the card exists but is hidden by active filters,
+// reset filters silently and open it anyway. pushHistory=false: the entry
+// already carries the hash (deep link or hash navigation).
+function openCardByName(name) {
+  let idx = state.filtered.findIndex((c) => c.name === name);
+  if (idx < 0) {
+    const all = [...state.data.crypt, ...state.data.library];
+    if (all.some((c) => c.name === name)) {
+      resetAll();
+      idx = state.filtered.findIndex((c) => c.name === name);
+    }
+  }
+  if (idx >= 0) openModal(idx, false);
+}
+
+// A hash typed in the address bar or followed from a link while the page is
+// open. pushState/replaceState in openModal never fire hashchange. Read the
+// hash from e.newURL, not location: a fragment navigation also fires popstate
+// first, whose closeModal has already rewritten the URL without the hash.
+window.addEventListener("hashchange", (e) => {
+  const name = decodeHashName(new URL(e.newURL).hash);
+  if (!name) return;
+  if (state.modalIndex >= 0 && state.filtered[state.modalIndex]?.name === name) return;
+  openCardByName(name);
+});
+
 window.addEventListener("popstate", () => {
   if (state.modalIndex >= 0) closeModal(true);
   // Belt-and-suspenders: some browsers restore the per-entry title on back
@@ -833,17 +859,7 @@ fetch("data/cards.json")
     if (hash === null && rawHash && rawHash !== "#") {
       console.warn("[draft] ignoring malformed hash:", rawHash);
     }
-    if (hash) {
-      let idx = state.filtered.findIndex((c) => c.name === hash);
-      if (idx < 0) {
-        const all = [...state.data.crypt, ...state.data.library];
-        if (all.some((c) => c.name === hash)) {
-          resetAll();
-          idx = state.filtered.findIndex((c) => c.name === hash);
-        }
-      }
-      if (idx >= 0) openModal(idx, false);
-    }
+    if (hash) openCardByName(hash);
   })
   .catch((e) => {
     $("loading").hidden = true;

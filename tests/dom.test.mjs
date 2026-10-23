@@ -186,3 +186,15 @@ test("DOM smoke: kind toggle filters out crypt cards", async () => {
   document.querySelector('[data-kind="crypt"]').click();
   await new Promise((r) => setTimeout(r, 30));
 });
+
+test("DOM smoke: a hashchange to a card name opens its modal", async () => {
+  const modal = document.getElementById("modal");
+  assert.equal(modal.hidden, true);
+  location.hash = "#" + encodeURIComponent("Bob Sample");
+  await new Promise((r) => setTimeout(r, 60));
+  assert.equal(modal.hidden, false, "hashchange should open the card");
+  assert.equal(document.getElementById("modal-name").textContent, "Bob Sample");
+  document.getElementById("modal-close").click();
+  await new Promise((r) => setTimeout(r, 200));
+  assert.equal(modal.hidden, true);
+});
