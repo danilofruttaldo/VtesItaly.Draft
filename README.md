@@ -44,7 +44,7 @@ Interactive web gallery for a VTES Draft Cube: 120 crypt + 262 library cards (38
 
 - `manifest.webmanifest` allows install to home screen / desktop
 - `sw.js` service worker: network-first for HTML, `app.js`, `styles.css` and `cards.json`; cache-first for images/icons/manifest — works offline after first visit
-- Strict Content-Security-Policy meta in `index.html` (`script-src 'self'`, `style-src 'self'` — no inline JS, no inline styles, `object-src 'none'`, `frame-ancestors 'none'`)
+- Strict Content-Security-Policy meta in `index.html` (`script-src 'self'`, `style-src 'self'` — no inline JS, no inline styles, `object-src 'none'`; `frame-ancestors` is omitted because browsers ignore it in a `<meta>` CSP and GitHub Pages cannot send the header)
 
 Data comes from `data/cards.json` (text + metadata) and `images/**/*.webp`.
 
