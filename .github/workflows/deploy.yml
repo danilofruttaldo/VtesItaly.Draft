@@ -19,7 +19,8 @@ permissions:
 jobs:
   ci:
     # Gate that runs on every push: lint/format/typecheck/test/stage/minify/budget.
-    runs-on: ubuntu-latest
+    # Pinned instead of ubuntu-latest: the -latest label moves to a newer image without notice.
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     concurrency:
       # A newer commit on the same ref supersedes the in-flight check.
@@ -80,7 +81,7 @@ jobs:
     # artifact from ci so no rebuild is needed; keeping it separate means a
     # lighthouse rerun doesn't redo lint/test/stage/minify.
     needs: ci
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     concurrency:
       group: lighthouse-${{ github.ref }}
@@ -102,7 +103,7 @@ jobs:
 
   deploy:
     needs: [ci, lighthouse]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     concurrency:
       # One deploy at a time and never cancelled: Pages rejects a deploy while
