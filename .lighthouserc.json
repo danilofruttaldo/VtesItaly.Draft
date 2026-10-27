@@ -3,7 +3,7 @@
     "collect": {
       "staticDistDir": "./_site",
       "url": ["http://localhost/index.html"],
-      "numberOfRuns": 3,
+      "numberOfRuns": 1,
       "settings": {
         "preset": "desktop",
         "throttlingMethod": "provided",

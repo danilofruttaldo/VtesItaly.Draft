@@ -1,6 +1,6 @@
 name: CI
 
-# Single workflow per commit: ci → lighthouse → deploy.
+# Single workflow per commit: ci, then lighthouse and deploy in parallel.
 # Lighthouse and deploy reuse the _site/ artifact uploaded by `ci`, so the
 # whole build pipeline runs only once per push.
 
@@ -77,9 +77,11 @@ jobs:
           retention-days: 1
 
   lighthouse:
-    # Lighthouse is a deploy gate (accessibility blocking). Reuses the _site
-    # artifact from ci so no rebuild is needed; keeping it separate means a
-    # lighthouse rerun doesn't redo lint/test/stage/minify.
+    # Post-build report, not a deploy gate: it took ~80s of a ~2.5min
+    # pipeline, and axe-core in ci already blocks a11y regressions on the
+    # hydrated DOM. Color contrast is checked only here (jsdom doesn't paint),
+    # so a failure means a fix-forward commit; GitHub e-mails the failed run.
+    # Reuses the _site artifact from ci so no rebuild is needed.
     needs: ci
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -102,7 +104,7 @@ jobs:
           uploadArtifacts: true
 
   deploy:
-    needs: [ci, lighthouse]
+    needs: ci
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     concurrency:
