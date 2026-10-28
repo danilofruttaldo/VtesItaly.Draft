@@ -76,6 +76,8 @@ expose("navigator", dom.window.navigator);
 expose("Image", dom.window.Image);
 expose("Event", dom.window.Event);
 expose("HTMLElement", dom.window.HTMLElement);
+// jsdom has no matchMedia; report a desktop viewport.
+dom.window.matchMedia = (query) => ({ matches: false, media: query, addEventListener() {}, removeEventListener() {} });
 expose("requestAnimationFrame", dom.window.requestAnimationFrame?.bind(dom.window) ?? ((cb) => setTimeout(cb, 0)));
 expose("fetch", async (url) => {
   if (url === "data/cards.json") {
