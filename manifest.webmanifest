@@ -2,7 +2,7 @@
   "id": "/",
   "name": "VTES Draft Cube",
   "short_name": "VTES Draft",
-  "description": "Browse the VTES Draft Cube crypt and library with search, filters and card detail.",
+  "description": "Every card in the VTES Italy Draft Cube, with its DRAFT clause and copy count.",
   "lang": "en",
   "dir": "ltr",
   "categories": ["games", "entertainment", "utilities"],

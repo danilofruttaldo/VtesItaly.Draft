@@ -13,7 +13,7 @@
     <meta name="theme-color" content="#121214" />
     <meta
       name="description"
-      content="VTES Draft Cube interactive gallery: browse the crypt and library cards with search, filters and card detail."
+      content="The VTES Italy Draft Cube: every crypt and library card in the pool, with each card's DRAFT clause, copy counts, search and filters."
     />
     <link rel="canonical" href="https://draft.vtesitaly.com/" />
     <link rel="icon" type="image/svg+xml" href="assets/vtes.svg" />
@@ -25,22 +25,19 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <!-- Open Graph / Twitter Card (shown when cards are shared via the in-app share button) -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="VTES Draft Cube" />
-    <meta property="og:title" content="VTES Draft Cube" />
+    <meta property="og:site_name" content="VTES Italy" />
+    <meta property="og:title" content="VTES Draft Cube · VTES Italy" />
     <meta
       property="og:description"
-      content="Interactive gallery for the VTES Draft Cube: browse the crypt and library cards with search, filters and card detail."
+      content="Every card in the VTES Italy Draft Cube, with its DRAFT clause and copy count."
     />
     <meta property="og:url" content="https://draft.vtesitaly.com/" />
     <meta property="og:image" content="https://draft.vtesitaly.com/assets/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="VTES Draft Cube — interactive gallery for 120 crypt and 262 library cards."
-    />
+    <meta property="og:image:alt" content="VTES Draft Cube by VTES Italy: card gallery." />
     <meta name="twitter:card" content="summary_large_image" />
-    <title>VTES Draft Cube</title>
+    <title>VTES Draft Cube · VTES Italy</title>
     <link rel="stylesheet" href="assets/styles.css" />
     <script type="module" src="assets/app.js"></script>
     <script defer src="assets/stats.js"></script>
@@ -50,8 +47,30 @@
 
     <div class="topbar" id="topbar">
       <header>
-        <h1>VTES Draft Cube</h1>
+        <a class="brand" href="https://vtesitaly.com/en/">VTES Italy</a>
+        <h1>Draft Cube</h1>
         <span class="sub" id="summary"></span>
+        <details class="about">
+          <summary>About this cube</summary>
+          <div class="about-body">
+            <p>
+              This is the VTES Italy Draft Cube: the card pool the Italian community uses to play
+              <em>Vampire: The Eternal Struggle</em> in draft format. Players build their decks from cards picked out of
+              the cube instead of bringing their own.
+            </p>
+            <p>
+              The crypt has 120 vampires from nine clans, two copies each. In the library, commons usually come in four
+              copies, uncommons in two and rares in one. The badge on each card shows how many copies are in the cube.
+            </p>
+            <p>
+              Many library cards carry a <strong>DRAFT</strong> clause: an extra effect that applies only in draft play,
+              often the same effect with a different discipline or clan. “Above” refers to the text printed on the card
+              shown here, which can differ from the current rules text. Disciplines keep their printed abbreviations:
+              <span class="nowrap">[tha]</span> is Blood Sorcery (formerly Thaumaturgy) and
+              <span class="nowrap">[obt]</span> is Oblivion (formerly Obtenebration).
+            </p>
+          </div>
+        </details>
       </header>
 
       <div class="controls" role="search">
@@ -138,6 +157,12 @@
             </div>
           </div>
           <div class="drawer-section">
+            <span class="drawer-section-label">DRAFT clause</span>
+            <div class="chip-group" role="group" aria-label="DRAFT clause">
+              <button class="chip" id="draft-only" type="button" aria-pressed="false">Only cards with DRAFT</button>
+            </div>
+          </div>
+          <div class="drawer-section">
             <span class="drawer-section-label">Sort</span>
             <div class="combobox" id="cb-sort" data-for="sort">
               <button
@@ -147,7 +172,7 @@
                 aria-expanded="false"
                 aria-controls="cb-sort-panel"
               >
-                <span class="sr-only">Sort: </span><span class="combobox-label">Default</span>
+                <span class="sr-only">Sort: </span><span class="combobox-label">Cube order</span>
               </button>
               <div class="combobox-panel" id="cb-sort-panel">
                 <div class="combobox-list" role="listbox" aria-label="Sort options"></div>
@@ -177,7 +202,14 @@
     </main>
 
     <footer class="app-footer">
-      <a href="https://vtesitaly.com/en/privacy/">Privacy</a>
+      <p>
+        <a href="https://vtesitaly.com/en/">VTES Italy</a> · <a href="https://vtesitaly.com/en/privacy/">Privacy</a>
+      </p>
+      <p>
+        Card text from <a href="https://krcg.org/">KRCG</a>. Some images are scans of the cube's own cards.
+        <em>Vampire: The Eternal Struggle</em> and its card images are © Paradox Interactive AB. This is an unofficial
+        fan site, not affiliated with or endorsed by Paradox Interactive.
+      </p>
     </footer>
 
     <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-name" hidden>
@@ -197,6 +229,11 @@
           <h2 id="modal-name"></h2>
           <div class="tags" id="modal-tags"></div>
           <div class="text" id="modal-text"></div>
+          <section class="draft-block" id="modal-draft" aria-labelledby="modal-draft-label" hidden>
+            <h3 class="draft-label" id="modal-draft-label">DRAFT</h3>
+            <div class="draft-text" id="modal-draft-text"></div>
+            <p class="draft-note">Applies only in draft play. “Above” refers to the text printed on this card.</p>
+          </section>
         </div>
       </div>
       <button class="modal-nav next" id="modal-next" type="button" aria-label="Next card">›</button>

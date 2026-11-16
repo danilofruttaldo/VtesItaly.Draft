@@ -127,7 +127,7 @@ with `SKIP_VERIFY=1 git push` only in emergencies.
 ├── images/
 │   ├── crypt/                          # 120 crypt images (.webp)
 │   ├── library-common/                 # 102
-│   ├── library-uncommon/               # 79
+│   ├── library-uncommon/               # 80
 │   ├── library-rare/                   # 80
 │   └── scan/                           # original user photos (legacy source, gitignored)
 └── scripts/                            # Python pipeline

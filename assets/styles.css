@@ -91,6 +91,47 @@ h1 {
   font-weight: 400;
   font-size: 0.85rem;
 }
+.brand {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.brand:hover {
+  color: var(--text);
+}
+
+/* "About this cube": collapsed by default so the grid stays one glance away. */
+.about {
+  flex-basis: 100%;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+.about summary {
+  cursor: pointer;
+  width: fit-content;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+}
+.about-body {
+  max-width: 68ch;
+  padding: 0.25rem 0 0.35rem;
+}
+.about-body p {
+  margin: 0.55rem 0 0;
+  line-height: 1.5;
+}
+.about-body strong,
+.about-body em {
+  color: var(--text);
+}
+.nowrap {
+  white-space: nowrap;
+}
 
 .controls {
   padding: 0.5rem calc(1.25rem + var(--safe-right)) 0.85rem calc(1.25rem + var(--safe-left));
@@ -467,6 +508,22 @@ input[type="search"]:focus {
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
   backdrop-filter: blur(2px);
 }
+/* DRAFT marker on library cards that carry the clause: under the copy badge,
+   over the artwork, so it never hides the printed card name (top-left) or the
+   name overlay (bottom). */
+.card .draft-flag {
+  position: absolute;
+  top: 32px;
+  right: 6px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+}
 .card-name {
   position: absolute;
   left: 0;
@@ -664,6 +721,36 @@ input[type="search"]:focus {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 0.95rem 1.05rem;
+}
+
+/* DRAFT clause: its own block under the rules text, with the accent rail
+   used for DRAFT elsewhere, so it never reads as part of the card text. */
+.draft-block {
+  margin-top: 0.75rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.05rem 0.8rem;
+}
+.draft-block[hidden] {
+  display: none;
+}
+.draft-label {
+  margin: 0 0 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text);
+}
+.draft-text {
+  line-height: 1.55;
+  font-size: 0.95rem;
+}
+.draft-note {
+  margin: 0.5rem 0 0;
+  font-size: 0.78rem;
+  color: var(--muted);
 }
 
 /* Custom searchable combobox */
@@ -1216,6 +1303,12 @@ input[type="search"]:focus {
   padding: 0 1rem calc(1.5rem + var(--safe-bottom));
   text-align: center;
   font-size: 0.75rem;
+  color: var(--muted);
+}
+.app-footer p {
+  max-width: 68ch;
+  margin: 0.4rem auto 0;
+  line-height: 1.5;
 }
 .app-footer a {
   color: var(--muted);

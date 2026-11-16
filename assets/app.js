@@ -5,6 +5,8 @@ import {
   renderDisc,
   renderTextWithIcons,
   cardKey,
+  displayName,
+  draftBody,
   thumbSrc,
   computeFiltered,
   countActiveFilters,
@@ -23,6 +25,7 @@ const state = {
   type: "",
   sort: "",
   rarities: new Set(RARITIES),
+  draftOnly: false,
   filtered: [],
   modalIndex: -1,
   lastFocus: null,
@@ -31,7 +34,7 @@ const state = {
 
 const $ = (id) => document.getElementById(id);
 
-const BASE_TITLE = "VTES Draft Cube";
+const BASE_TITLE = "VTES Draft Cube · VTES Italy";
 
 function debounce(fn, ms) {
   let t;
@@ -55,7 +58,7 @@ const CARD_SIZES = "(max-width: 380px) 50vw, (max-width: 640px) 125px, 180px";
 
 // The listitem is a wrapper <div>: role="listitem" on the <button> itself
 // would strip its button semantics (axe: aria-allowed-role). The button is
-// named by its own text ("Name 3 copies") rather than an aria-label, so the
+// named by its own text ("Name DRAFT 3 copies") rather than an aria-label, so the
 // name contains the visible name and count (WCAG 2.5.3, label in name).
 function buildCardNode(c) {
   const cell = document.createElement("div");
@@ -70,7 +73,7 @@ function buildCardNode(c) {
     <img loading="lazy" decoding="async" width="160" height="223"
          src="${thumb}" srcset="${thumb} 320w, ${full} 358w" sizes="${CARD_SIZES}"
          alt="">
-    <span class="card-name">${escapeHtml(c.name)}</span>
+    <span class="card-name">${escapeHtml(displayName(c.name))}</span>${c.draft ? '<span class="draft-flag">DRAFT</span>' : ""}
     <span class="badge"><span aria-hidden="true">×</span>${c.count}<span class="sr-only"> copies</span></span>
   `;
   cell.append(el);
@@ -96,7 +99,8 @@ function render() {
   grid.replaceChildren(frag);
 
   const totalCount = state.filtered.reduce((s, c) => s + c.count, 0);
-  $("count").textContent = `${state.filtered.length} unique · ${totalCount} copies`;
+  $("count").textContent =
+    `${state.filtered.length} ${state.filtered.length === 1 ? "card" : "cards"} · ${totalCount} ${totalCount === 1 ? "copy" : "copies"}`;
   $("empty").hidden = state.filtered.length !== 0;
   renderActiveFilters();
   updateResetButton();
@@ -140,6 +144,7 @@ function renderActiveFilters() {
     const opt = SORT_OPTIONS.find((s) => s.value === state.sort);
     if (opt) mk(`Sort: ${opt.label}`, "sort");
   }
+  if (state.draftOnly) mk("DRAFT clause only", "draft");
   if (!state.kinds.has("crypt")) mk("Crypt off", "kind:crypt");
   if (!state.kinds.has("library")) mk("Library off", "kind:library");
   for (const r of RARITIES) {
@@ -167,6 +172,8 @@ $("active-filters").addEventListener("click", (e) => {
     setComboValue("type", "");
   } else if (rm === "sort") {
     setComboValue("sort", "");
+  } else if (rm === "draft") {
+    setDraftOnly(false);
   } else if (rm.startsWith("kind:")) {
     const k = rm.slice(5);
     state.kinds.add(k);
@@ -226,6 +233,7 @@ function loadStateFromUrl() {
       .querySelectorAll("[data-rarity]")
       .forEach((b) => b.setAttribute("aria-pressed", String(state.rarities.has(b.dataset.rarity))));
   }
+  if (p.get("draft") === "1") setDraftOnly(true);
   if (state.type) applyTypeConstraint();
 }
 
@@ -254,8 +262,8 @@ function buildTags(c) {
   const tags = [];
   if (c.kind === "crypt") {
     if (c.clan) tags.push(`<span class="tag">${escapeHtml(c.clan)}</span>`);
-    if (c.capacity != null) tags.push(`<span class="tag">cap ${c.capacity}</span>`);
-    if (c.group) tags.push(`<span class="tag">group ${c.group}</span>`);
+    if (c.capacity != null) tags.push(`<span class="tag">Capacity ${c.capacity}</span>`);
+    if (c.group) tags.push(`<span class="tag">Group ${c.group}</span>`);
     if (c.title) tags.push(`<span class="tag">${escapeHtml(c.title)}</span>`);
     if (c.disciplines && c.disciplines.length) tags.push(`<span class="tag">${discList(c.disciplines)}</span>`);
   } else {
@@ -284,14 +292,15 @@ function openModal(idx, pushHistory = true) {
   const c = state.filtered[idx];
   const img = $("modal-img");
   img.src = encodeURI(c.img);
-  img.alt = c.name;
+  const shown = displayName(c.name);
+  img.alt = shown;
   img.classList.remove("zoomed");
-  $("modal-name").textContent = c.name;
+  $("modal-name").textContent = shown;
   $("modal-tags").innerHTML = buildTags(c);
-  const textEl = $("modal-text");
-  let body = c.text || "(text unavailable)";
-  if (c.draft && c.draft_text) body += "\n\n" + c.draft_text;
-  textEl.innerHTML = renderTextWithIcons(body);
+  $("modal-text").innerHTML = renderTextWithIcons(c.text || "Card text not available.");
+  const hasDraft = !!(c.draft && c.draft_text);
+  $("modal-draft").hidden = !hasDraft;
+  $("modal-draft-text").innerHTML = hasDraft ? renderTextWithIcons(draftBody(c.draft_text)) : "";
   $("modal-counter").textContent = `${idx + 1} / ${state.filtered.length}`;
   $("modal-share").hidden = !(navigator.share || navigator.clipboard);
   preloadNeighbors(idx);
@@ -315,7 +324,7 @@ function openModal(idx, pushHistory = true) {
   } else {
     history.replaceState(history.state, "", hash);
   }
-  document.title = `${c.name} — ${BASE_TITLE}`;
+  document.title = `${shown} — ${BASE_TITLE}`;
 }
 
 function stepModal(delta) {
@@ -466,7 +475,18 @@ document.querySelectorAll("[data-rarity]").forEach((b) =>
   }),
 );
 
+function setDraftOnly(on) {
+  state.draftOnly = on;
+  $("draft-only").setAttribute("aria-pressed", String(on));
+}
+
+$("draft-only").addEventListener("click", () => {
+  setDraftOnly(!state.draftOnly);
+  render();
+});
+
 function resetAll() {
+  setDraftOnly(false);
   state.q = "";
   state.clan = "";
   state.type = "";
@@ -511,7 +531,8 @@ $("modal-share").addEventListener("click", async (e) => {
   if (state.modalIndex < 0) return;
   const c = state.filtered[state.modalIndex];
   const url = location.origin + location.pathname + "#" + encodeURIComponent(c.name);
-  const payload = { title: c.name, text: `${c.name} — VTES Draft Cube`, url };
+  const shown = displayName(c.name);
+  const payload = { title: shown, text: `${shown} — VTES Italy Draft Cube`, url };
   try {
     if (navigator.share) {
       await navigator.share(payload);
@@ -796,7 +817,7 @@ function setComboLabel(key, value) {
     return;
   }
   const ph = !value;
-  cfg.label.textContent = opt ? opt.label : key === "clan" ? "All clans" : key === "type" ? "All types" : "Default";
+  cfg.label.textContent = opt ? opt.label : key === "clan" ? "All clans" : key === "type" ? "All types" : "Cube order";
   cfg.label.classList.toggle("ph", ph);
   cfg.btn.classList.toggle("active", !ph);
 }
@@ -856,7 +877,7 @@ fetch("data/cards.json")
     const cryptCopies = data.crypt.reduce((s, c) => s + c.count, 0);
     const libCopies = data.library.reduce((s, c) => s + c.count, 0);
     $("summary").textContent =
-      `${data.crypt.length} crypt (${cryptCopies}) · ${data.library.length} library (${libCopies})`;
+      `${data.crypt.length} crypt + ${data.library.length} library cards · ${cryptCopies + libCopies} copies`;
 
     $("loading").hidden = true;
     loadStateFromUrl();
@@ -876,7 +897,9 @@ fetch("data/cards.json")
   })
   .catch((e) => {
     $("loading").hidden = true;
-    $("grid").innerHTML = `<div class="empty">Failed to load data/cards.json: ${escapeHtml(e.message)}</div>`;
+    console.error("[draft] failed to load data/cards.json:", e);
+    $("grid").innerHTML =
+      `<div class="empty">The cards could not be loaded. Check your connection and reload the page.</div>`;
   });
 
 /* --- PWA service worker + update banner ---

@@ -3,7 +3,7 @@
  * a plain transformation over inputs. */
 
 export const SORT_OPTIONS = [
-  { value: "", label: "Default" },
+  { value: "", label: "Cube order" },
   { value: "name", label: "Name (A → Z)" },
   { value: "name-desc", label: "Name (Z → A)" },
   { value: "count", label: "Copies (most first)" },
@@ -127,6 +127,23 @@ export function renderTextWithIcons(text) {
   return escapeHtml(text).replace(TOKEN_RE, (m, tok) => (ICON_TOKENS.has(tok.toLowerCase()) ? renderDisc(tok) : m));
 }
 
+/* KRCG files names with a leading article as "Summoning, The" so they sort
+ * under the noun. Shown to people, the article goes back in front. Only a
+ * trailing ", The" / ", An" / ", A" moves: "Smiling Jack, The Anarch" is a
+ * real name and stays as printed. The raw name remains the card's identity
+ * (cardKey, #hash deep links), so shared links never change. */
+const TRAILING_ARTICLE_RE = /^(.+), (The|An|A)$/;
+export function displayName(name) {
+  const m = TRAILING_ARTICLE_RE.exec(name || "");
+  return m ? `${m[2]} ${m[1]}` : name || "";
+}
+
+/* The DRAFT clause without its "DRAFT:" label, which the UI renders as a
+ * heading of its own. */
+export function draftBody(text) {
+  return (text || "").replace(/^\s*DRAFT\s*:\s*/i, "");
+}
+
 export function cardKey(c) {
   return c.kind + ":" + c.name;
 }
@@ -142,7 +159,11 @@ export function matchSearch(c, q) {
   const hay = norm(
     c.name +
       " " +
+      displayName(c.name) +
+      " " +
       (c.text || "") +
+      " " +
+      (c.draft_text || "") +
       " " +
       (c.type || "") +
       " " +
@@ -201,6 +222,7 @@ export function computeFiltered(state) {
   if (state.kinds.has("crypt")) {
     for (const c of state.data.crypt) {
       if (!matchSearch(c, q)) continue;
+      if (state.draftOnly) continue;
       if (state.clan && c.clan !== state.clan) continue;
       items.push(c);
     }
@@ -209,6 +231,7 @@ export function computeFiltered(state) {
     for (const c of state.data.library) {
       if (!matchSearch(c, q)) continue;
       if (!state.rarities.has(c.rarity)) continue;
+      if (state.draftOnly && !c.draft) continue;
       if (state.type && !(c.type || "").split(/,\s*/).includes(state.type)) continue;
       if (state.clan && !(c.clans || []).includes(state.clan)) continue;
       items.push(c);
@@ -223,6 +246,7 @@ export function countActiveFilters(state, { includeSearch = true } = {}) {
   if (state.clan) n++;
   if (state.type) n++;
   if (state.sort) n++;
+  if (state.draftOnly) n++;
   if (state.kinds.size !== 2) n++;
   if (state.rarities.size !== 3) n++;
   return n;
@@ -257,6 +281,7 @@ export function buildFilterSearchParams(state) {
   if (state.clan) p.set("clan", state.clan);
   if (state.type) p.set("type", state.type);
   if (state.sort) p.set("sort", state.sort);
+  if (state.draftOnly) p.set("draft", "1");
   if (state.kinds.size !== 2) p.set("kinds", [...state.kinds].join(","));
   if (state.rarities.size !== 3) p.set("rarities", [...state.rarities].join(","));
   return p;

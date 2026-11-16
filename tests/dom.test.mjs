@@ -101,8 +101,7 @@ test("DOM smoke: grid renders the fixture", () => {
 
 test("DOM smoke: summary reports crypt / library totals", () => {
   const summary = document.getElementById("summary").textContent;
-  assert.match(summary, /2 crypt \(3\)/);
-  assert.match(summary, /1 library \(3\)/);
+  assert.match(summary, /2 crypt \+ 1 library cards · 6 copies/);
 });
 
 test("DOM smoke: card <img> srcset uses width descriptors + sizes", () => {

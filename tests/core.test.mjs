@@ -20,6 +20,8 @@ import {
   countActiveFilters,
   buildFilterSearchParams,
   decodeHashName,
+  displayName,
+  draftBody,
 } from "../assets/core.mjs";
 
 /* --- norm --- */
@@ -352,7 +354,7 @@ test("buildFilterSearchParams emits kinds/rarities when non-default", () => {
 /* --- constants integrity --- */
 
 test("SORT_OPTIONS includes a default-empty option", () => {
-  assert.ok(SORT_OPTIONS.some((o) => o.value === "" && o.label === "Default"));
+  assert.ok(SORT_OPTIONS.some((o) => o.value === "" && o.label === "Cube order"));
 });
 
 test("RARITY_ORDER covers Common/Uncommon/Rare", () => {
@@ -413,4 +415,46 @@ test("parseSetParam returns null when every value is unknown", () => {
 
 test("parseSetParam treats an empty param as an explicit empty selection", () => {
   assert.equal(parseSetParam("", KINDS).size, 0);
+});
+
+/* --- displayName / draftBody --- */
+
+test("displayName moves a trailing article back in front", () => {
+  assert.equal(displayName("Summoning, The"), "The Summoning");
+  assert.equal(displayName("Anarch Manifesto, An"), "An Anarch Manifesto");
+  assert.equal(displayName("Govern the Unaligned"), "Govern the Unaligned");
+});
+
+test("displayName keeps a real name that only contains ', The'", () => {
+  assert.equal(displayName("Smiling Jack, The Anarch"), "Smiling Jack, The Anarch");
+});
+
+test("matchSearch finds a card by its displayed name and by its DRAFT clause", () => {
+  const card = { name: "Summoning, The", text: "Recruit an ally.", draft_text: "DRAFT: Ignore requirements." };
+  assert.equal(matchSearch(card, norm("the summoning")), true);
+  assert.equal(matchSearch(card, norm("ignore requirements")), true);
+});
+
+test("draftBody strips the DRAFT: label only", () => {
+  assert.equal(draftBody("DRAFT: [aus] Dodge."), "[aus] Dodge.");
+  assert.equal(draftBody("[aus] Dodge."), "[aus] Dodge.");
+  assert.equal(draftBody(""), "");
+});
+
+/* --- DRAFT-only filter --- */
+
+test("computeFiltered with draftOnly keeps only library cards that have the clause", () => {
+  const state = buildState({ draftOnly: true });
+  state.data.library[0] = { ...govern, draft: true, draft_text: "DRAFT: +1 stealth." };
+  assert.deepEqual(
+    computeFiltered(state).map((c) => c.name),
+    ["Govern the Unaligned"],
+  );
+});
+
+test("draftOnly counts as an active filter and round-trips through the URL", () => {
+  const state = buildState({ draftOnly: true });
+  assert.equal(countActiveFilters(state), 1);
+  assert.equal(buildFilterSearchParams(state).get("draft"), "1");
+  assert.equal(buildFilterSearchParams(buildState()).has("draft"), false);
 });
